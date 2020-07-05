@@ -26,7 +26,7 @@ drop table if exists goods_orders;
 
 drop table if exists goods_procurement;
 
-drop table if exists goodscomment;
+drop table if exists goods_comment;
 
 drop table if exists orders_detail;
 
@@ -184,9 +184,9 @@ create table goods_procurement
 );
 
 /*==============================================================*/
-/* Table: goodscomment                                          */
+/* Table: goods_comment                                          */
 /*==============================================================*/
-create table goodscomment
+create table goods_comment
 (
    goods_id             varchar(20) not null,
    user_id              varchar(20) not null,
@@ -287,10 +287,10 @@ alter table goods_procurement add constraint FK_admin_procurement foreign key (a
 alter table goods_procurement add constraint FK_goods_procurement foreign key (goods_id)
       references goods (goods_id) on delete restrict on update restrict;
 
-alter table goodscomment add constraint FK_goodscomment foreign key (goods_id)
+alter table goods_comment add constraint FK_goods_comment foreign key (goods_id)
       references goods (goods_id) on delete restrict on update restrict;
 
-alter table goodscomment add constraint FK_goodscomment2 foreign key (user_id)
+alter table goods_comment add constraint FK_goods_comment2 foreign key (user_id)
       references user_infor (user_id) on delete restrict on update restrict;
 
 alter table orders_detail add constraint FK_orders_detail foreign key (orders_id)

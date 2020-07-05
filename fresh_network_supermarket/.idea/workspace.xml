@@ -31,6 +31,19 @@
         <item name="fns@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
       </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="fns@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="fns: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="fns@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="fns: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="goods_orders: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
     </expand>
     <select />
   </component>
@@ -88,8 +101,12 @@
       <setting name="OPEN_NEW_TAB" value="false" />
     </FindUsagesManager>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectId" id="1eCc6KFHSzFObPW0ZOX1VBu2Iii" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectReloadState">
     <option name="STATE" value="0" />
   </component>
@@ -107,15 +124,16 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="OverrideImplement.combined" value="false" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="dynamic.classpath" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../personplan" />
+    <property name="last_opened_file_path" value="$USER_HOME$/IdeaProjects/personplan" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -230,6 +248,8 @@
       <workItem from="1593834208839" duration="1146000" />
       <workItem from="1593841116489" duration="580000" />
       <workItem from="1593841895091" duration="2473000" />
+      <workItem from="1593875427570" duration="950000" />
+      <workItem from="1593920114867" duration="3164000" />
     </task>
     <servers />
   </component>
@@ -249,10 +269,15 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="151" width="816" height="707" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1593835155406" />
-    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1593841961265">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="765" y="224" key="#com.intellij.ide.util.MemberChooser" timestamp="1593924762417">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="765" y="224" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080/1920.-620.1080.1880@0.0.1920.1080" timestamp="1593924762417" />
+    <state x="740" y="285" key="FileChooserDialogImpl" timestamp="1593921599853">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1593841961265" />
+    <state x="740" y="285" key="FileChooserDialogImpl/0.0.1920.1080/1920.-620.1080.1880@0.0.1920.1080" timestamp="1593921599853" />
     <state width="1877" height="283" key="GridCell.Tab.0.bottom" timestamp="1593834100956">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -269,9 +294,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1877" height="283" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1593834100956" />
-    <state x="440" y="94" key="SettingsEditor" timestamp="1593834799663">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="440" y="98" key="SettingsEditor" timestamp="1593920768482">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1593834799663" />
+    <state x="440" y="98" key="SettingsEditor/0.0.1920.1080/1920.-620.1080.1880@0.0.1920.1080" timestamp="1593920768482" />
   </component>
 </project>
