@@ -1,12 +1,12 @@
 package model;
 
 public class OrderDetail {
-    String orders_id;
-    String discount_id;
-    String goods_id;
-    int detail_count;
-    int goods_price;
-    double discount;
+    private String orders_id;
+    private String discount_id;
+    private String goods_id;
+    private int detail_count;
+    private int goods_price;
+    private double discount;
 
     public String getOrders_id() {
         return orders_id;

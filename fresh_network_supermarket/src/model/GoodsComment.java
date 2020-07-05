@@ -3,12 +3,12 @@ package model;
 import java.util.Date;
 
 public class GoodsComment {
-    String goods_id;
-    String user_id;
-    String comment_detail;
-    Date comment_date;
-    int comment_level;
-    String comment_image;
+    private String goods_id;
+    private String user_id;
+    private String comment_detail;
+    private Date comment_date;
+    private  int comment_level;
+    private String comment_image;
 
     public String getGoods_id() {
         return goods_id;

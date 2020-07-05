@@ -3,14 +3,14 @@ package model;
 import java.util.Date;
 
 public class BeanGoodsOrders {
-    String orders_id;
-    String coupon_id;
-    String user_id;
-    String delivery_id;
-    double order_original_price;
-    double oder_final_price;
-    Date order_time;
-    String order_status;
+    private String orders_id;
+    private String coupon_id;
+    private String user_id;
+    private String delivery_id;
+    private double order_original_price;
+    private double oder_final_price;
+    private Date order_time;
+    private String order_status;
 
     public String getOrders_id() {
         return orders_id;

@@ -10,12 +10,12 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.loginController">
    <children>
-      <Label fx:id="label_id" layoutX="373.0" layoutY="284.0" text="账号" />
-      <Label fx:id="label_pwd" layoutX="373.0" layoutY="333.0" text="密码" />
+      <Label layoutX="373.0" layoutY="284.0" text="账号" />
+      <Label layoutX="373.0" layoutY="333.0" text="密码" />
       <TextField fx:id="text_id" layoutX="490.0" layoutY="280.0" />
       <TextField fx:id="text_pwd" layoutX="490.0" layoutY="329.0" />
-      <Button layoutX="562.0" layoutY="465.0" mnemonicParsing="false" text="管理员登陆" />
-      <Button layoutX="387.0" layoutY="465.0" mnemonicParsing="false" text="用户登录" />
+      <Button layoutX="562.0" layoutY="465.0" mnemonicParsing="false" onAction="#eventAdminLogin" text="管理员登陆" />
+      <Button layoutX="387.0" layoutY="465.0" mnemonicParsing="false" onAction="#eventUserLogin" text="用户登录" />
       <Button fx:id="button_register" layoutX="542.0" layoutY="529.0" mnemonicParsing="false" onAction="#eventRegister" text="注册" />
       <Label layoutX="404.0" layoutY="533.0" text="还没有账号？点这里→" />
    </children>

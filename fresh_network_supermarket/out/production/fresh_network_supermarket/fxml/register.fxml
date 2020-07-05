@@ -25,7 +25,7 @@
       <TextField fx:id="text_sex" layoutX="240.0" layoutY="107.0" promptText="男/女" />
       <TextField fx:id="text_pwd1" layoutX="240.0" layoutY="132.0" promptText="请输入6-16位密码" />
       <TextField fx:id="text_pwd2" layoutX="240.0" layoutY="157.0" promptText="请输入和上面相同的密码" />
-      <TextField fx:id="text_tel" layoutX="240.0" layoutY="182.0" />
+      <TextField fx:id="text_tel" layoutX="240.0" layoutY="182.0" promptText="请输入11位手机号码" />
       <TextField fx:id="text_email" layoutX="240.0" layoutY="207.0" />
       <TextField fx:id="text_city" layoutX="240.0" layoutY="232.0" />
    </children>

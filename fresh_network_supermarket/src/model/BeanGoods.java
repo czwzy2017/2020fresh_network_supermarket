@@ -1,14 +1,14 @@
 package model;
 
 public class BeanGoods {
-    String goods_id;
-    int category_id;
-    String goods_name;
-    double goods_price;
-    double goods_vip_price;
-    int goods_count;
-    String goods_size;
-    String goods_detail;
+    private String goods_id;
+    private int category_id;
+    private String goods_name;
+    private double goods_price;
+    private double goods_vip_price;
+    private int goods_count;
+    private String goods_size;
+    private String goods_detail;
 
     public String getGoods_id() {
         return goods_id;

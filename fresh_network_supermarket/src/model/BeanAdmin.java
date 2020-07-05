@@ -1,9 +1,10 @@
 package model;
 
 public class BeanAdmin {
-    String admin_id;
-    String admin_name;
-    String admin_pwd;
+    private String admin_id;
+    private String admin_name;
+    private String admin_pwd;
+    public static BeanAdmin currentLoginAdmin=null;
 
     public String getAdmin_id() {
         return admin_id;

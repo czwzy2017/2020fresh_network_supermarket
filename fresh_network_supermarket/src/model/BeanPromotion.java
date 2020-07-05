@@ -3,12 +3,12 @@ package model;
 import java.util.Date;
 
 public class BeanPromotion {
-    String promotion;
-    String goods_id;
-    double promotion_price;
-    double promotion_count;
-    Date promotion_begin_date;
-    Date promotion_end_date;
+    private String promotion;
+    private String goods_id;
+    private double promotion_price;
+    private double promotion_count;
+    private Date promotion_begin_date;
+    private Date promotion_end_date;
 
     public String getPromotion() {
         return promotion;

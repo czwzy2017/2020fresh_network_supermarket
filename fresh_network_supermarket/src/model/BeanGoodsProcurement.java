@@ -1,11 +1,11 @@
 package model;
 
 public class BeanGoodsProcurement {
-    String procurement_id;
-    String admin_id;
-    String goods_id;
-    String procurement_count;
-    String procurement_status;
+    private String procurement_id;
+    private String admin_id;
+    private String goods_id;
+    private String procurement_count;
+    private String procurement_status;
 
     public String getProcurement_id() {
         return procurement_id;

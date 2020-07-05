@@ -1,9 +1,9 @@
 package model;
 
 public class UserCoupon {
-    String coupon_id;
-    String user_id;
-    int user_coupon_count;
+    private String coupon_id;
+    private String user_id;
+    private int user_coupon_count;
 
     public String getCoupon_id() {
         return coupon_id;
