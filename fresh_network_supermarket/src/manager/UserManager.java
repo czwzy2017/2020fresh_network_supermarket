@@ -10,20 +10,20 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
 
-public class userManager {
-    public BeanUserInfo login(String id, String pwd) throws BaseException {
+public class UserManager {
+    public BeanUserInfo login(String tel, String pwd) throws BaseException {
         BeanUserInfo r = new BeanUserInfo();
         Connection conn = null;
         try {
             conn = DBUtil.getConnection();
-            String sql = "select * from user_infor where user_id=?";
+            String sql = "select * from user_infor where user_tel=?";
             java.sql.PreparedStatement pst = conn.prepareStatement(sql);
-            pst.setString(1, id);
+            pst.setString(1, tel);
             java.sql.ResultSet rs = pst.executeQuery();
             if (rs.next()) {
-                if (!rs.getString(4).equals(pwd)) throw new BusinessException("ÃÜÂë´íÎó");
-            } else throw new BusinessException("ÓÃ»§²»´æÔÚ");
-            r.setUser_id(id);
+                if (!rs.getString(4).equals(pwd)) throw new BusinessException("å¯†ç é”™è¯¯");
+            } else throw new BusinessException("ç”¨æˆ·ä¸å­˜åœ¨");
+            r.setUser_id(rs.getString(1));
             r.setUser_name(rs.getString(2));
             r.setUser_sex(rs.getString(3));
             r.setUser_pwd(pwd);
@@ -48,42 +48,43 @@ public class userManager {
         }
         return r;
     }
+
     public String reg(String name, String sex, String pwd, String pwd2, String tel, String email, String city) throws BaseException {
-        if ("".equals(name)) throw new BusinessException("ĞÕÃû²»ÄÜÎª¿Õ");
-        if ("ÄĞ".equals(sex) || "Å®".equals(sex)) throw  new BusinessException("ĞÔ±ğÊäÈëÄĞ»òÅ®");
-        if ("".equals(pwd)) throw new BusinessException("ÃÜÂë²»ÄÜÎª¿Õ");
-        if (!pwd.equals(pwd2)) throw new BusinessException("Á½´ÎÃÜÂë²»Ò»ÖÂ");
-        if ("".equals(tel)) throw new BusinessException("µç»°²»ÄÜÎª¿Õ");
-        if (tel.length()!=11) throw new  BusinessException("µç»°±ØĞëÎª11Î»");
-        if ("".equals(city)) throw new BusinessException("³ÇÊĞ²»ÄÜÎª¿Õ");
+        if ("".equals(name)) throw new BusinessException("å§“åä¸èƒ½ä¸ºç©º");
+        if (!"ç”·".equals(sex) && !"å¥³".equals(sex)) throw new BusinessException("æ€§åˆ«è¯·è¾“å…¥ç”·æˆ–å¥³");
+        if ("".equals(pwd)) throw new BusinessException("å¯†ç ä¸èƒ½ä¸ºç©º");
+        if (!pwd.equals(pwd2)) throw new BusinessException("ä¸¤æ¬¡å¯†ç ä¸ä¸€è‡´");
+        if ("".equals(tel)) throw new BusinessException("ç”µè¯ä¸èƒ½ä¸ºç©º");
+        if (tel.length() != 11) throw new BusinessException("è¯·è¾“å…¥11ä½æ‰‹æœºå·");
+        if ("".equals(city)) throw new BusinessException("åŸå¸‚ä¸èƒ½ä¸ºç©º");
         Connection conn = null;
-        String id="";
+        String id = "";
         try {
             conn = DBUtil.getConnection();
             String sql = "select COUNT(*) from user_infor";
             java.sql.Statement st = conn.createStatement();
-            java.sql.ResultSet rs=st.executeQuery(sql);
+            java.sql.ResultSet rs = st.executeQuery(sql);
             if (rs.next()) {
-                id=String.valueOf(rs.getInt(1));
+                id = String.valueOf(rs.getInt(1));
             }
             st.close();
             sql = "select * from user_infor where user_tel=?";
             java.sql.PreparedStatement pst = conn.prepareStatement(sql);
-            pst.setString(1,tel);
-            rs=pst.executeQuery();
-            if (rs.next()) throw new BusinessException("¸Ãµç»°ÒÑ±»×¢²á");
+            pst.setString(1, tel);
+            rs = pst.executeQuery();
+            if (rs.next()) throw new BusinessException("æ‰‹æœºå·å·²è¢«æ³¨å†Œ");
             rs.close();
             pst.close();
             sql = "insert into user_infor(user_id, user_name, user_sex, user_pwd, user_tel, user_email, user_city, user_creat_time, user_vip) values(?,?,?,?,?,?,?,?,0)";
             pst = conn.prepareStatement(sql);
-            pst.setString(1,id);
-            pst.setString(2,name);
-            pst.setString(3,sex);
-            pst.setString(4,pwd);
-            pst.setString(5,tel);
-            pst.setString(6,email);
-            pst.setString(7,city);
-            pst.setTimestamp(8,new java.sql.Timestamp(System.currentTimeMillis()));
+            pst.setString(1, id);
+            pst.setString(2, name);
+            pst.setString(3, sex);
+            pst.setString(4, pwd);
+            pst.setString(5, tel);
+            pst.setString(6, email);
+            pst.setString(7, city);
+            pst.setTimestamp(8, new java.sql.Timestamp(System.currentTimeMillis()));
             pst.execute();
             pst.close();
         } catch (SQLException e) {

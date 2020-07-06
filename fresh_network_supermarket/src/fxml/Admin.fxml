@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.AdminController">
+   <children>
+      <MenuBar layoutX="120.0" layoutY="38.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="商品采购" />
+          <Menu mnemonicParsing="false" text="生鲜信息">
+            <items>
+              <MenuItem mnemonicParsing="false" text="生鲜类别信息" />
+                  <MenuItem mnemonicParsing="false" text="商品信息" />
+                  <MenuItem mnemonicParsing="false" text="菜谱信息" />
+                  <MenuItem mnemonicParsing="false" text="商品评价表" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="优惠信息">
+            <items>
+              <MenuItem mnemonicParsing="false" text="优惠券" />
+                  <MenuItem mnemonicParsing="false" text="满折信息" />
+                  <MenuItem mnemonicParsing="false" text="限时促销信息" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="个人信息">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="查看" />
+                  <MenuItem mnemonicParsing="false" text="修改" />
+               </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+   </children>
+</AnchorPane>

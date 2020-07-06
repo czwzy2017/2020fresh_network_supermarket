@@ -311,3 +311,4 @@ alter table user_coupon add constraint FK_user_coupon foreign key (coupon_id)
 alter table user_coupon add constraint FK_user_coupon2 foreign key (user_id)
       references user_infor (user_id) on delete restrict on update restrict;
 
+insert into admin(admin_id,admin_name,admin_pwd) value ('0','陈哲炜','czwczwczw');

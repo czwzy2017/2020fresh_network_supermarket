@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class DBUtil {
-	private static final String jdbcUrl = "jdbc:mysql://localhost:3306/fns?serverTimezone=UTC";
+	private static final String jdbcUrl = "jdbc:mysql://localhost:3306/fns?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8";
 	private static final String dbUser = "root";
 	private static final String dbPwd = "123456";
 	private static ComboPooledDataSource dataSource = null;
@@ -32,7 +32,7 @@ public class DBUtil {
 		try {
 			return dataSource.getConnection();
 		} catch (SQLException e) {
-			throw new RuntimeException("Œﬁ∑®¥” ˝æ›‘¥ªÒ»°¡¨Ω” ", e);
+			throw new RuntimeException("Êï∞ÊçÆÂ∫ìËøûÊé•Â§±Ë¥•", e);
 		}
 	}
 }

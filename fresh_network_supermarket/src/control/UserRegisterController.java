@@ -5,21 +5,17 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import manager.userManager;
-import model.BeanUserInfo;
+import manager.UserManager;
 import util.BaseException;
 
 
-public class registerController {
+public class UserRegisterController {
 
     @FXML
     private TextField text_pwd1;
 
     @FXML
     private TextField text_pwd2;
-
-    @FXML
-    private Button button_register;
 
     @FXML
     private TextField text_sex;
@@ -44,22 +40,22 @@ public class registerController {
         String tel = text_tel.getText();
         String email = text_email.getText();
         String city = text_city.getText();
-        userManager m = new userManager();
+        UserManager m = new UserManager();
         try {
             String id=m.reg(name,sex,pwd1,pwd2,tel,email,city);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("ÌáÊ¾");
+            alert.setTitle("æç¤º");
             alert.setHeaderText(null);
-            alert.setContentText("×¢²á³É¹¦");
+            alert.setContentText("ä½ æ˜¯æœ¬ç«™ç¬¬"+id+"ä½ç”¨æˆ·");
             alert.showAndWait();
             Stage primaryStage = (Stage) text_name.getScene().getWindow();
             primaryStage.close();
-        } catch (BaseException e1) {
+        } catch (BaseException e) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("´íÎó");
-            alert.setContentText(e1.getMessage());
+            alert.setTitle("é”™è¯¯");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
             alert.showAndWait();
-            return;
         }
     }
 }

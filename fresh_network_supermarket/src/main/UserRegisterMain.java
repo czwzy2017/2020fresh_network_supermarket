@@ -6,12 +6,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class registerMain extends Application {
+public class UserRegisterMain extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("../fxml/register.fxml"));
-        primaryStage.setTitle("×¢²á");
+    public void start(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("../fxml/UserRegister.fxml"));
+        primaryStage.setTitle("æ³¨å†Œ");
         primaryStage.setScene(new Scene(root, 640, 480));
         primaryStage.show();
     }

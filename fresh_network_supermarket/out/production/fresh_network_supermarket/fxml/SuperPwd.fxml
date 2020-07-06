@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.SuperController">
+    <children>
+        <Label layoutX="167.0" layoutY="150.0" text="新密码" />
+        <Label layoutX="167.0" layoutY="200.0" text="再次输入" />
+        <TextField fx:id="text_pwd" layoutX="272.0" layoutY="147.0" />
+        <TextField fx:id="text_pwd2" layoutX="272.0" layoutY="197.0" />
+        <Button layoutX="300.0" layoutY="350.0" mnemonicParsing="false" onAction="#Pwd" text="修改" />
+        <Button fx:id="button_home" layoutX="66.0" layoutY="48.0" mnemonicParsing="false" onAction="#eventHome" text="首页" />
+    </children>
+</AnchorPane>
