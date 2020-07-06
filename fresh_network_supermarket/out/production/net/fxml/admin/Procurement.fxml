@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.AdminController">
+   <children>
+      <MenuBar prefHeight="25.0" prefWidth="512.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="商品采购">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#loadProcurement" text="查看" />
+               </items></Menu>
+          <Menu mnemonicParsing="false" text="生鲜信息">
+            <items>
+              <MenuItem mnemonicParsing="false" text="生鲜类别信息" />
+                  <MenuItem mnemonicParsing="false" text="商品信息" />
+                  <MenuItem mnemonicParsing="false" text="菜谱信息" />
+                  <MenuItem mnemonicParsing="false" text="商品评价表" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="个人信息">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="查看" />
+                  <MenuItem mnemonicParsing="false" text="修改" />
+               </items>
+            </Menu>
+          <Menu mnemonicParsing="false" text="优惠信息">
+            <items>
+              <MenuItem mnemonicParsing="false" text="优惠券" />
+                  <MenuItem mnemonicParsing="false" text="满折信息" />
+                  <MenuItem mnemonicParsing="false" text="限时促销信息" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <TableView fx:id="view_procurement" layoutY="25.0" prefHeight="743.0" prefWidth="1024.0">
+        <columns>
+          <TableColumn fx:id="col_procurement_id" prefWidth="256.0" text="订单编号" />
+          <TableColumn fx:id="col_procurement_goods" prefWidth="256.0" text="商品编号" />
+            <TableColumn fx:id="col_procurement_count" prefWidth="256.0" text="数量" />
+            <TableColumn fx:id="col_procurement_status" prefWidth="256.0" text="状态" />
+        </columns>
+      </TableView>
+      <Button layoutX="955.0" layoutY="1.0" mnemonicParsing="false" text="添加" />
+   </children>
+</AnchorPane>

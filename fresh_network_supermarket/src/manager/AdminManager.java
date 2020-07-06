@@ -1,6 +1,7 @@
 package manager;
 
 import model.BeanAdmin;
+import model.BeanGoodsProcurement;
 import model.BeanUserInfo;
 import util.BaseException;
 import util.BusinessException;
@@ -9,6 +10,8 @@ import util.DbException;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AdminManager {
     public BeanAdmin login(String id, String pwd) throws BaseException {
@@ -131,4 +134,5 @@ public class AdminManager {
                 }
         }
     }
+
 }

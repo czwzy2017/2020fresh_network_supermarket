@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import main.AdminMain;
 import main.UserRegisterMain;
 import model.BeanAdmin;
 import model.BeanUserInfo;
@@ -45,19 +46,19 @@ public class LoginController {
     private Button button_super;
 
     public void eventAdmin() throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../fxml/AdminLogin.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../fxml/login/AdminLogin.fxml"));
         Stage primaryStage = (Stage) button_admin.getScene().getWindow();
         primaryStage.setScene(new Scene(root));
     }
 
     public void eventUser() throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../fxml/UserLogin.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../fxml/login/UserLogin.fxml"));
         Stage primaryStage = (Stage) button_user.getScene().getWindow();
         primaryStage.setScene(new Scene(root));
     }
 
     public void eventSuper() throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../fxml/SuperLogin.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../fxml/login/SuperLogin.fxml"));
         Stage primaryStage = (Stage) button_super.getScene().getWindow();
         primaryStage.setScene(new Scene(root));
     }
@@ -86,7 +87,7 @@ public class LoginController {
         }
     }
 
-    public void eventAdminLogin() {
+    public void eventAdminLogin() throws Exception{
         String id = text_id.getText();
         String pwd = text_admin_pwd.getText();
         AdminManager m = new AdminManager();
@@ -99,6 +100,9 @@ public class LoginController {
             alert.showAndWait();
             Stage primaryStage = (Stage) text_id.getScene().getWindow();
             primaryStage.close();
+            AdminMain admin = new AdminMain();
+            Stage stage = new Stage();
+            admin.start(stage);
         } catch (BaseException e) {
             outputError(e);
         }
@@ -115,7 +119,7 @@ public class LoginController {
             alert.setContentText("登陆成功");
             alert.showAndWait();
             Stage primaryStage = (Stage) text_super_pwd.getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getResource("../fxml/Super.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("../fxml/login/Super.fxml"));
             primaryStage.setScene(new Scene(root));
         } catch (BaseException e) {
             outputError(e);

@@ -40,25 +40,25 @@ public class SuperController {
 
     public void eventPwd() throws Exception{
         Stage primaryStage = (Stage) label_home.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("../fxml/SuperPwd.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../fxml/login/SuperPwd.fxml"));
         primaryStage.setScene(new Scene(root));
     }
 
     public void eventRegister() throws Exception {
         Stage primaryStage = (Stage) label_home.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("../fxml/AdminRegister.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../fxml/login/AdminRegister.fxml"));
         primaryStage.setScene(new Scene(root));
     }
 
     public void eventDelete() throws Exception{
         Stage primaryStage = (Stage) label_home.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("../fxml/AdminDelete.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../fxml/login/AdminDelete.fxml"));
         primaryStage.setScene(new Scene(root));
     }
 
     public void eventHome() throws Exception {
         Stage primaryStage = (Stage) button_home.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("../fxml/Super.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../fxml/login/Super.fxml"));
         primaryStage.setScene(new Scene(root));
     }
 

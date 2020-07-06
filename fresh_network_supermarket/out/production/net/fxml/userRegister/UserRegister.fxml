@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="control.UserRegisterController">
+    <children>
+        <Label layoutX="142.0" layoutY="86.0" text="姓名*"/>
+        <Label layoutX="142.0" layoutY="136.0" text="密码*"/>
+        <Label layoutX="142.0" layoutY="161.0" text="再次确认密码*"/>
+        <Label layoutX="142.0" layoutY="111.0" text="性别*"/>
+        <Label layoutX="142.0" layoutY="186.0" text="手机号码*"/>
+        <Label layoutX="142.0" layoutY="211.0" text="邮箱"/>
+        <Label layoutX="142.0" layoutY="236.0" text="所在城市*"/>
+        <Label layoutX="142.0" layoutY="283.0" text="*项目为必须输入" textFill="#ee0808">
+            <font>
+                <Font size="20.0"/>
+            </font>
+        </Label>
+        <Button fx:id="button_register" layoutX="300.0" layoutY="372.0" mnemonicParsing="false"
+                onAction="#eventRegister" text="注册"/>
+        <TextField fx:id="text_name" layoutX="240.0" layoutY="82.0"/>
+        <TextField fx:id="text_sex" layoutX="240.0" layoutY="107.0" promptText="男/女"/>
+        <PasswordField fx:id="text_pwd1" layoutX="240.0" layoutY="132.0" promptText="请输入6-16位密码"/>
+        <PasswordField fx:id="text_pwd2" layoutX="240.0" layoutY="157.0" promptText="请输入和上面相同的密码"/>
+        <TextField fx:id="text_tel" layoutX="240.0" layoutY="182.0" promptText="请输入11位手机号码"/>
+        <TextField fx:id="text_email" layoutX="240.0" layoutY="207.0"/>
+        <TextField fx:id="text_city" layoutX="240.0" layoutY="232.0"/>
+    </children>
+</AnchorPane>

@@ -4,7 +4,7 @@ public class BeanGoodsProcurement {
     private String procurement_id;
     private String admin_id;
     private String goods_id;
-    private String procurement_count;
+    private int procurement_count;
     private String procurement_status;
 
     public String getProcurement_id() {
@@ -31,11 +31,11 @@ public class BeanGoodsProcurement {
         this.goods_id = goods_id;
     }
 
-    public String getProcurement_count() {
+    public int getProcurement_count() {
         return procurement_count;
     }
 
-    public void setProcurement_count(String procurement_count) {
+    public void setProcurement_count(int procurement_count) {
         this.procurement_count = procurement_count;
     }
 

@@ -10,7 +10,7 @@ public class UserRegisterMain extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../fxml/UserRegister.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../fxml/userRegister/UserRegister.fxml"));
         primaryStage.setTitle("注册");
         primaryStage.setScene(new Scene(root, 640, 480));
         primaryStage.show();
