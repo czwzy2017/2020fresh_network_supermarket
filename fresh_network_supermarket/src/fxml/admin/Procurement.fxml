@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.AdminController">
+<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.ProcurementController">
    <children>
-      <MenuBar prefHeight="25.0" prefWidth="512.0">
+      <MenuBar prefHeight="25.0" prefWidth="279.0">
         <menus>
-          <Menu mnemonicParsing="false" text="商品采购">
+          <Menu fx:id="menu_procurement" mnemonicParsing="false" text="商品采购">
                <items>
                   <MenuItem mnemonicParsing="false" onAction="#loadProcurement" text="查看" />
                </items></Menu>
@@ -22,12 +23,6 @@
                   <MenuItem mnemonicParsing="false" text="商品评价表" />
             </items>
           </Menu>
-            <Menu mnemonicParsing="false" text="个人信息">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="查看" />
-                  <MenuItem mnemonicParsing="false" text="修改" />
-               </items>
-            </Menu>
           <Menu mnemonicParsing="false" text="优惠信息">
             <items>
               <MenuItem mnemonicParsing="false" text="优惠券" />
@@ -35,16 +30,29 @@
                   <MenuItem mnemonicParsing="false" text="限时促销信息" />
             </items>
           </Menu>
+            <Menu mnemonicParsing="false" text="个人信息">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="查看" />
+                  <MenuItem mnemonicParsing="false" text="修改" />
+                  <MenuItem mnemonicParsing="false" text="安全退出" />
+               </items>
+            </Menu>
         </menus>
       </MenuBar>
-      <TableView fx:id="view_procurement" layoutY="25.0" prefHeight="743.0" prefWidth="1024.0">
+      <TableView fx:id="view_procurement" editable="true" layoutY="25.0" prefHeight="743.0" prefWidth="1024.0">
         <columns>
-          <TableColumn fx:id="col_procurement_id" prefWidth="256.0" text="订单编号" />
-          <TableColumn fx:id="col_procurement_goods" prefWidth="256.0" text="商品编号" />
-            <TableColumn fx:id="col_procurement_count" prefWidth="256.0" text="数量" />
-            <TableColumn fx:id="col_procurement_status" prefWidth="256.0" text="状态" />
+          <TableColumn fx:id="col_procurement_id" prefWidth="200.0" text="订单编号" />
+          <TableColumn fx:id="col_procurement_goods" prefWidth="200.0" text="商品编号" />
+            <TableColumn fx:id="col_procurement_name" prefWidth="324.0" text="商品名称" />
+            <TableColumn fx:id="col_procurement_count" prefWidth="150.0" text="数量" />
+            <TableColumn fx:id="col_procurement_status" prefWidth="150.0" text="状态" />
         </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
       </TableView>
-      <Button layoutX="955.0" layoutY="1.0" mnemonicParsing="false" text="添加" />
+      <Text fx:id="text_name" layoutX="295.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="欢迎您" />
+      <Button layoutX="922.0" layoutY="2.0" mnemonicParsing="false" onAction="#eventAdd" text="添加" />
+      <Button layoutX="970.0" layoutY="2.0" mnemonicParsing="false" onAction="#delete" text="删除" />
    </children>
 </AnchorPane>

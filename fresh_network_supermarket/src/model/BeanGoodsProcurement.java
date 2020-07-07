@@ -4,8 +4,10 @@ public class BeanGoodsProcurement {
     private String procurement_id;
     private String admin_id;
     private String goods_id;
+    private String goods_name;
     private int procurement_count;
     private String procurement_status;
+
 
     public String getProcurement_id() {
         return procurement_id;
@@ -30,6 +32,15 @@ public class BeanGoodsProcurement {
     public void setGoods_id(String goods_id) {
         this.goods_id = goods_id;
     }
+
+    public String getGoods_name() {
+        return goods_name;
+    }
+
+    public void setGoods_name(String goods_name) {
+        this.goods_name = goods_name;
+    }
+
 
     public int getProcurement_count() {
         return procurement_count;

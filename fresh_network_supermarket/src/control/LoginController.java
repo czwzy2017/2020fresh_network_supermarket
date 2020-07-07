@@ -49,18 +49,21 @@ public class LoginController {
         Parent root = FXMLLoader.load(getClass().getResource("../fxml/login/AdminLogin.fxml"));
         Stage primaryStage = (Stage) button_admin.getScene().getWindow();
         primaryStage.setScene(new Scene(root));
+        primaryStage.setTitle("员工登陆");
     }
 
     public void eventUser() throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("../fxml/login/UserLogin.fxml"));
         Stage primaryStage = (Stage) button_user.getScene().getWindow();
         primaryStage.setScene(new Scene(root));
+        primaryStage.setTitle("用户登录");
     }
 
     public void eventSuper() throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("../fxml/login/SuperLogin.fxml"));
         Stage primaryStage = (Stage) button_super.getScene().getWindow();
         primaryStage.setScene(new Scene(root));
+        primaryStage.setTitle("超级管理员登陆");
     }
 
     public void eventUserRegister() throws Exception {
@@ -121,6 +124,7 @@ public class LoginController {
             Stage primaryStage = (Stage) text_super_pwd.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("../fxml/login/Super.fxml"));
             primaryStage.setScene(new Scene(root));
+            primaryStage.setTitle("超级管理员");
         } catch (BaseException e) {
             outputError(e);
         }
