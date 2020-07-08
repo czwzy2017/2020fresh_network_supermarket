@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="240.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.AdminMenuController">
+    <children>
+        <Label layoutX="43.0" layoutY="51.0" text="新密码" />
+        <Label layoutX="37.0" layoutY="101.0" text="再次输入" />
+        <PasswordField fx:id="text_pwd" layoutX="118.0" layoutY="47.0" />
+        <PasswordField fx:id="text_pwd2" layoutX="118.0" layoutY="97.0" />
+        <Button layoutX="126.0" layoutY="161.0" mnemonicParsing="false" onAction="#pwd" text="修改" />
+    </children>
+</AnchorPane>

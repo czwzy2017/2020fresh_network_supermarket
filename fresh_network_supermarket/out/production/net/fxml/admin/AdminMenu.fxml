@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.AdminMenuController">
+    <children>
+        <MenuBar fx:id="menubar" prefHeight="25.0" prefWidth="279.0">
+            <menus>
+                <Menu fx:id="menu_procurement" mnemonicParsing="false" text="商品采购">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#eventProcurement" text="查看" />
+                    </items></Menu>
+                <Menu mnemonicParsing="false" text="生鲜信息">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="生鲜类别信息" />
+                        <MenuItem mnemonicParsing="false" text="商品信息" />
+                        <MenuItem mnemonicParsing="false" text="菜谱信息" />
+                        <MenuItem mnemonicParsing="false" text="商品评价表" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="优惠信息">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="优惠券" />
+                        <MenuItem mnemonicParsing="false" text="满折信息" />
+                        <MenuItem mnemonicParsing="false" text="限时促销信息" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="个人信息">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#eventPwd" text="修改密码" />
+                        <MenuItem mnemonicParsing="false" onAction="#eventExit" text="安全退出" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <Text fx:id="text_name" layoutX="295.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="欢迎您" />
+    </children>
+</AnchorPane>

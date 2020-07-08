@@ -3,18 +3,18 @@ package model;
 import java.util.Date;
 
 public class BeanFullDiscount {
-    private String discount_id;
+    private int discount_id;
     private  String discount_detail;
     private int discount_goods_count;
     private double discount;
     private Date discount_begin_date;
     private Date discount_end_date;
 
-    public String getDiscount_id() {
+    public int getDiscount_id() {
         return discount_id;
     }
 
-    public void setDiscount_id(String discount_id) {
+    public void setDiscount_id(int discount_id) {
         this.discount_id = discount_id;
     }
 

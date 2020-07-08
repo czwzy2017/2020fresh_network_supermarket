@@ -3,18 +3,18 @@ package model;
 import java.util.Date;
 
 public class BeanCoupon {
-    private String coupon_id;
+    private int coupon_id;
     private String coupon_detail;
     private double coupon_minimum_price;
     private double coupon_credit_price;
     private Date coupon_begin_date;
     private Date coupon_end_date;
 
-    public String getCoupon_id() {
+    public int getCoupon_id() {
         return coupon_id;
     }
 
-    public void setCoupon_id(String coupon_id) {
+    public void setCoupon_id(int coupon_id) {
         this.coupon_id = coupon_id;
     }
 

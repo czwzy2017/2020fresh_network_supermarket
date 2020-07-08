@@ -6,10 +6,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.SuperController">
    <children>
-      <Button layoutX="128.0" layoutY="292.0" mnemonicParsing="false" onAction="#eventPwd" text="修改密码" />
       <Button layoutX="300.0" layoutY="292.0" mnemonicParsing="false" onAction="#eventRegister" text="注册" />
       <Button layoutX="449.0" layoutY="292.0" mnemonicParsing="false" onAction="#eventDelete" text="删除" />
       <Label fx:id="label_home" layoutX="290.0" layoutY="139.0" text="超级管理员" />

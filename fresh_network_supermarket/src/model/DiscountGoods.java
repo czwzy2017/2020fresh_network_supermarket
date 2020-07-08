@@ -3,24 +3,24 @@ package model;
 import java.util.Date;
 
 public class DiscountGoods {
-    private String discount_id;
-    private String goods_id;
+    private int discount_id;
+    private int goods_id;
     private Date discount_begin_date;
     private Date discount_end_date;
 
-    public String getDiscount_id() {
+    public int getDiscount_id() {
         return discount_id;
     }
 
-    public void setDiscount_id(String discount_id) {
+    public void setDiscount_id(int discount_id) {
         this.discount_id = discount_id;
     }
 
-    public String getGoods_id() {
+    public int getGoods_id() {
         return goods_id;
     }
 
-    public void setGoods_id(String goods_id) {
+    public void setGoods_id(int goods_id) {
         this.goods_id = goods_id;
     }
 

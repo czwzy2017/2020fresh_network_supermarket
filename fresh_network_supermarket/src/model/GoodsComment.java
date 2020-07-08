@@ -3,26 +3,26 @@ package model;
 import java.util.Date;
 
 public class GoodsComment {
-    private String goods_id;
-    private String user_id;
+    private int goods_id;
+    private int user_id;
     private String comment_detail;
     private Date comment_date;
     private  int comment_level;
     private String comment_image;
 
-    public String getGoods_id() {
+    public int getGoods_id() {
         return goods_id;
     }
 
-    public void setGoods_id(String goods_id) {
+    public void setGoods_id(int goods_id) {
         this.goods_id = goods_id;
     }
 
-    public String getUser_id() {
+    public int getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(String user_id) {
+    public void setUser_id(int user_id) {
         this.user_id = user_id;
     }
 

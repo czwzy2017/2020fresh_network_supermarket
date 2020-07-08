@@ -1,23 +1,23 @@
 package model;
 
 public class Commend {
-    private String goods_id;
-    private String cookbook_id;
+    private int goods_id;
+    private int cookbook_id;
     private String commend_description;
 
-    public String getGoods_id() {
+    public int getGoods_id() {
         return goods_id;
     }
 
-    public void setGoods_id(String goods_id) {
+    public void setGoods_id(int goods_id) {
         this.goods_id = goods_id;
     }
 
-    public String getCookbook_id() {
+    public int getCookbook_id() {
         return cookbook_id;
     }
 
-    public void setCookbook_id(String cookbook_id) {
+    public void setCookbook_id(int cookbook_id) {
         this.cookbook_id = cookbook_id;
     }
 

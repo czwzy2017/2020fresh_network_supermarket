@@ -1,7 +1,7 @@
 package model;
 
 public class BeanGoods {
-    private String goods_id;
+    private int goods_id;
     private int category_id;
     private String goods_name;
     private double goods_price;
@@ -10,11 +10,11 @@ public class BeanGoods {
     private String goods_size;
     private String goods_detail;
 
-    public String getGoods_id() {
+    public int getGoods_id() {
         return goods_id;
     }
 
-    public void setGoods_id(String goods_id) {
+    public void setGoods_id(int goods_id) {
         this.goods_id = goods_id;
     }
 

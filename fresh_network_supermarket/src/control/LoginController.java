@@ -9,15 +9,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import main.AdminMain;
-import main.UserRegisterMain;
+import main.MainApp;
 import model.BeanAdmin;
 import model.BeanUserInfo;
 import manager.UserManager;
 import manager.AdminManager;
-
-import util.BaseException;
-
 
 public class LoginController {
 
@@ -67,75 +63,55 @@ public class LoginController {
     }
 
     public void eventUserRegister() throws Exception {
-        UserRegisterMain re = new UserRegisterMain();
-        Stage stage = new Stage();
-        re.start(stage);
+        MainApp mainApp = new MainApp();
+        mainApp.showUserRegister();
     }
 
     public void eventUserLogin() {
         String tel = text_tel.getText();
         String pwd = text_user_pwd.getText();
         UserManager m = new UserManager();
-        try {
-            BeanUserInfo.currentLoginUser = m.login(tel, pwd);
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("提示");
-            alert.setHeaderText(null);
-            alert.setContentText("登陆成功");
-            alert.showAndWait();
-            Stage primaryStage = (Stage) text_tel.getScene().getWindow();
-            primaryStage.close();
-        } catch (BaseException e) {
-            outputError(e);
-        }
+        BeanUserInfo.currentLoginUser = m.login(tel, pwd);
+//        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//        alert.setTitle("提示");
+//        alert.setHeaderText(null);
+//        alert.setContentText("登陆成功");
+//        alert.showAndWait();
+        Stage primaryStage = (Stage) text_tel.getScene().getWindow();
+        primaryStage.close();
     }
 
-    public void eventAdminLogin() throws Exception{
+    public void eventAdminLogin() throws Exception {
         String id = text_id.getText();
         String pwd = text_admin_pwd.getText();
         AdminManager m = new AdminManager();
-        try {
-            BeanAdmin.currentLoginAdmin = m.login(id, pwd);
+        BeanAdmin.currentLoginAdmin = m.login(id, pwd);
+        if ("000000".equals(pwd)) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("提示");
             alert.setHeaderText(null);
-            alert.setContentText("登陆成功");
+            alert.setContentText("您的密码为初始密码，请尽快修改你的密码。");
             alert.showAndWait();
-            Stage primaryStage = (Stage) text_id.getScene().getWindow();
-            primaryStage.close();
-            AdminMain admin = new AdminMain();
-            Stage stage = new Stage();
-            admin.start(stage);
-        } catch (BaseException e) {
-            outputError(e);
         }
+        Stage primaryStage = (Stage) text_id.getScene().getWindow();
+        primaryStage.close();
+        MainApp mainApp = new MainApp();
+        mainApp.showProcurement();
     }
 
     public void eventSuperLogin() throws Exception {
         String pwd = text_super_pwd.getText();
         AdminManager m = new AdminManager();
-        try {
-            BeanAdmin.currentLoginAdmin = m.login("0", pwd);
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("提示");
-            alert.setHeaderText(null);
-            alert.setContentText("登陆成功");
-            alert.showAndWait();
-            Stage primaryStage = (Stage) text_super_pwd.getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getResource("../fxml/login/Super.fxml"));
-            primaryStage.setScene(new Scene(root));
-            primaryStage.setTitle("超级管理员");
-        } catch (BaseException e) {
-            outputError(e);
-        }
-    }
-
-    private void outputError(Exception e) {
+        BeanAdmin.currentLoginAdmin = m.login("0", pwd);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("错误");
+        alert.setTitle("提示");
         alert.setHeaderText(null);
-        alert.setContentText(e.getMessage());
+        alert.setContentText("登陆成功");
         alert.showAndWait();
+        Stage primaryStage = (Stage) text_super_pwd.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getResource("../fxml/superAdmin/Super.fxml"));
+        primaryStage.setScene(new Scene(root));
+        primaryStage.setTitle("超级管理员");
     }
 }
 

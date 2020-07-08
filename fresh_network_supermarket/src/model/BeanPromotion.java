@@ -3,26 +3,26 @@ package model;
 import java.util.Date;
 
 public class BeanPromotion {
-    private String promotion;
-    private String goods_id;
+    private int promotion_id;
+    private int goods_id;
     private double promotion_price;
     private double promotion_count;
     private Date promotion_begin_date;
     private Date promotion_end_date;
 
-    public String getPromotion() {
-        return promotion;
+    public int getPromotion_id() {
+        return promotion_id;
     }
 
-    public void setPromotion(String promotion) {
-        this.promotion = promotion;
+    public void setPromotion_id(int promotion_id) {
+        this.promotion_id = promotion_id;
     }
 
-    public String getGoods_id() {
+    public int getGoods_id() {
         return goods_id;
     }
 
-    public void setGoods_id(String goods_id) {
+    public void setGoods_id(int goods_id) {
         this.goods_id = goods_id;
     }
 

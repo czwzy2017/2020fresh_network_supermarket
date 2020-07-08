@@ -1,17 +1,17 @@
 package model;
 
 public class BeanCookbook {
-    private String cookbook_id;
+    private int cookbook_id;
     private String cookbook_name;
     private String cookbook_ingredient;
     private String cookbook_step;
     private String cookbook_image;
 
-    public String getCookbook_id() {
+    public int getCookbook_id() {
         return cookbook_id;
     }
 
-    public void setCookbook_id(String cookbook_id) {
+    public void setCookbook_id(int cookbook_id) {
         this.cookbook_id = cookbook_id;
     }
 

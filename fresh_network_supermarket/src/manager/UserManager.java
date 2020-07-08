@@ -23,7 +23,7 @@ public class UserManager {
             if (rs.next()) {
                 if (!rs.getString(4).equals(pwd)) throw new BusinessException("密码错误");
             } else throw new BusinessException("用户不存在");
-            r.setUser_id(rs.getString(1));
+            r.setUser_id(rs.getInt(1));
             r.setUser_name(rs.getString(2));
             r.setUser_sex(rs.getString(3));
             r.setUser_pwd(pwd);
@@ -49,7 +49,7 @@ public class UserManager {
         return r;
     }
 
-    public String reg(String name, String sex, String pwd, String pwd2, String tel, String email, String city) throws BaseException {
+    public int reg(String name, String sex, String pwd, String pwd2, String tel, String email, String city) throws BaseException {
         if ("".equals(name)) throw new BusinessException("姓名不能为空");
         if (!"男".equals(sex) && !"女".equals(sex)) throw new BusinessException("性别请输入男或女");
         if ("".equals(pwd)) throw new BusinessException("密码不能为空");
@@ -58,34 +58,32 @@ public class UserManager {
         if (tel.length() != 11) throw new BusinessException("请输入11位手机号");
         if ("".equals(city)) throw new BusinessException("城市不能为空");
         Connection conn = null;
-        String id = "";
+        int id=0;
         try {
             conn = DBUtil.getConnection();
-            String sql = "select COUNT(*) from user_infor";
-            java.sql.Statement st = conn.createStatement();
-            java.sql.ResultSet rs = st.executeQuery(sql);
-            if (rs.next()) {
-                id = String.valueOf(rs.getInt(1));
-            }
-            st.close();
-            sql = "select * from user_infor where user_tel=?";
+            String sql = "select * from user_infor where user_tel=?";
             java.sql.PreparedStatement pst = conn.prepareStatement(sql);
             pst.setString(1, tel);
-            rs = pst.executeQuery();
+            java.sql.ResultSet rs = pst.executeQuery();
             if (rs.next()) throw new BusinessException("手机号已被注册");
-            rs.close();
             pst.close();
-            sql = "insert into user_infor(user_id, user_name, user_sex, user_pwd, user_tel, user_email, user_city, user_creat_time, user_vip) values(?,?,?,?,?,?,?,?,0)";
+            sql = "insert into user_infor(user_name, user_sex, user_pwd, user_tel, user_email, user_city, user_creat_time, user_vip) values(?,?,?,?,?,?,?,0)";
             pst = conn.prepareStatement(sql);
-            pst.setString(1, id);
-            pst.setString(2, name);
-            pst.setString(3, sex);
-            pst.setString(4, pwd);
-            pst.setString(5, tel);
-            pst.setString(6, email);
-            pst.setString(7, city);
-            pst.setTimestamp(8, new java.sql.Timestamp(System.currentTimeMillis()));
+            pst.setString(1, name);
+            pst.setString(2, sex);
+            pst.setString(3, pwd);
+            pst.setString(4, tel);
+            pst.setString(5, email);
+            pst.setString(6, city);
+            pst.setTimestamp(7, new java.sql.Timestamp(System.currentTimeMillis()));
             pst.execute();
+            pst.close();
+            sql = "select user_id from user_infor where user_tel=?";
+            pst = conn.prepareStatement(sql);
+            pst.setString(1, tel);
+            rs = pst.executeQuery();
+            if (rs.next()) id=rs.getInt(1);
+            rs.close();
             pst.close();
         } catch (SQLException e) {
             e.printStackTrace();

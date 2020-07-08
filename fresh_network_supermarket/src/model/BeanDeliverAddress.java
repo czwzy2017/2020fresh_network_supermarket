@@ -1,8 +1,8 @@
 package model;
 
 public class BeanDeliverAddress {
-    private String delivery_id;
-    private String user_id;
+    private int delivery_id;
+    private int user_id;
     private String delivery_province;
     private String delivery_city;
     private String delivery_district;
@@ -10,19 +10,19 @@ public class BeanDeliverAddress {
     private String delivery_contact;
     private String delivery_tel;
 
-    public String getDelivery_id() {
+    public int getDelivery_id() {
         return delivery_id;
     }
 
-    public void setDelivery_id(String delivery_id) {
+    public void setDelivery_id(int delivery_id) {
         this.delivery_id = delivery_id;
     }
 
-    public String getUser_id() {
+    public int getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(String user_id) {
+    public void setUser_id(int user_id) {
         this.user_id = user_id;
     }
 

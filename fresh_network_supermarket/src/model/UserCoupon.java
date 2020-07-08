@@ -1,23 +1,23 @@
 package model;
 
 public class UserCoupon {
-    private String coupon_id;
-    private String user_id;
+    private int coupon_id;
+    private int user_id;
     private int user_coupon_count;
 
-    public String getCoupon_id() {
+    public int getCoupon_id() {
         return coupon_id;
     }
 
-    public void setCoupon_id(String coupon_id) {
+    public void setCoupon_id(int coupon_id) {
         this.coupon_id = coupon_id;
     }
 
-    public String getUser_id() {
+    public int getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(String user_id) {
+    public void setUser_id(int user_id) {
         this.user_id = user_id;
     }
 

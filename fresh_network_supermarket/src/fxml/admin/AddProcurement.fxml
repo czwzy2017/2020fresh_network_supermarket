@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="240.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.AddController">
+   <children>
+      <Label layoutX="58.0" layoutY="40.0" text="商品编号" />
+      <Label layoutX="58.0" layoutY="85.0" text="商品数量" />
+      <Label layoutX="58.0" layoutY="130.0" text="商品状态" />
+      <Button layoutX="133.0" layoutY="180.0" mnemonicParsing="false" onAction="#addProcurement" text="添加" />
+      <TextField fx:id="text_procurement_goods" layoutX="117.0" layoutY="38.0" />
+      <TextField fx:id="text_procurement_count" layoutX="117.0" layoutY="81.0" />
+      <TextField fx:id="text_procurement_status" layoutX="117.0" layoutY="116.0" />
+   </children>
+</AnchorPane>

@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2020/7/3 14:03:31                            */
+/* Created on:     2020/7/8 13:31:46                            */
 /*==============================================================*/
 
 
@@ -22,11 +22,11 @@ drop table if exists full_discount;
 
 drop table if exists goods;
 
+drop table if exists goods_comment;
+
 drop table if exists goods_orders;
 
 drop table if exists goods_procurement;
-
-drop table if exists goods_comment;
 
 drop table if exists orders_detail;
 
@@ -52,8 +52,8 @@ create table admin
 /*==============================================================*/
 create table commend
 (
-   goods_id             varchar(20) not null,
-   cookbook_id          varchar(20) not null,
+   goods_id             int not null,
+   cookbook_id          int not null,
    commend_description  varchar(100),
    primary key (goods_id, cookbook_id)
 );
@@ -63,7 +63,7 @@ create table commend
 /*==============================================================*/
 create table cookbook
 (
-   cookbook_id          varchar(20) not null,
+   cookbook_id          int not null auto_increment,
    cookbook_name        varchar(20) not null,
    cookbook_ingredient  varchar(100),
    cookbook_step        varchar(100),
@@ -76,7 +76,7 @@ create table cookbook
 /*==============================================================*/
 create table coupon
 (
-   coupon_id            varchar(20) not null,
+   coupon_id            int not null auto_increment,
    coupon_detail        varchar(100),
    coupon_minimum_price double not null,
    coupon_credit_price  double not null,
@@ -90,8 +90,8 @@ create table coupon
 /*==============================================================*/
 create table deliver_address
 (
-   delivery_id          varchar(20) not null,
-   user_id              varchar(20),
+   delivery_id          int not null,
+   user_id              int,
    delivery_province    varchar(20) not null,
    delivery_city        varchar(20) not null,
    delivery_district    varchar(20) not null,
@@ -106,8 +106,8 @@ create table deliver_address
 /*==============================================================*/
 create table discount_goods
 (
-   discount_id          varchar(20) not null,
-   goods_id             varchar(20) not null,
+   discount_id          int not null,
+   goods_id             int not null,
    discount_begin_date  timestamp not null,
    discount_end_date    timestamp not null,
    primary key (discount_id, goods_id)
@@ -118,7 +118,7 @@ create table discount_goods
 /*==============================================================*/
 create table fresh_category
 (
-   category_id          int not null,
+   category_id          int not null auto_increment,
    category_name        varchar(20) not null,
    category_description varchar(100),
    primary key (category_id)
@@ -129,7 +129,7 @@ create table fresh_category
 /*==============================================================*/
 create table full_discount
 (
-   discount_id          varchar(20) not null,
+   discount_id          int not null auto_increment,
    discount_detail      varchar(100),
    discount_goods_count int not null,
    discount             double not null,
@@ -143,7 +143,7 @@ create table full_discount
 /*==============================================================*/
 create table goods
 (
-   goods_id             varchar(20) not null,
+   goods_id             int not null auto_increment,
    category_id          int,
    goods_name           varchar(20) not null,
    goods_price          double not null,
@@ -155,14 +155,28 @@ create table goods
 );
 
 /*==============================================================*/
+/* Table: goods_comment                                         */
+/*==============================================================*/
+create table goods_comment
+(
+   goods_id             int not null,
+   user_id              int not null,
+   comment_detail       varchar(100),
+   comment_date         timestamp not null,
+   comment_level        int not null,
+   comment_image        longblob,
+   primary key (goods_id, user_id)
+);
+
+/*==============================================================*/
 /* Table: goods_orders                                          */
 /*==============================================================*/
 create table goods_orders
 (
-   orders_id            varchar(20) not null,
-   coupon_id            varchar(20),
-   user_id              varchar(20),
-   delivery_id          varchar(20),
+   orders_id            int not null auto_increment,
+   coupon_id            int,
+   user_id              int,
+   delivery_id          int,
    orders_original_price double not null,
    orders_final_price   double not null,
    orders_time          timestamp not null,
@@ -175,26 +189,12 @@ create table goods_orders
 /*==============================================================*/
 create table goods_procurement
 (
-   procurement_id       varchar(20) not null,
+   procurement_id       int not null auto_increment,
    admin_id             char(20),
-   goods_id             varchar(20),
+   goods_id             int,
    procurement_count    int not null,
    procurement_status   char(4) not null,
    primary key (procurement_id)
-);
-
-/*==============================================================*/
-/* Table: goods_comment                                          */
-/*==============================================================*/
-create table goods_comment
-(
-   goods_id             varchar(20) not null,
-   user_id              varchar(20) not null,
-   comment_detail       varchar(100),
-   comment_date         timestamp not null,
-   comment_level        int not null,
-   comment_image        longblob,
-   primary key (goods_id, user_id)
 );
 
 /*==============================================================*/
@@ -202,9 +202,9 @@ create table goods_comment
 /*==============================================================*/
 create table orders_detail
 (
-   orders_id            varchar(20) not null,
-   discount_id          varchar(20) not null,
-   goods_id             varchar(20) not null,
+   orders_id            int not null,
+   discount_id          int not null,
+   goods_id             int not null,
    detail_count         int not null,
    goods_price          double not null,
    discount             double not null,
@@ -216,8 +216,8 @@ create table orders_detail
 /*==============================================================*/
 create table promotion
 (
-   promotion_id         varchar(20) not null,
-   goods_id             varchar(20),
+   promotion_id         int not null auto_increment,
+   goods_id             int,
    promotion_price      double not null,
    promotion_count      int not null,
    promotion_begin_date timestamp not null,
@@ -230,8 +230,8 @@ create table promotion
 /*==============================================================*/
 create table user_coupon
 (
-   coupon_id            varchar(20) not null,
-   user_id              varchar(20) not null,
+   coupon_id            int not null,
+   user_id              int not null,
    user_coupon_count    int not null,
    primary key (coupon_id, user_id)
 );
@@ -241,7 +241,7 @@ create table user_coupon
 /*==============================================================*/
 create table user_infor
 (
-   user_id              varchar(20) not null,
+   user_id              int not null auto_increment,
    user_name            varchar(20) not null,
    user_sex             varchar(2) not null,
    user_pwd             varchar(20) not null,
@@ -272,6 +272,12 @@ alter table discount_goods add constraint FK_discount_goods2 foreign key (goods_
 alter table goods add constraint FK_category_goods foreign key (category_id)
       references fresh_category (category_id) on delete restrict on update restrict;
 
+alter table goods_comment add constraint FK_goods_comment foreign key (goods_id)
+      references goods (goods_id) on delete restrict on update restrict;
+
+alter table goods_comment add constraint FK_goods_comment2 foreign key (user_id)
+      references user_infor (user_id) on delete restrict on update restrict;
+
 alter table goods_orders add constraint FK_coupon_orders foreign key (coupon_id)
       references coupon (coupon_id) on delete restrict on update restrict;
 
@@ -286,12 +292,6 @@ alter table goods_procurement add constraint FK_admin_procurement foreign key (a
 
 alter table goods_procurement add constraint FK_goods_procurement foreign key (goods_id)
       references goods (goods_id) on delete restrict on update restrict;
-
-alter table goods_comment add constraint FK_goods_comment foreign key (goods_id)
-      references goods (goods_id) on delete restrict on update restrict;
-
-alter table goods_comment add constraint FK_goods_comment2 foreign key (user_id)
-      references user_infor (user_id) on delete restrict on update restrict;
 
 alter table orders_detail add constraint FK_orders_detail foreign key (orders_id)
       references goods_orders (orders_id) on delete restrict on update restrict;

@@ -1,19 +1,19 @@
 package model;
 
 public class BeanGoodsProcurement {
-    private String procurement_id;
+    private int procurement_id;
     private String admin_id;
-    private String goods_id;
+    private int goods_id;
     private String goods_name;
     private int procurement_count;
     private String procurement_status;
 
 
-    public String getProcurement_id() {
+    public int getProcurement_id() {
         return procurement_id;
     }
 
-    public void setProcurement_id(String procurement_id) {
+    public void setProcurement_id(int procurement_id) {
         this.procurement_id = procurement_id;
     }
 
@@ -25,11 +25,11 @@ public class BeanGoodsProcurement {
         this.admin_id = admin_id;
     }
 
-    public String getGoods_id() {
+    public int getGoods_id() {
         return goods_id;
     }
 
-    public void setGoods_id(String goods_id) {
+    public void setGoods_id(int goods_id) {
         this.goods_id = goods_id;
     }
 

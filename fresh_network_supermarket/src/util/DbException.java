@@ -2,6 +2,6 @@ package util;
 
 public class DbException extends BaseException {
 	public DbException(java.lang.Throwable ex){
-		super("Êı¾İ¿â²Ù×÷´íÎó£º"+ex.getMessage());
+		super("æ•°æ®åº“æ“ä½œé”™è¯¯ï¼š"+ex.getMessage());
 	}
 }

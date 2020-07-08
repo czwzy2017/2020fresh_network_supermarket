@@ -3,44 +3,44 @@ package model;
 import java.util.Date;
 
 public class BeanGoodsOrders {
-    private String orders_id;
-    private String coupon_id;
-    private String user_id;
-    private String delivery_id;
+    private int orders_id;
+    private int coupon_id;
+    private int user_id;
+    private int delivery_id;
     private double order_original_price;
     private double oder_final_price;
     private Date order_time;
     private String order_status;
 
-    public String getOrders_id() {
+    public int getOrders_id() {
         return orders_id;
     }
 
-    public void setOrders_id(String orders_id) {
+    public void setOrders_id(int orders_id) {
         this.orders_id = orders_id;
     }
 
-    public String getCoupon_id() {
+    public int getCoupon_id() {
         return coupon_id;
     }
 
-    public void setCoupon_id(String coupon_id) {
+    public void setCoupon_id(int coupon_id) {
         this.coupon_id = coupon_id;
     }
 
-    public String getUser_id() {
+    public int getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(String user_id) {
+    public void setUser_id(int user_id) {
         this.user_id = user_id;
     }
 
-    public String getDelivery_id() {
+    public int getDelivery_id() {
         return delivery_id;
     }
 
-    public void setDelivery_id(String delivery_id) {
+    public void setDelivery_id(int delivery_id) {
         this.delivery_id = delivery_id;
     }
 
