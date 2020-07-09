@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.ProcurementController">
    <children>
-      <fx:include fx:id ="menu" source="AdminMenu.fxml"></fx:include>
+      <fx:include fx:id="menu" source="AdminMenu.fxml" />
       <TableView fx:id="view_procurement" editable="true" layoutY="25.0" prefHeight="743.0" prefWidth="1024.0">
         <columns>
           <TableColumn fx:id="col_procurement_id" prefWidth="200.0" text="订单编号" />
@@ -22,7 +22,9 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button layoutX="922.0" layoutY="2.0" mnemonicParsing="false" onAction="#eventAdd" text="添加" />
-      <Button layoutX="970.0" layoutY="2.0" mnemonicParsing="false" onAction="#delete" text="删除" />
+      <Button layoutX="922.0" layoutY="1.0" mnemonicParsing="false" onAction="#eventAdd" text="添加" />
+      <Button layoutX="970.0" layoutY="1.0" mnemonicParsing="false" onAction="#delete" text="删除" />
+      <TextField fx:id="text_id" layoutX="686.0" layoutY="1.0" promptText="请输入订单编号查询" />
+      <Button layoutX="857.0" layoutY="1.0" mnemonicParsing="false" onAction="#select" text="查询" />
    </children>
 </AnchorPane>

@@ -166,10 +166,11 @@ public class FreshController {
         loadCategory();
         showGoods(null);
         menuController.text_name.setText("欢迎您，" + BeanAdmin.currentLoginAdmin.getAdmin_name() + "     您的员工号为：" + BeanAdmin.currentLoginAdmin.getAdmin_id());
-        col_category_name.setOnEditCommit(goodsColEdit -> {
-            goodsColEdit.getTableView().getItems().get(goodsColEdit.getTablePosition().getRow()).setCategory_name(goodsColEdit.getNewValue());
+
+        col_category_name.setOnEditCommit(categoryNameColEdit -> {
+            categoryNameColEdit.getTableView().getItems().get(categoryNameColEdit.getTablePosition().getRow()).setCategory_name(categoryNameColEdit.getNewValue());
             try {
-                new FreshManager().modifyCategory(goodsColEdit.getRowValue());
+                new FreshManager().modifyCategory(categoryNameColEdit.getRowValue());
             } catch (BaseException e) {
                 outputError(e);
                 loadCategory();
@@ -177,13 +178,85 @@ public class FreshController {
         });
 
 
-        col_category_detail.setOnEditCommit(countColEdit -> {
-            countColEdit.getTableView().getItems().get(countColEdit.getTablePosition().getRow()).setCategory_description(countColEdit.getNewValue());
+        col_category_detail.setOnEditCommit(categoryDetailColEdit -> {
+            categoryDetailColEdit.getTableView().getItems().get(categoryDetailColEdit.getTablePosition().getRow()).setCategory_description(categoryDetailColEdit.getNewValue());
             try {
-                new FreshManager().modifyCategory(countColEdit.getRowValue());
+                new FreshManager().modifyCategory(categoryDetailColEdit.getRowValue());
             } catch (BaseException e) {
                 outputError(e);
                 loadCategory();
+            }
+        });
+
+        col_goods_name.setOnEditCommit(goodsColEdit -> {
+            goodsColEdit.getTableView().getItems().get(goodsColEdit.getTablePosition().getRow()).setGoods_name(goodsColEdit.getNewValue());
+            try {
+                new FreshManager().modifyGoods(goodsColEdit.getRowValue());
+            } catch (BaseException e) {
+                outputError(e);
+                BeanFreshCategory category=new BeanFreshCategory();
+                category.setCategory_id(goodsColEdit.getRowValue().getCategory_id());
+                showGoods(category);
+            }
+        });
+
+        col_goods_price.setOnEditCommit(goodsColEdit -> {
+            goodsColEdit.getTableView().getItems().get(goodsColEdit.getTablePosition().getRow()).setGoods_price(goodsColEdit.getNewValue());
+            try {
+                new FreshManager().modifyGoods(goodsColEdit.getRowValue());
+            } catch (BaseException e) {
+                outputError(e);
+                BeanFreshCategory category=new BeanFreshCategory();
+                category.setCategory_id(goodsColEdit.getRowValue().getCategory_id());
+                showGoods(category);
+            }
+        });
+
+        col_goods_vip.setOnEditCommit(goodsColEdit -> {
+            goodsColEdit.getTableView().getItems().get(goodsColEdit.getTablePosition().getRow()).setGoods_vip_price(goodsColEdit.getNewValue());
+            try {
+                new FreshManager().modifyGoods(goodsColEdit.getRowValue());
+            } catch (BaseException e) {
+                outputError(e);
+                BeanFreshCategory category=new BeanFreshCategory();
+                category.setCategory_id(goodsColEdit.getRowValue().getCategory_id());
+                showGoods(category);
+            }
+        });
+
+        col_goods_count.setOnEditCommit(goodsColEdit -> {
+            goodsColEdit.getTableView().getItems().get(goodsColEdit.getTablePosition().getRow()).setGoods_count(goodsColEdit.getNewValue());
+            try {
+                new FreshManager().modifyGoods(goodsColEdit.getRowValue());
+            } catch (BaseException e) {
+                outputError(e);
+                BeanFreshCategory category=new BeanFreshCategory();
+                category.setCategory_id(goodsColEdit.getRowValue().getCategory_id());
+                showGoods(category);
+            }
+        });
+
+        col_goods_size.setOnEditCommit(goodsColEdit -> {
+            goodsColEdit.getTableView().getItems().get(goodsColEdit.getTablePosition().getRow()).setGoods_size(goodsColEdit.getNewValue());
+            try {
+                new FreshManager().modifyGoods(goodsColEdit.getRowValue());
+            } catch (BaseException e) {
+                outputError(e);
+                BeanFreshCategory category=new BeanFreshCategory();
+                category.setCategory_id(goodsColEdit.getRowValue().getCategory_id());
+                showGoods(category);
+            }
+        });
+
+        col_goods_detail.setOnEditCommit(goodsColEdit -> {
+            goodsColEdit.getTableView().getItems().get(goodsColEdit.getTablePosition().getRow()).setGoods_detail(goodsColEdit.getNewValue());
+            try {
+                new FreshManager().modifyGoods(goodsColEdit.getRowValue());
+            } catch (BaseException e) {
+                outputError(e);
+                BeanFreshCategory category=new BeanFreshCategory();
+                category.setCategory_id(goodsColEdit.getRowValue().getCategory_id());
+                showGoods(category);
             }
         });
 

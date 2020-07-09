@@ -47,6 +47,47 @@ public class ProcurementManager {
         return result;
     }
 
+    public BeanGoodsProcurement select(int id){
+        Connection conn = null;
+        BeanGoodsProcurement r=new BeanGoodsProcurement();
+        try {
+            conn = DBUtil.getConnection();
+            String sql = "select * from goods_procurement where procurement_id=?";
+            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1,id);
+            java.sql.ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                r.setProcurement_id(rs.getInt(1));
+                r.setAdmin_id(rs.getString(2));
+                r.setGoods_id(rs.getInt(3));
+                r.setProcurement_count(rs.getInt(4));
+                r.setProcurement_status(rs.getString(5));
+            }
+            sql="select admin_name from admin where admin_id=?";
+            pst = conn.prepareStatement(sql);
+            pst.setString(1,r.getAdmin_id());
+            rs=pst.executeQuery();
+            if (rs.next()) r.setAdmin_name(rs.getString(1));
+            sql="select goods_name from goods where goods_id=?";
+            pst = conn.prepareStatement(sql);
+            pst.setInt(1,r.getGoods_id());
+            rs=pst.executeQuery();
+            if (rs.next()) r.setGoods_name(rs.getString(1));
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new DbException(e);
+        } finally {
+            if (conn != null)
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+        }
+        return r;
+    }
+
     public void modify(BeanGoodsProcurement r, int flag) {
         int id = r.getProcurement_id();
         int goods = r.getGoods_id();

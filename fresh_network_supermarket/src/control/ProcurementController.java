@@ -3,11 +3,8 @@ package control;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TableColumn;
+import javafx.scene.control.*;
 
-import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 
@@ -41,6 +38,9 @@ public class ProcurementController {
     private TableColumn<BeanGoodsProcurement, String> col_procurement_name;
 
     @FXML
+    private TextField text_id;
+
+    @FXML
     private AdminMenuController menuController;
 
     public ObservableList<BeanGoodsProcurement> procurements = FXCollections.observableArrayList();
@@ -56,6 +56,16 @@ public class ProcurementController {
         col_procurement_status.setCellValueFactory(new PropertyValueFactory<>("procurement_status"));
         col_procurement_status.setCellFactory(TextFieldTableCell.forTableColumn());
         view_procurement.getItems().setAll(procurements);
+    }
+
+    public void select(){
+        BeanGoodsProcurement r = new ProcurementManager().select(Integer.valueOf(text_id.getText()));
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("采购信息");
+        alert.setHeaderText(null);
+        alert.setContentText("采购编号：" + r.getProcurement_id() + "\n采购员工：" + r.getAdmin_name()
+                + "\n商品名称：" + r.getGoods_name()+"\n采购数量： "+r.getProcurement_count()+"\n采购状态： "+r.getProcurement_status());
+        alert.showAndWait();
     }
 
     public void eventAdd() throws Exception {

@@ -2,39 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/manager/FreshManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/net/control/AdminMenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net/control/AdminMenuController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/net/control/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net/control/LoginController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/net/control/ProcurementController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net/control/ProcurementController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/net/control/SuperController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net/control/SuperController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/net/fxml/admin/AdminMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net/fxml/admin/AdminMenu.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/net/fxml/superAdmin/Super.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net/fxml/superAdmin/Super.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/net/main/MainApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net/main/MainApp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/net/manager/AdminManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net/manager/AdminManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/net/manager/ProcurementManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net/manager/ProcurementManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/net/manager/UserManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net/manager/UserManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/net/util/DefaultExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net/util/DefaultExceptionHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/control/AdminMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/control/AdminMenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/control/FreshController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/control/FreshController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/control/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/control/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/control/ProcurementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/control/ProcurementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/control/SuperController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/control/SuperController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fxml/admin/AdminMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/fxml/admin/AdminMenu.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fxml/admin/Fresh.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/fxml/admin/Fresh.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fxml/admin/Procurement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/fxml/admin/Procurement.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fxml/superAdmin/AdminDelete.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fxml/superAdmin/AdminRegister.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fxml/superAdmin/Super.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/fxml/superAdmin/Super.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MainApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/manager/AdminManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/AdminManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/manager/FreshManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/FreshManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/manager/ProcurementManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/ProcurementManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/manager/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/UserManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/BeanGoods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/BeanGoods.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/DefaultExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/DefaultExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../idea.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../idea.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../大作业需求汇总表（生鲜网超）.xls" beforeDir="false" afterPath="$PROJECT_DIR$/../大作业需求汇总表（生鲜网超）.xls" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/BeanGoodsProcurement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/BeanGoodsProcurement.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +54,7 @@
         <item name="MySQL - fns@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="fns: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="goods: table" type="285a2a93:MysqlImplModel$Table" />
+        <item name="goods_procurement: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -303,6 +281,7 @@
       <workItem from="1594220156660" duration="28000" />
       <workItem from="1594253397775" duration="109000" />
       <workItem from="1594253700579" duration="17793000" />
+      <workItem from="1594284187788" duration="5981000" />
     </task>
     <servers />
   </component>
@@ -319,20 +298,21 @@
     </state>
     <state x="364" y="171" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594081720395" />
     <state x="414" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080/1920.-620.1080.1880@0.0.1920.1080" timestamp="1594040487194" />
-    <state x="765" y="203" key="#com.intellij.ide.util.MemberChooser" timestamp="1594277659056">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="2350" y="-253" key="#com.intellij.ide.util.MemberChooser" timestamp="1594294657511">
+      <screen x="1920" y="-620" width="1080" height="1880" />
     </state>
     <state x="765" y="203" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1594277659056" />
     <state x="765" y="211" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080/1920.-620.1080.1880@0.0.1920.1080" timestamp="1594187041108" />
+    <state x="2350" y="-253" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080/1920.-620.1080.1880@1920.-620.1080.1880" timestamp="1594294657511" />
     <state x="689" y="323" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1594031873418">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="689" y="323" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1080/1920.-620.1080.1880@0.0.1920.1080" timestamp="1594031873418" />
-    <state x="806" y="408" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1594253404555">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="806" y="424" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1594284197271">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="806" y="408" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594253404555" />
-    <state x="806" y="424" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1080/1920.-620.1080.1880@0.0.1920.1080" timestamp="1594106828605" />
+    <state x="806" y="424" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1080/1920.-620.1080.1880@0.0.1920.1080" timestamp="1594284197271" />
     <state x="739" y="404" width="441" height="242" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1594256580936">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -350,26 +330,26 @@
     </state>
     <state x="740" y="283" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1594081579613" />
     <state x="740" y="294" key="FileChooserDialogImpl/0.0.1920.1080/1920.-620.1080.1880@0.0.1920.1080" timestamp="1594039193857" />
-    <state width="1877" height="444" key="GridCell.Tab.0.bottom" timestamp="1594278106624">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1877" height="146" key="GridCell.Tab.0.bottom" timestamp="1594297174369">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1877" height="444" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1594278106624" />
-    <state width="1877" height="146" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.-620.1080.1880@0.0.1920.1080" timestamp="1594220107449" />
-    <state width="1877" height="444" key="GridCell.Tab.0.center" timestamp="1594278106624">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1877" height="146" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.-620.1080.1880@0.0.1920.1080" timestamp="1594297174369" />
+    <state width="1877" height="146" key="GridCell.Tab.0.center" timestamp="1594297174368">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1877" height="444" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1594278106624" />
-    <state width="1877" height="146" key="GridCell.Tab.0.center/0.0.1920.1080/1920.-620.1080.1880@0.0.1920.1080" timestamp="1594220107449" />
-    <state width="1877" height="444" key="GridCell.Tab.0.left" timestamp="1594278106624">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1877" height="146" key="GridCell.Tab.0.center/0.0.1920.1080/1920.-620.1080.1880@0.0.1920.1080" timestamp="1594297174368" />
+    <state width="1877" height="146" key="GridCell.Tab.0.left" timestamp="1594297174364">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1877" height="444" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1594278106624" />
-    <state width="1877" height="146" key="GridCell.Tab.0.left/0.0.1920.1080/1920.-620.1080.1880@0.0.1920.1080" timestamp="1594220107449" />
-    <state width="1877" height="444" key="GridCell.Tab.0.right" timestamp="1594278106624">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1877" height="146" key="GridCell.Tab.0.left/0.0.1920.1080/1920.-620.1080.1880@0.0.1920.1080" timestamp="1594297174364" />
+    <state width="1877" height="146" key="GridCell.Tab.0.right" timestamp="1594297174368">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1877" height="444" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1594278106624" />
-    <state width="1877" height="146" key="GridCell.Tab.0.right/0.0.1920.1080/1920.-620.1080.1880@0.0.1920.1080" timestamp="1594220107449" />
+    <state width="1877" height="146" key="GridCell.Tab.0.right/0.0.1920.1080/1920.-620.1080.1880@0.0.1920.1080" timestamp="1594297174368" />
     <state x="440" y="110" key="SettingsEditor" timestamp="1594080852586">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

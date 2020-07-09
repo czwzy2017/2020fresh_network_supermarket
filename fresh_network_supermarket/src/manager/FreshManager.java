@@ -240,6 +240,7 @@ public class FreshManager {
             pst.setInt(4,r.getGoods_count());
             pst.setString(5,r.getGoods_size());
             pst.setString(6,r.getGoods_detail());
+            pst.setInt(7,r.getGoods_id());
             pst.execute();
             pst.close();
         } catch (SQLException e) {
