@@ -15,6 +15,8 @@ import model.BeanUserInfo;
 import manager.UserManager;
 import manager.AdminManager;
 
+import java.io.IOException;
+
 public class LoginController {
 
     @FXML
@@ -72,11 +74,6 @@ public class LoginController {
         String pwd = text_user_pwd.getText();
         UserManager m = new UserManager();
         BeanUserInfo.currentLoginUser = m.login(tel, pwd);
-//        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//        alert.setTitle("提示");
-//        alert.setHeaderText(null);
-//        alert.setContentText("登陆成功");
-//        alert.showAndWait();
         Stage primaryStage = (Stage) text_tel.getScene().getWindow();
         primaryStage.close();
     }
@@ -90,7 +87,7 @@ public class LoginController {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("提示");
             alert.setHeaderText(null);
-            alert.setContentText("您的密码为初始密码，请尽快修改你的密码。");
+            alert.setContentText("您的密码为初始密码，请尽快前往“个人信息”-“修改密码”修改你的密码。");
             alert.showAndWait();
         }
         Stage primaryStage = (Stage) text_id.getScene().getWindow();
@@ -99,19 +96,13 @@ public class LoginController {
         mainApp.showProcurement();
     }
 
-    public void eventSuperLogin() throws Exception {
+    public void eventSuperLogin() throws IOException {
         String pwd = text_super_pwd.getText();
         AdminManager m = new AdminManager();
         BeanAdmin.currentLoginAdmin = m.login("0", pwd);
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("提示");
-        alert.setHeaderText(null);
-        alert.setContentText("登陆成功");
-        alert.showAndWait();
         Stage primaryStage = (Stage) text_super_pwd.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("../fxml/superAdmin/Super.fxml"));
-        primaryStage.setScene(new Scene(root));
-        primaryStage.setTitle("超级管理员");
+        primaryStage.close();
+        new MainApp().showSuper();
     }
 }
 

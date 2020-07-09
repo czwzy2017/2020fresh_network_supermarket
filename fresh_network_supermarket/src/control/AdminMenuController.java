@@ -15,6 +15,8 @@ import model.BeanAdmin;
 
 import java.io.IOException;
 
+import static javafx.application.Platform.exit;
+
 public class AdminMenuController {
     @FXML
     public MenuBar menubar;
@@ -25,8 +27,14 @@ public class AdminMenuController {
     @FXML
     private TextField text_pwd2;
 
-    public void eventProcurement() throws Exception {
+    public void eventProcurement() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../fxml/admin/Procurement.fxml"));
+        Stage primaryStage = (Stage) menubar.getScene().getWindow();
+        primaryStage.setScene(new Scene(root));
+    }
+
+    public void eventFresh()throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("../fxml/admin/Fresh.fxml"));
         Stage primaryStage = (Stage) menubar.getScene().getWindow();
         primaryStage.setScene(new Scene(root));
     }
@@ -34,14 +42,13 @@ public class AdminMenuController {
     public void eventPwd() throws IOException {
         MainApp mainApp = new MainApp();
         mainApp.showAdminPwd();
-        Stage primaryStage = (Stage) menubar.getScene().getWindow();
-        primaryStage.close();
     }
 
     public void eventExit(){
         Stage primaryStage = (Stage) menubar.getScene().getWindow();
         BeanAdmin.currentLoginAdmin=null;
         primaryStage.close();
+        exit();
     }
     public void pwd() {
         String pwd = text_pwd.getText();

@@ -11,7 +11,7 @@ import java.sql.Date;
 import java.sql.SQLException;
 
 public class UserManager {
-    public BeanUserInfo login(String tel, String pwd) throws BaseException {
+    public BeanUserInfo login(String tel, String pwd) {
         BeanUserInfo r = new BeanUserInfo();
         Connection conn = null;
         try {

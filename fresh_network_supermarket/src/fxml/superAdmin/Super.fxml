@@ -8,8 +8,21 @@
 
 <AnchorPane prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.SuperController">
    <children>
-      <Button layoutX="300.0" layoutY="292.0" mnemonicParsing="false" onAction="#eventRegister" text="注册" />
-      <Button layoutX="449.0" layoutY="292.0" mnemonicParsing="false" onAction="#eventDelete" text="删除" />
-      <Label fx:id="label_home" layoutX="290.0" layoutY="139.0" text="超级管理员" />
+      <Button layoutX="463.0" layoutY="327.0" mnemonicParsing="false" onAction="#Register" text="注册" />
+      <Button layoutX="280.0" layoutY="14.0" mnemonicParsing="false" onAction="#Delete" text="删除" />
+      <Label layoutX="406.0" layoutY="18.0" text="超级管理员，您好" />
+      <TableView fx:id="view_admin" layoutY="38.0" prefHeight="442.0" prefWidth="320.0">
+        <columns>
+          <TableColumn fx:id="col_id" minWidth="100.0" prefWidth="75.0" text="员工编号" />
+          <TableColumn fx:id="col_name" minWidth="100.0" prefWidth="75.0" text="员工姓名" />
+            <TableColumn fx:id="col_pwd" minWidth="120.0" prefWidth="75.0" text="员工密码" />
+        </columns>
+      </TableView>
+      <Label layoutX="136.0" layoutY="18.0" text="员工列表" />
+      <TextField fx:id="text_r_name" layoutX="446.0" layoutY="189.0" />
+      <TextField fx:id="text_r_id" layoutX="446.0" layoutY="139.0" />
+      <Label layoutX="341.0" layoutY="192.0" text="员工姓名" />
+      <Label layoutX="341.0" layoutY="142.0" text="员工编号" />
+      <Label layoutX="459.0" layoutY="81.0" text="员工注册" />
    </children>
 </AnchorPane>

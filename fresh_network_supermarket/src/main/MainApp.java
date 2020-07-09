@@ -55,11 +55,20 @@ public class MainApp extends Application {
         });
     }
 
+
     public void showAdminPwd() throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("../fxml/admin/AdminPwd.fxml"));
         Stage stage = new Stage();
         stage.setTitle("修改密码");
         stage.setScene(new Scene(root, 320, 240));
+        stage.show();
+    }
+
+    public void showSuper() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("../fxml/superAdmin/Super.fxml"));
+        Stage stage = new Stage();
+        stage.setTitle("超级管理员");
+        stage.setScene(new Scene(root, 640, 480));
         stage.show();
     }
 

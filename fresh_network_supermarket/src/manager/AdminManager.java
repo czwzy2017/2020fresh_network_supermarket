@@ -1,8 +1,8 @@
 package manager;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import model.BeanAdmin;
-import model.BeanGoodsProcurement;
-import model.BeanUserInfo;
 import util.BaseException;
 import util.BusinessException;
 import util.DBUtil;
@@ -10,10 +10,37 @@ import util.DbException;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class AdminManager {
+    public ObservableList<BeanAdmin> loadAdmin() throws BaseException {
+        ObservableList<BeanAdmin> result = FXCollections.observableArrayList();
+        Connection conn = null;
+        try {
+            conn = DBUtil.getConnection();
+            String sql = "select * from admin";
+            java.sql.Statement st = conn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                BeanAdmin r = new BeanAdmin();
+                r.setAdmin_id(rs.getString(1));
+                r.setAdmin_name(rs.getString(2));
+                r.setAdmin_pwd(rs.getString(3));
+                result.add(r);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new DbException(e);
+        } finally {
+            if (conn != null)
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+        }
+        return result;
+    }
     public BeanAdmin login(String id, String pwd) throws BaseException {
         BeanAdmin r = new BeanAdmin();
         Connection conn = null;
@@ -102,8 +129,10 @@ public class AdminManager {
         }
     }
 
-    public void delete(String id,String name) throws BaseException{
+    public void delete(BeanAdmin r) throws BaseException{
         Connection conn = null;
+        String id=r.getAdmin_id();
+        String name=r.getAdmin_name();
         if ("0".equals(id)) throw new BusinessException("不允许删除超级管理员");
         try {
             conn = DBUtil.getConnection();

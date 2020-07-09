@@ -13,7 +13,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class ProcurementManager {
-    public ObservableList<BeanGoodsProcurement> loadProcurement() throws BaseException {
+    public ObservableList<BeanGoodsProcurement> loadProcurement() {
         ObservableList<BeanGoodsProcurement> result = FXCollections.observableArrayList();
         Connection conn = null;
         try {
@@ -47,12 +47,12 @@ public class ProcurementManager {
         return result;
     }
 
-    public void modify(BeanGoodsProcurement r) throws BaseException {
+    public void modify(BeanGoodsProcurement r, int flag) {
         int id = r.getProcurement_id();
         int goods = r.getGoods_id();
         int count = r.getProcurement_count();
         String status = r.getProcurement_status();
-        if (count<=0) throw new BusinessException("商品数量不能低于0");
+        if (count <= 0) throw new BusinessException("商品数量不能低于0");
         if (!"下单".equals(status) && !"在途".equals(status) && !"入库".equals(status))
             throw new BusinessException("采购状态请输入“下单/在途/入库”");
         Connection conn = null;
@@ -73,6 +73,14 @@ public class ProcurementManager {
             pst.setInt(4, id);
             pst.execute();
             pst.close();
+            if ("入库".equals(status) && flag == 1) {
+                sql = "update goods set goods_count=goods_count+? where goods_id=?";
+                pst = conn.prepareStatement(sql);
+                pst.setInt(1, count);
+                pst.setInt(2, goods);
+                pst.execute();
+                pst.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
             throw new DbException(e);
@@ -87,10 +95,10 @@ public class ProcurementManager {
         }
     }
 
-    public void add(int goods, int count, String status) throws BaseException {
+    public void add(int goods, int count, String status) {
         if (!"下单".equals(status) && !"在途".equals(status) && !"入库".equals(status))
             throw new BusinessException("采购状态请输入“下单/在途/入库”");
-        if (count<=0) throw new BusinessException("商品数量必须大于零");
+        if (count <= 0) throw new BusinessException("商品数量必须大于零");
         Connection conn = null;
         try {
             conn = DBUtil.getConnection();
@@ -109,6 +117,14 @@ public class ProcurementManager {
             pst.setString(4, status);
             pst.execute();
             pst.close();
+            if ("入库".equals(status)) {
+                sql = "update goods set goods_count=goods_count+? where goods_id=?";
+                pst = conn.prepareStatement(sql);
+                pst.setInt(1, count);
+                pst.setInt(2, goods);
+                pst.execute();
+                pst.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
             throw new DbException(e);
@@ -123,7 +139,7 @@ public class ProcurementManager {
         }
     }
 
-    public void delete(BeanGoodsProcurement r) throws BaseException {
+    public void delete(BeanGoodsProcurement r) {
         Connection conn = null;
         try {
             conn = DBUtil.getConnection();
@@ -132,6 +148,14 @@ public class ProcurementManager {
             pst.setInt(1, r.getProcurement_id());
             pst.execute();
             pst.close();
+            if ("入库".equals(r.getProcurement_status())){
+                sql="update goods set goods_count=goods_count-? where goods_id=?";
+                pst=conn.prepareStatement(sql);
+                pst.setInt(1,r.getProcurement_count());
+                pst.setInt(2,r.getGoods_id());
+                pst.execute();
+                pst.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace();
             throw new DbException(e);

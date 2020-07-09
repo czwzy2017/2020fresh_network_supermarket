@@ -41,7 +41,7 @@ public class ProcurementController {
     private TableColumn<BeanGoodsProcurement, String> col_procurement_name;
 
     @FXML
-    private AdminMenuController procurementController;
+    private AdminMenuController menuController;
 
     public ObservableList<BeanGoodsProcurement> procurements = FXCollections.observableArrayList();
 
@@ -77,18 +77,17 @@ public class ProcurementController {
             new ProcurementManager().delete(view_procurement.getItems().get(selectedIndex));
             view_procurement.getItems().remove(selectedIndex);
         }
-
     }
 
 
     @FXML
     public void initialize() {
         loadProcurement();
-        procurementController.text_name.setText("欢迎您，" + BeanAdmin.currentLoginAdmin.getAdmin_name() + "     您的员工号为：" + BeanAdmin.currentLoginAdmin.getAdmin_id());
+        menuController.text_name.setText("欢迎您，" + BeanAdmin.currentLoginAdmin.getAdmin_name() + "     您的员工号为：" + BeanAdmin.currentLoginAdmin.getAdmin_id());
         col_procurement_goods.setOnEditCommit(goodsColEdit -> {
             goodsColEdit.getTableView().getItems().get(goodsColEdit.getTablePosition().getRow()).setGoods_id(goodsColEdit.getNewValue());
             try {
-                new ProcurementManager().modify(goodsColEdit.getRowValue());
+                new ProcurementManager().modify(goodsColEdit.getRowValue(),0);
             } catch (BaseException e) {
                 outputError(e);
                 loadProcurement();
@@ -99,7 +98,7 @@ public class ProcurementController {
         col_procurement_count.setOnEditCommit(countColEdit -> {
             countColEdit.getTableView().getItems().get(countColEdit.getTablePosition().getRow()).setProcurement_count(countColEdit.getNewValue());
             try {
-                new ProcurementManager().modify(countColEdit.getRowValue());
+                new ProcurementManager().modify(countColEdit.getRowValue(),0);
             } catch (BaseException e) {
                 outputError(e);
                 loadProcurement();
@@ -109,7 +108,7 @@ public class ProcurementController {
         col_procurement_status.setOnEditCommit(statusColEdit -> {
             statusColEdit.getTableView().getItems().get(statusColEdit.getTablePosition().getRow()).setProcurement_status(statusColEdit.getNewValue());
             try {
-                new ProcurementManager().modify(statusColEdit.getRowValue());
+                new ProcurementManager().modify(statusColEdit.getRowValue(),1);
             } catch (BaseException e) {
                 outputError(e);
                 loadProcurement();

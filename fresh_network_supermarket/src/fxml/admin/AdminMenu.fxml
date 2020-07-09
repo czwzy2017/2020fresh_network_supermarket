@@ -17,10 +17,9 @@
                     </items></Menu>
                 <Menu mnemonicParsing="false" text="生鲜信息">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="生鲜类别信息" />
-                        <MenuItem mnemonicParsing="false" text="商品信息" />
+                  <MenuItem mnemonicParsing="false" onAction="#eventFresh" text="生鲜信息" />
                         <MenuItem mnemonicParsing="false" text="菜谱信息" />
-                        <MenuItem mnemonicParsing="false" text="商品评价表" />
+                  <MenuItem mnemonicParsing="false" text="商品评价表" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="优惠信息">
