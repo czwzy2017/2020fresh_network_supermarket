@@ -33,7 +33,7 @@
             <TableColumn fx:id="col_goods_detail" prefWidth="400.0" text="详情                                                                                               " />
         </columns>
       </TableView>
-      <Button layoutX="883.0" layoutY="37.0" mnemonicParsing="false" text="添加" />
+      <Button layoutX="883.0" layoutY="37.0" mnemonicParsing="false" onAction="#eventAdd" text="添加" />
       <Button layoutX="945.0" layoutY="37.0" mnemonicParsing="false" onAction="#deleteGoods" text="删除" />
       <Label layoutX="39.0" layoutY="616.0" text="类别描述" />
       <TextField fx:id="text_detail" layoutX="101.0" layoutY="612.0" />

@@ -55,6 +55,53 @@ public class MainApp extends Application {
         });
     }
 
+    public void showFresh() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../fxml/admin/Fresh.fxml"));
+        Stage stage = new Stage();
+        stage.setTitle("员工");
+        stage.setScene(new Scene(root, 1024, 768));
+        stage.show();
+    }
+
+    public void showAddGoods() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("../fxml/admin/AddGoods.fxml"));
+        Stage stage = new Stage();
+        stage.setTitle("添加商品");
+        stage.setScene(new Scene(root, 640, 480));
+        stage.show();
+        stage.setOnCloseRequest(event -> {
+            stage.close();
+            try {
+                showFresh();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+    public void showCookbook() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../fxml/admin/Cookbook.fxml"));
+        Stage stage = new Stage();
+        stage.setTitle("员工");
+        stage.setScene(new Scene(root, 1024, 768));
+        stage.show();
+    }
+
+    public void showAddCookbook() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("../fxml/admin/AddCookbook.fxml"));
+        Stage stage = new Stage();
+        stage.setTitle("添加菜谱");
+        stage.setScene(new Scene(root, 640, 480));
+        stage.show();
+        stage.setOnCloseRequest(event -> {
+            stage.close();
+            try {
+                showCookbook();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+    }
 
     public void showAdminPwd() throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("../fxml/admin/AdminPwd.fxml"));

@@ -39,6 +39,12 @@ public class AdminMenuController {
         primaryStage.setScene(new Scene(root));
     }
 
+    public void eventCookbook()throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("../fxml/admin/Cookbook.fxml"));
+        Stage primaryStage = (Stage) menubar.getScene().getWindow();
+        primaryStage.setScene(new Scene(root));
+    }
+
     public void eventPwd() throws IOException {
         MainApp mainApp = new MainApp();
         mainApp.showAdminPwd();
@@ -63,6 +69,4 @@ public class AdminMenuController {
         Stage primaryStage = (Stage) text_pwd.getScene().getWindow();
         primaryStage.close();
     }
-
-
 }

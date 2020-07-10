@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.BeanFreshCategory;
 import model.BeanGoods;
+import util.BaseException;
 import util.BusinessException;
 import util.DBUtil;
 import util.DbException;
@@ -42,19 +43,21 @@ public class FreshManager {
         return result;
     }
 
-    public BeanFreshCategory selectCategory(int id){
+    public BeanFreshCategory selectCategory(int id) {
         Connection conn = null;
         BeanFreshCategory r = new BeanFreshCategory();
         try {
             conn = DBUtil.getConnection();
             String sql = "select * from fresh_category where category_id=?";
             java.sql.PreparedStatement pst = conn.prepareStatement(sql);
-            pst.setInt(1,id);
+            pst.setInt(1, id);
             java.sql.ResultSet rs = pst.executeQuery();
             if (rs.next()) {
                 r.setCategory_id(rs.getInt(1));
                 r.setCategory_name(rs.getString(2));
                 r.setCategory_description(rs.getString(3));
+            }else{
+                throw new BusinessException("生鲜类别不存在");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -73,9 +76,9 @@ public class FreshManager {
 
     public void modifyCategory(BeanFreshCategory r) {
         int id = r.getCategory_id();
-        String name=r.getCategory_name();
+        String name = r.getCategory_name();
         if ("".equals(name)) throw new BusinessException("类别名称不能为空");
-        String description=r.getCategory_description();
+        String description = r.getCategory_description();
         Connection conn = null;
         try {
             conn = DBUtil.getConnection();
@@ -135,8 +138,7 @@ public class FreshManager {
             pst.execute();
             pst.close();
         } catch (SQLException e) {
-            e.printStackTrace();
-            throw new DbException(e);
+            throw new BusinessException("该分类下存在商品，不可删除");
         } finally {
             if (conn != null)
                 try {
@@ -155,7 +157,7 @@ public class FreshManager {
             conn = DBUtil.getConnection();
             String sql = "select * from goods where category_id=?";
             java.sql.PreparedStatement pst = conn.prepareStatement(sql);
-            pst.setInt(1,id);
+            pst.setInt(1, id);
             java.sql.ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 BeanGoods r = new BeanGoods();
@@ -163,7 +165,8 @@ public class FreshManager {
                 r.setCategory_id(rs.getInt(2));
                 r.setGoods_name(rs.getString(3));
                 r.setGoods_price(rs.getDouble(4));
-                r.setGoods_vip_price(rs.getDouble(5));
+                if ((rs.getDouble(5)==0)) r.setGoods_vip_price(null);
+                else r.setGoods_vip_price(String.valueOf(rs.getDouble(5)));
                 r.setGoods_count(rs.getInt(6));
                 r.setGoods_size(rs.getString(7));
                 r.setGoods_detail(rs.getString(8));
@@ -184,29 +187,31 @@ public class FreshManager {
         return result;
     }
 
-    public BeanGoods selectGoods(int id){
+    public BeanGoods selectGoods(int id) {
         Connection conn = null;
         BeanGoods r = new BeanGoods();
         try {
             conn = DBUtil.getConnection();
             String sql = "select * from goods where goods_id=?";
             java.sql.PreparedStatement pst = conn.prepareStatement(sql);
-            pst.setInt(1,id);
+            pst.setInt(1, id);
             java.sql.ResultSet rs = pst.executeQuery();
             if (rs.next()) {
                 r.setGoods_id(rs.getInt(1));
                 r.setCategory_id(rs.getInt(2));
                 r.setGoods_name(rs.getString(3));
                 r.setGoods_price(rs.getDouble(4));
-                r.setGoods_vip_price(rs.getDouble(5));
+                r.setGoods_vip_price(String.valueOf(rs.getDouble(5)));
                 r.setGoods_count(rs.getInt(6));
                 r.setGoods_size(rs.getString(7));
                 r.setGoods_detail(rs.getString(8));
+            }else{
+                throw new BusinessException("商品不存在");
             }
             pst.close();
-            sql="select category_name from fresh_category where category_id=?";
+            sql = "select category_name from fresh_category where category_id=?";
             pst = conn.prepareStatement(sql);
-            pst.setInt(1,r.getCategory_id());
+            pst.setInt(1, r.getCategory_id());
             rs = pst.executeQuery();
             if (rs.next()) r.setCategory_name(rs.getString(1));
         } catch (SQLException e) {
@@ -226,21 +231,32 @@ public class FreshManager {
 
     public void modifyGoods(BeanGoods r) {
         Connection conn = null;
+        double vip = 0;
+        if ("".equals(r.getGoods_vip_price())) vip = -1;
+        else {
+            try {
+                vip = Double.valueOf(r.getGoods_vip_price().trim());
+            } catch (Exception e) {
+                throw new BusinessException("会员价必须为实数");
+            }
+            if (vip <= 0) throw new BusinessException("商品价格必须大于0");
+            if (r.getGoods_price() < vip) throw new BusinessException("会员价不得高于非会员价");
+        }
         if ("".equals(r.getGoods_name())) throw new BusinessException("商品名称不能为空");
-        if (r.getGoods_price()<=0 || r.getGoods_vip_price()<=0) throw new BusinessException("商品价格必须大于0");
-        if ("".equals(r.getGoods_size())) throw new BusinessException("商品规格不能为空");
-        if (r.getGoods_count()<0) throw new BusinessException("商品数量不能小于0");
+        if (r.getGoods_price() <= 0) throw new BusinessException("商品价格必须大于0");
+        if (r.getGoods_count() < 0) throw new BusinessException("商品数量不能小于0");
         try {
             conn = DBUtil.getConnection();
             String sql = "update goods set goods_name=?,goods_price=?,goods_vip_price=?,goods_count=?,goods_size=?,goods_details=? where goods_id=?";
             java.sql.PreparedStatement pst = conn.prepareStatement(sql);
             pst.setString(1, r.getGoods_name());
             pst.setDouble(2, r.getGoods_price());
-            pst.setDouble(3, r.getGoods_vip_price());
-            pst.setInt(4,r.getGoods_count());
-            pst.setString(5,r.getGoods_size());
-            pst.setString(6,r.getGoods_detail());
-            pst.setInt(7,r.getGoods_id());
+            if (vip == -1) pst.setString(3, null);
+            else pst.setDouble(3, vip);
+            pst.setInt(4, r.getGoods_count());
+            pst.setString(5, r.getGoods_size());
+            pst.setString(6, r.getGoods_detail());
+            pst.setInt(7, r.getGoods_id());
             pst.execute();
             pst.close();
         } catch (SQLException e) {
@@ -257,12 +273,22 @@ public class FreshManager {
         }
     }
 
-    public void addGoods(int category_id,String name, Double price,int count,Double vip,String size,String detail) {
+    public void addGoods(int category_id, String name, Double price, int count, String vip_price, String size, String detail) {
         Connection conn = null;
+        double vip = 0;
+        if ("".equals(vip_price)) vip = -1;
+        else {
+            try {
+                vip = Double.valueOf(vip_price.trim());
+            } catch (Exception e) {
+                throw new BusinessException("会员价必须为实数");
+            }
+            if (vip <= 0) throw new BusinessException("商品价格必须大于0");
+            if (price< vip) throw new BusinessException("会员价不得高于非会员价");
+        }
         if ("".equals(name)) throw new BusinessException("商品名称不能为空");
-        if (price<=0 || vip<=0) throw new BusinessException("商品价格必须大于0");
-        if ("".equals(size)) throw new BusinessException("商品规格不能为空");
-        if (count<0) throw new BusinessException("商品数量不能小于0");
+        if (price <= 0) throw new BusinessException("商品价格必须大于0");
+        if (count < 0) throw new BusinessException("商品数量不能小于0");
         try {
             conn = DBUtil.getConnection();
             String sql = "select * from fresh_category where category_id=?";
@@ -276,11 +302,12 @@ public class FreshManager {
             pst = conn.prepareStatement(sql);
             pst.setInt(1, category_id);
             pst.setString(2, name);
-            pst.setDouble(3,price);
-            pst.setDouble(4,vip);
-            pst.setInt(5,count);
-            pst.setString(6,size);
-            pst.setString(7,detail);
+            pst.setDouble(3, price);
+            if (vip == -1) pst.setString(4, null);
+            else pst.setDouble(4, vip);
+            pst.setInt(5, count);
+            pst.setString(6, size);
+            pst.setString(7, detail);
             pst.execute();
             pst.close();
         } catch (SQLException e) {

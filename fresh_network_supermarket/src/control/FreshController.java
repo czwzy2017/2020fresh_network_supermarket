@@ -6,8 +6,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.stage.Stage;
 import javafx.util.converter.DoubleStringConverter;
 import javafx.util.converter.IntegerStringConverter;
+import main.MainApp;
 import manager.FreshManager;
 import model.BeanAdmin;
 import model.BeanFreshCategory;
@@ -15,6 +17,7 @@ import model.BeanGoods;
 import util.BaseException;
 import util.BusinessException;
 
+import java.io.IOException;
 import java.util.Optional;
 
 public class FreshController {
@@ -43,7 +46,7 @@ public class FreshController {
     private TableColumn<BeanGoods, Double> col_goods_price;
 
     @FXML
-    private TableColumn<BeanGoods, Double> col_goods_vip;
+    private TableColumn<BeanGoods, String> col_goods_vip;
 
     @FXML
     private TableColumn<BeanGoods, Integer> col_goods_count;
@@ -84,7 +87,12 @@ public class FreshController {
     }
 
     public void selectCategory() {
-        int id = Integer.valueOf(text_id.getText());
+        int id;
+        try{
+            id=Integer.valueOf(text_id.getText());
+        } catch (NumberFormatException e){
+            throw new BusinessException("请输入数字查询");
+        }
         BeanFreshCategory r = new FreshManager().selectCategory(id);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("类别信息");
@@ -124,7 +132,7 @@ public class FreshController {
             col_goods_price.setCellValueFactory(new PropertyValueFactory<>("goods_price"));
             col_goods_price.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
             col_goods_vip.setCellValueFactory(new PropertyValueFactory<>("goods_vip_price"));
-            col_goods_vip.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
+            col_goods_vip.setCellFactory(TextFieldTableCell.forTableColumn());
             col_goods_count.setCellValueFactory(new PropertyValueFactory<>("goods_count"));
             col_goods_count.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
             col_goods_size.setCellValueFactory(new PropertyValueFactory<>("goods_size"));
@@ -138,7 +146,12 @@ public class FreshController {
     }
 
     public void selectGoods() {
-        int id = Integer.valueOf(text_goods_id.getText());
+        int id;
+        try {
+            id = Integer.valueOf(text_goods_id.getText());
+        }catch (NumberFormatException e){
+            throw new BusinessException("请输入数字查询");
+        }
         BeanGoods r = new FreshManager().selectGoods(id);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("商品信息");
@@ -146,6 +159,12 @@ public class FreshController {
         alert.setContentText("商品编号：" + r.getGoods_id() + "\n类别名称：" + r.getCategory_name() + "\n商品名称：" + r.getGoods_name()
                 + "\n商品价格：" + r.getGoods_price()+"\n会员价："+r.getGoods_vip_price()+"\n商品数量："+r.getGoods_count()+"\n商品规格："+r.getGoods_size()+"\n商品详情："+r.getGoods_detail());
         alert.showAndWait();
+    }
+
+    public void eventAdd() throws IOException {
+        new MainApp().showAddGoods();
+        Stage primaryStage = (Stage) view_goods.getScene().getWindow();
+        primaryStage.close();
     }
 
     public void deleteGoods() {
@@ -168,7 +187,7 @@ public class FreshController {
         menuController.text_name.setText("欢迎您，" + BeanAdmin.currentLoginAdmin.getAdmin_name() + "     您的员工号为：" + BeanAdmin.currentLoginAdmin.getAdmin_id());
 
         col_category_name.setOnEditCommit(categoryNameColEdit -> {
-            categoryNameColEdit.getTableView().getItems().get(categoryNameColEdit.getTablePosition().getRow()).setCategory_name(categoryNameColEdit.getNewValue());
+            categoryNameColEdit.getTableView().getItems().get(categoryNameColEdit.getTablePosition().getRow()).setCategory_name(categoryNameColEdit.getNewValue().trim());
             try {
                 new FreshManager().modifyCategory(categoryNameColEdit.getRowValue());
             } catch (BaseException e) {
@@ -179,7 +198,7 @@ public class FreshController {
 
 
         col_category_detail.setOnEditCommit(categoryDetailColEdit -> {
-            categoryDetailColEdit.getTableView().getItems().get(categoryDetailColEdit.getTablePosition().getRow()).setCategory_description(categoryDetailColEdit.getNewValue());
+            categoryDetailColEdit.getTableView().getItems().get(categoryDetailColEdit.getTablePosition().getRow()).setCategory_description(categoryDetailColEdit.getNewValue().trim());
             try {
                 new FreshManager().modifyCategory(categoryDetailColEdit.getRowValue());
             } catch (BaseException e) {
@@ -189,7 +208,7 @@ public class FreshController {
         });
 
         col_goods_name.setOnEditCommit(goodsColEdit -> {
-            goodsColEdit.getTableView().getItems().get(goodsColEdit.getTablePosition().getRow()).setGoods_name(goodsColEdit.getNewValue());
+            goodsColEdit.getTableView().getItems().get(goodsColEdit.getTablePosition().getRow()).setGoods_name(goodsColEdit.getNewValue().trim());
             try {
                 new FreshManager().modifyGoods(goodsColEdit.getRowValue());
             } catch (BaseException e) {
@@ -201,6 +220,7 @@ public class FreshController {
         });
 
         col_goods_price.setOnEditCommit(goodsColEdit -> {
+            if (goodsColEdit.getNewValue()==null) throw new BusinessException("商品价格不能为空");
             goodsColEdit.getTableView().getItems().get(goodsColEdit.getTablePosition().getRow()).setGoods_price(goodsColEdit.getNewValue());
             try {
                 new FreshManager().modifyGoods(goodsColEdit.getRowValue());
@@ -213,7 +233,7 @@ public class FreshController {
         });
 
         col_goods_vip.setOnEditCommit(goodsColEdit -> {
-            goodsColEdit.getTableView().getItems().get(goodsColEdit.getTablePosition().getRow()).setGoods_vip_price(goodsColEdit.getNewValue());
+            goodsColEdit.getTableView().getItems().get(goodsColEdit.getTablePosition().getRow()).setGoods_vip_price(goodsColEdit.getNewValue().trim());
             try {
                 new FreshManager().modifyGoods(goodsColEdit.getRowValue());
             } catch (BaseException e) {
@@ -237,7 +257,7 @@ public class FreshController {
         });
 
         col_goods_size.setOnEditCommit(goodsColEdit -> {
-            goodsColEdit.getTableView().getItems().get(goodsColEdit.getTablePosition().getRow()).setGoods_size(goodsColEdit.getNewValue());
+            goodsColEdit.getTableView().getItems().get(goodsColEdit.getTablePosition().getRow()).setGoods_size(goodsColEdit.getNewValue().trim());
             try {
                 new FreshManager().modifyGoods(goodsColEdit.getRowValue());
             } catch (BaseException e) {
@@ -249,7 +269,7 @@ public class FreshController {
         });
 
         col_goods_detail.setOnEditCommit(goodsColEdit -> {
-            goodsColEdit.getTableView().getItems().get(goodsColEdit.getTablePosition().getRow()).setGoods_detail(goodsColEdit.getNewValue());
+            goodsColEdit.getTableView().getItems().get(goodsColEdit.getTablePosition().getRow()).setGoods_detail(goodsColEdit.getNewValue().trim());
             try {
                 new FreshManager().modifyGoods(goodsColEdit.getRowValue());
             } catch (BaseException e) {

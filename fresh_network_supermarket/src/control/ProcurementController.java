@@ -15,7 +15,9 @@ import model.BeanAdmin;
 import model.BeanGoodsProcurement;
 import manager.ProcurementManager;
 import util.BaseException;
+import util.BusinessException;
 
+import java.io.IOException;
 import java.util.Optional;
 
 public class ProcurementController {
@@ -59,7 +61,13 @@ public class ProcurementController {
     }
 
     public void select(){
-        BeanGoodsProcurement r = new ProcurementManager().select(Integer.valueOf(text_id.getText()));
+        int id;
+        try{
+            id=Integer.valueOf(text_id.getText());
+        }catch (NumberFormatException e){
+            throw new BusinessException("请输入数字查询");
+        }
+        BeanGoodsProcurement r = new ProcurementManager().select(id);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("采购信息");
         alert.setHeaderText(null);
@@ -68,7 +76,7 @@ public class ProcurementController {
         alert.showAndWait();
     }
 
-    public void eventAdd() throws Exception {
+    public void eventAdd() throws IOException {
         MainApp mainApp = new MainApp();
         mainApp.showAddProcurement();
         Stage primaryStage = (Stage) view_procurement.getScene().getWindow();
@@ -98,6 +106,7 @@ public class ProcurementController {
             goodsColEdit.getTableView().getItems().get(goodsColEdit.getTablePosition().getRow()).setGoods_id(goodsColEdit.getNewValue());
             try {
                 new ProcurementManager().modify(goodsColEdit.getRowValue(),0);
+                loadProcurement();
             } catch (BaseException e) {
                 outputError(e);
                 loadProcurement();
@@ -106,6 +115,8 @@ public class ProcurementController {
 
 
         col_procurement_count.setOnEditCommit(countColEdit -> {
+            if (countColEdit.getNewValue()==null) throw new BusinessException("采购数量不能为空");
+            if (countColEdit.getNewValue()<=0) throw new BusinessException("商品数量不能低于0");
             countColEdit.getTableView().getItems().get(countColEdit.getTablePosition().getRow()).setProcurement_count(countColEdit.getNewValue());
             try {
                 new ProcurementManager().modify(countColEdit.getRowValue(),0);
@@ -116,7 +127,9 @@ public class ProcurementController {
         });
 
         col_procurement_status.setOnEditCommit(statusColEdit -> {
-            statusColEdit.getTableView().getItems().get(statusColEdit.getTablePosition().getRow()).setProcurement_status(statusColEdit.getNewValue());
+            if (!"下单".equals(statusColEdit.getNewValue().replaceAll(" ","")) && !"在途".equals(statusColEdit.getNewValue().replaceAll(" ","")) && !"入库".equals(statusColEdit.getNewValue().replaceAll(" ","")))
+                throw new BusinessException("采购状态请输入“下单/在途/入库”");
+            statusColEdit.getTableView().getItems().get(statusColEdit.getTablePosition().getRow()).setProcurement_status(statusColEdit.getNewValue().replaceAll(" ",""));
             try {
                 new ProcurementManager().modify(statusColEdit.getRowValue(),1);
             } catch (BaseException e) {

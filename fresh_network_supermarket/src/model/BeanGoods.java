@@ -6,7 +6,7 @@ public class BeanGoods {
     private String category_name;
     private String goods_name;
     private double goods_price;
-    private double goods_vip_price;
+    private String goods_vip_price;
     private int goods_count;
     private String goods_size;
     private String goods_detail;
@@ -52,11 +52,11 @@ public class BeanGoods {
         this.goods_price = goods_price;
     }
 
-    public double getGoods_vip_price() {
+    public String getGoods_vip_price() {
         return goods_vip_price;
     }
 
-    public void setGoods_vip_price(double goods_vip_price) {
+    public void setGoods_vip_price(String goods_vip_price) {
         this.goods_vip_price = goods_vip_price;
     }
 

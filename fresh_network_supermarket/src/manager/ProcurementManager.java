@@ -62,6 +62,8 @@ public class ProcurementManager {
                 r.setGoods_id(rs.getInt(3));
                 r.setProcurement_count(rs.getInt(4));
                 r.setProcurement_status(rs.getString(5));
+            }else{
+                throw new BusinessException("采购单不存在");
             }
             sql="select admin_name from admin where admin_id=?";
             pst = conn.prepareStatement(sql);
@@ -93,9 +95,6 @@ public class ProcurementManager {
         int goods = r.getGoods_id();
         int count = r.getProcurement_count();
         String status = r.getProcurement_status();
-        if (count <= 0) throw new BusinessException("商品数量不能低于0");
-        if (!"下单".equals(status) && !"在途".equals(status) && !"入库".equals(status))
-            throw new BusinessException("采购状态请输入“下单/在途/入库”");
         Connection conn = null;
         try {
             conn = DBUtil.getConnection();
