@@ -54,13 +54,13 @@ public class CookbookController {
     private Text text_id;
 
     @FXML
-    private Text text_name;
+    private TextField text_name;
 
     @FXML
-    private Text text_ingredient;
+    private TextArea text_ingredient;
 
     @FXML
-    private Text text_step;
+    private TextArea text_step;
 
     @FXML
     private ImageView image;
@@ -97,8 +97,17 @@ public class CookbookController {
         primaryStage.close();
     }
 
-    public void eventModify() {
-
+    public void modify() {
+        BeanCookbook cookbook=view_cookbook.getItems().get(view_cookbook.getSelectionModel().getSelectedIndex());
+        cookbook.setCookbook_name(text_name.getText().trim());
+        cookbook.setCookbook_ingredient(text_ingredient.getText());
+        cookbook.setCookbook_step(text_step.getText());
+        new CookbookManager().modifyCookbooks(cookbook);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("提示");
+        alert.setHeaderText(null);
+        alert.setContentText("修改成功");
+        alert.showAndWait();
     }
 
     public void deleteCookbook() {
@@ -145,12 +154,12 @@ public class CookbookController {
         if ("".equals(text_goods_id.getText())) throw new BusinessException("商品编号不能为空");
         int goods_id;
         try {
-            goods_id=Integer.valueOf(text_goods_id.getText());
-        }catch (NumberFormatException e){
+            goods_id = Integer.valueOf(text_goods_id.getText());
+        } catch (NumberFormatException e) {
             throw new BusinessException("商品编号必须为数字");
         }
-        int cookbook_id=view_cookbook.getItems().get(view_cookbook.getSelectionModel().getSelectedIndex()).getCookbook_id();
-        new CookbookManager().addGoods(goods_id,cookbook_id);
+        int cookbook_id = view_cookbook.getItems().get(view_cookbook.getSelectionModel().getSelectedIndex()).getCookbook_id();
+        new CookbookManager().addGoods(goods_id, cookbook_id);
         showGoods(view_cookbook.getItems().get(view_cookbook.getSelectionModel().getSelectedIndex()));
     }
 
@@ -161,8 +170,8 @@ public class CookbookController {
         alert.setContentText("你确认要删除吗");
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK) {
-            int selectedIndex =view_goods.getSelectionModel().getSelectedIndex();
-            Commend commend=view_goods.getItems().get(selectedIndex);
+            int selectedIndex = view_goods.getSelectionModel().getSelectedIndex();
+            Commend commend = view_goods.getItems().get(selectedIndex);
             commend.setCookbook_id(view_cookbook.getItems().get(view_cookbook.getSelectionModel().getSelectedIndex()).getCookbook_id());
             new CookbookManager().deleteGoods(commend);
             view_goods.getItems().remove(selectedIndex);
@@ -171,18 +180,18 @@ public class CookbookController {
 
     @FXML
     public void initialize() {
-       loadCookbook();
+        loadCookbook();
         showGoods(null);
         menuController.text_name.setText("欢迎您，" + BeanAdmin.currentLoginAdmin.getAdmin_name() + "     您的员工号为：" + BeanAdmin.currentLoginAdmin.getAdmin_id());
         col_commend_description.setOnEditCommit(descriptionColEdit -> {
             descriptionColEdit.getTableView().getItems().get(descriptionColEdit.getTablePosition().getRow()).setCommend_description(descriptionColEdit.getNewValue().trim());
             try {
-                Commend commend=descriptionColEdit.getRowValue();
+                Commend commend = descriptionColEdit.getRowValue();
                 commend.setCookbook_id(view_cookbook.getItems().get(view_cookbook.getSelectionModel().getSelectedIndex()).getCookbook_id());
                 new CookbookManager().modifyCommend(commend);
             } catch (BaseException e) {
                 outputError(e);
-                BeanCookbook cookbook=new BeanCookbook();
+                BeanCookbook cookbook = new BeanCookbook();
                 cookbook.setCookbook_id(descriptionColEdit.getRowValue().getCookbook_id());
                 showGoods(cookbook);
             }

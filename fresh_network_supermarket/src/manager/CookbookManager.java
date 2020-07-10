@@ -75,35 +75,6 @@ public class CookbookManager {
         return r;
     }
 
-//    public Commend selectGoods(int id) {
-//        Connection conn = null;
-//        Commend r = new Commend();
-//        try {
-//            conn = DBUtil.getConnection();
-//            String sql = "select * from commend where cookbook_id=?";
-//            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
-//            pst.setInt(1, id);
-//            java.sql.ResultSet rs = pst.executeQuery();
-//            if (rs.next()) {
-//                r.setGoods_id(rs.getInt(1));
-//                r.setCookbook_id(rs.getInt(2));
-//                r.setCommend_description(rs.getString(3));
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//            throw new DbException(e);
-//        } finally {
-//            if (conn != null)
-//                try {
-//                    conn.close();
-//                } catch (SQLException e) {
-//                    // TODO Auto-generated catch block
-//                    e.printStackTrace();
-//                }
-//        }
-//        return r;
-//    }
-
     public void modifyCookbooks(BeanCookbook r) {
         if ("".equals(r.getCookbook_name())) throw new BusinessException("菜谱名称不能为空");
         Connection conn = null;
@@ -114,6 +85,7 @@ public class CookbookManager {
             pst.setString(1, r.getCookbook_name());
             pst.setString(2, r.getCookbook_ingredient());
             pst.setString(3, r.getCookbook_step());
+            pst.setInt(4,r.getCookbook_id());
 //            pst.setString(4,r.getCookbook_image());
             pst.execute();
             pst.close();

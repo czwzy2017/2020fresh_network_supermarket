@@ -4,7 +4,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.BeanAdmin;
 import model.BeanGoodsProcurement;
-import util.BaseException;
 import util.BusinessException;
 import util.DBUtil;
 import util.DbException;
