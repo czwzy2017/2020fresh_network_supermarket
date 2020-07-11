@@ -1,4 +1,4 @@
-package control;
+package control.admin;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,19 +28,25 @@ public class AdminMenuController {
     private TextField text_pwd2;
 
     public void eventProcurement() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../fxml/admin/Procurement.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../../fxml/admin/Procurement.fxml"));
         Stage primaryStage = (Stage) menubar.getScene().getWindow();
         primaryStage.setScene(new Scene(root));
     }
 
     public void eventFresh()throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("../fxml/admin/Fresh.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../../fxml/admin/Fresh.fxml"));
         Stage primaryStage = (Stage) menubar.getScene().getWindow();
         primaryStage.setScene(new Scene(root));
     }
 
     public void eventCookbook()throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("../fxml/admin/Cookbook.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../../fxml/admin/Cookbook.fxml"));
+        Stage primaryStage = (Stage) menubar.getScene().getWindow();
+        primaryStage.setScene(new Scene(root));
+    }
+
+    public void eventCoupon()throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("../../fxml/admin/Coupon.fxml"));
         Stage primaryStage = (Stage) menubar.getScene().getWindow();
         primaryStage.setScene(new Scene(root));
     }
@@ -56,6 +62,8 @@ public class AdminMenuController {
         primaryStage.close();
         exit();
     }
+
+
     public void pwd() {
         String pwd = text_pwd.getText();
         String pwd2 = text_pwd2.getText();

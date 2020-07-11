@@ -1,4 +1,4 @@
-package control;
+package control.admin;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;

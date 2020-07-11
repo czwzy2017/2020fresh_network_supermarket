@@ -8,11 +8,11 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="control.AdminMenuController">
+            fx:controller="control.admin.AdminMenuController">
     <children>
         <MenuBar fx:id="menubar" prefHeight="25.0" prefWidth="279.0">
             <menus>
-                <Menu fx:id="menu_procurement" mnemonicParsing="false" text="商品采购">
+                <Menu mnemonicParsing="false" text="商品采购">
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#eventProcurement" text="查看"/>
                     </items>
@@ -21,13 +21,12 @@
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#eventFresh" text="生鲜信息"/>
                         <MenuItem mnemonicParsing="false" onAction="#eventCookbook" text="菜谱信息"/>
-                        <MenuItem mnemonicParsing="false" text="商品评价表"/>
                         <MenuItem mnemonicParsing="false" text="商品订单"/>
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="优惠信息">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="优惠券"/>
+                        <MenuItem mnemonicParsing="false" onAction="#eventCoupon" text="优惠券"/>
                         <MenuItem mnemonicParsing="false" text="满折信息"/>
                         <MenuItem mnemonicParsing="false" text="限时促销信息"/>
                     </items>

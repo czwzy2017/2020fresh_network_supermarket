@@ -1,4 +1,4 @@
-package control;
+package control.admin;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

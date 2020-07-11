@@ -1,11 +1,14 @@
 package main;
 
+import control.admin.CommentController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import javafx.stage.StageStyle;
 import util.DefaultExceptionHandler;
 
 import java.io.IOException;
@@ -46,7 +49,7 @@ public class MainApp extends Application {
         stage.setOnCloseRequest(event -> {
             stage.close();
             try {
-               showProcurement();
+                showProcurement();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -61,7 +64,7 @@ public class MainApp extends Application {
         stage.show();
     }
 
-    public void showAddGoods() throws IOException{
+    public void showAddGoods() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../fxml/admin/AddGoods.fxml"));
         Stage stage = new Stage();
         stage.setTitle("添加商品");
@@ -77,6 +80,15 @@ public class MainApp extends Application {
         });
     }
 
+    public void showComment(int id) throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/admin/GoodsComment.fxml"));
+        Stage stage = new Stage(StageStyle.DECORATED);
+        stage.setScene(new Scene((Pane) loader. load()));
+        CommentController controller =loader.<CommentController>getController();
+        controller.initData(id);
+        stage.show();
+    }
+
     public void showCookbook() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../fxml/admin/Cookbook.fxml"));
         Stage stage = new Stage();
@@ -85,7 +97,7 @@ public class MainApp extends Application {
         stage.show();
     }
 
-    public void showAddCookbook() throws IOException{
+    public void showAddCookbook() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../fxml/admin/AddCookbook.fxml"));
         Stage stage = new Stage();
         stage.setTitle("添加菜谱");
@@ -101,7 +113,7 @@ public class MainApp extends Application {
         });
     }
 
-    public void showAdminPwd() throws IOException{
+    public void showAdminPwd() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../fxml/admin/AdminPwd.fxml"));
         Stage stage = new Stage();
         stage.setTitle("修改密码");
@@ -109,13 +121,15 @@ public class MainApp extends Application {
         stage.show();
     }
 
-    public void showSuper() throws IOException{
+    public void showSuper() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../fxml/superAdmin/Super.fxml"));
         Stage stage = new Stage();
         stage.setTitle("超级管理员");
         stage.setScene(new Scene(root, 640, 480));
         stage.show();
     }
+
+
 
     public static void main(String[] args) {
         launch(args);
