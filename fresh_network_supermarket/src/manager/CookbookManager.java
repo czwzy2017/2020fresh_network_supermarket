@@ -76,7 +76,7 @@ public class CookbookManager {
     }
 
     public void modifyCookbooks(BeanCookbook r) {
-        if ("".equals(r.getCookbook_name())) throw new BusinessException("菜谱名称不能为空");
+        if ("".equals(r.getCookbook_name().trim())) throw new BusinessException("菜谱名称不能为空");
         Connection conn = null;
         try {
             conn = DBUtil.getConnection();
@@ -184,7 +184,7 @@ public class CookbookManager {
 
     public void modifyCommend(Commend r) {
         Connection conn = null;
-        if ("".equals(r.getGoods_name())) throw new BusinessException("商品名称不能为空");
+        if ("".equals(r.getGoods_name().trim())) throw new BusinessException("商品名称不能为空");
         try {
             conn = DBUtil.getConnection();
             String sql = "select * from goods where goods_id=?";

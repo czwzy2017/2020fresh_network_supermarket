@@ -9,22 +9,24 @@
 <AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.user.AddressController">
     <children>
         <fx:include fx:id="menu" source="UserMenu.fxml" />
-        <Button layoutX="906.0" layoutY="673.0" mnemonicParsing="false" text="添加地址" />
-        <TableView fx:id="view_coupon" editable="true" layoutX="75.0" layoutY="23.0" prefHeight="600.0" prefWidth="949.0">
+        <Button layoutX="906.0" layoutY="673.0" mnemonicParsing="false" onAction="#add" text="添加地址" />
+        <TableView fx:id="view" editable="true" layoutX="75.0" layoutY="23.0" prefHeight="600.0" prefWidth="949.0">
             <columns>
-                <TableColumn fx:id="col_detail" prefWidth="100.0" text="省" />
-                <TableColumn fx:id="col_minimum_price" prefWidth="100.0" text="市" />
-                <TableColumn fx:id="col_credit_price" prefWidth="100.0" text="区" />
-                <TableColumn prefWidth="400.0" text="地址" />
-                <TableColumn fx:id="col_begin_time" prefWidth="100.0" text="联系人" />
-                <TableColumn fx:id="col_end_time" prefWidth="149.0" text="电话" />
+            <TableColumn fx:id="col_id" prefWidth="75.0" text="地址编号" />
+                <TableColumn fx:id="col_province" prefWidth="100.0" text="省" />
+                <TableColumn fx:id="col_city" prefWidth="100.0" text="市" />
+                <TableColumn fx:id="col_district" prefWidth="100.0" text="区" />
+                <TableColumn fx:id="col_address" prefWidth="325.0" text="地址" />
+                <TableColumn fx:id="col_contact" prefWidth="100.0" text="联系人" />
+                <TableColumn fx:id="col_tel" prefWidth="149.0" text="电话" />
             </columns>
         </TableView>
-      <TextField layoutX="269.0" layoutY="650.0" promptText="省" />
-      <TextField layoutX="669.0" layoutY="650.0" promptText="区" />
-      <TextField layoutX="269.0" layoutY="697.0" promptText="地址" />
-      <TextField layoutX="469.0" layoutY="650.0" promptText="市" />
-      <TextField layoutX="469.0" layoutY="697.0" promptText="联系人" />
-      <TextField layoutX="669.0" layoutY="697.0" promptText="电话" />
+      <TextField fx:id="text_province" layoutX="269.0" layoutY="650.0" promptText="省" />
+      <TextField fx:id="text_district" layoutX="669.0" layoutY="650.0" promptText="区" />
+      <TextField fx:id="text_address" layoutX="269.0" layoutY="697.0" promptText="地址" />
+      <TextField fx:id="text_city" layoutX="469.0" layoutY="650.0" promptText="市" />
+      <TextField fx:id="text_contact" layoutX="469.0" layoutY="697.0" promptText="联系人" />
+      <TextField fx:id="text_tel" layoutX="669.0" layoutY="697.0" promptText="电话" />
+      <Button layoutX="955.0" mnemonicParsing="false" onAction="#delete" text="删除" />
     </children>
 </AnchorPane>

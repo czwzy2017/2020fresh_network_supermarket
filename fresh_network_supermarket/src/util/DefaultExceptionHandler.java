@@ -13,6 +13,6 @@ public class DefaultExceptionHandler implements Thread.UncaughtExceptionHandler 
         alert.setHeaderText(null);
         alert.setContentText(e.getMessage());
         alert.showAndWait();
-        e.printStackTrace();
+//        e.printStackTrace();
     }
 }

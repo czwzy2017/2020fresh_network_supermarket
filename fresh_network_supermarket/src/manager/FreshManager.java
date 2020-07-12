@@ -102,7 +102,7 @@ public class FreshManager {
 
     public void modifyCategory(BeanFreshCategory r) {
         int id = r.getCategory_id();
-        String name = r.getCategory_name();
+        String name = r.getCategory_name().trim();
         if ("".equals(name)) throw new BusinessException("类别名称不能为空");
         String description = r.getCategory_description();
         Connection conn = null;
@@ -268,7 +268,7 @@ public class FreshManager {
             if (vip <= 0) throw new BusinessException("商品价格必须大于0");
             if (r.getGoods_price() < vip) throw new BusinessException("会员价不得高于非会员价");
         }
-        if ("".equals(r.getGoods_name())) throw new BusinessException("商品名称不能为空");
+        if ("".equals(r.getGoods_name().trim())) throw new BusinessException("商品名称不能为空");
         if (r.getGoods_price() <= 0) throw new BusinessException("商品价格必须大于0");
         if (r.getGoods_count() < 0) throw new BusinessException("商品数量不能小于0");
         try {
