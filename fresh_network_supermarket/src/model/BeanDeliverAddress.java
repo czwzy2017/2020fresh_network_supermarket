@@ -73,4 +73,8 @@ public class BeanDeliverAddress {
     public void setDelivery_tel(String delivery_tel) {
         this.delivery_tel = delivery_tel;
     }
+
+    public String toString(){
+        return getDelivery_province()+" "+getDelivery_city()+" "+getDelivery_district()+" "+getDelivery_address()+"\n联系人："+getDelivery_contact()+" 电话号码："+getDelivery_tel();
+    }
 }

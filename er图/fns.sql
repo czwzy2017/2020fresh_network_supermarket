@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2020/7/12 11:11:21                           */
+/* Created on:     2020/7/12 20:21:21                           */
 /*==============================================================*/
 
 
@@ -41,9 +41,9 @@ drop table if exists user_infor;
 /*==============================================================*/
 create table admin
 (
-   admin_id             int not null auto_increment,
-   admin_name           char(20) not null,
-   admin_pwd            char(20) not null,
+   admin_id             varchar(20) not null,
+   admin_name           varchar(20) not null,
+   admin_pwd            varchar(20) not null,
    primary key (admin_id)
 );
 
@@ -181,7 +181,7 @@ create table goods_orders
    orders_final_price   double not null,
    orders_address       varchar(100) not null,
    orders_time          timestamp not null,
-   orders_real_time          timestamp,
+   orders_real_time     timestamp,
    orders_status        char(4) not null,
    primary key (orders_id)
 );
@@ -192,7 +192,7 @@ create table goods_orders
 create table goods_procurement
 (
    procurement_id       int not null auto_increment,
-   admin_id             int not null,
+   admin_id             varchar(20) not null,
    goods_id             int,
    procurement_count    int not null,
    procurement_status   char(4) not null,

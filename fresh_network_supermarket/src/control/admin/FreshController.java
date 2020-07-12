@@ -108,6 +108,8 @@ public class FreshController {
         String name = text_name.getText();
         String detail = text_detail.getText();
         new FreshManager().addCategory(name, detail);
+        text_detail.clear();
+        text_name.clear();
         loadCategory();
     }
 

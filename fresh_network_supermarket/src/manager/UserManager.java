@@ -13,6 +13,41 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class UserManager {
+    public void loadCurrentUser(int id){
+        BeanUser r = new BeanUser();
+        Connection conn = null;
+        try {
+            conn = DBUtil.getConnection();
+            String sql = "select * from user_infor where user_id=?";
+            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1,id);
+            java.sql.ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                r.setUser_id(rs.getInt(1));
+                r.setUser_name(rs.getString(2));
+                r.setUser_sex(rs.getString(3));
+                r.setUser_pwd(rs.getString(4));
+                r.setUser_tel(rs.getString(5));
+                r.setUser_email(rs.getString(6));
+                r.setUser_city(rs.getString(7));
+                r.setUser_creat_time(rs.getTimestamp(8));
+                r.setUser_vip(rs.getBoolean(9));
+                r.setUser_vip_deadline(rs.getTimestamp(10));
+            }
+            BeanUser.currentLoginUser=r;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new DbException(e);
+        } finally {
+            if (conn != null)
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+        }
+    }
     public BeanUser login(String tel, String pwd) {
         BeanUser r = new BeanUser();
         Connection conn = null;
@@ -125,14 +160,15 @@ public class UserManager {
         Connection conn = null;
         try {
             conn = DBUtil.getConnection();
-            String sql = "select * from user_infor where user_tel=?";
+            String sql = "select * from user_infor where user_tel=? and user_id!=?";
             java.sql.PreparedStatement pst = conn.prepareStatement(sql);
             pst.setString(1, tel);
+            pst.setInt(2,BeanUser.currentLoginUser.getUser_id());
             java.sql.ResultSet rs = pst.executeQuery();
             if (rs.next()) throw new BusinessException("手机号已被注册");
             rs.close();
             pst.close();
-            sql = "update user_infor set user_name=?, user_sex=?, user_pwd=?, user_tel=?, user_email=?, user_city=?";
+            sql = "update user_infor set user_name=?, user_sex=?, user_pwd=?, user_tel=?, user_email=?, user_city=? where user_id=?";
             pst = conn.prepareStatement(sql);
             pst.setString(1, name);
             pst.setString(2, sex);
@@ -140,8 +176,10 @@ public class UserManager {
             pst.setString(4, tel);
             pst.setString(5, email);
             pst.setString(6, city);
+            pst.setInt(7,BeanUser.currentLoginUser.getUser_id());
             pst.execute();
             pst.close();
+            loadCurrentUser(BeanUser.currentLoginUser.getUser_id());
         } catch (SQLException e) {
             e.printStackTrace();
             throw new DbException(e);
@@ -157,7 +195,6 @@ public class UserManager {
     }
 
     public void vip(int month){
-
         Connection conn = null;
         try {
             conn = DBUtil.getConnection();
@@ -184,6 +221,7 @@ public class UserManager {
             pst.setInt(2, BeanUser.currentLoginUser.getUser_id());
             pst.execute();
             pst.close();
+            loadCurrentUser(BeanUser.currentLoginUser.getUser_id());
         } catch (SQLException e) {
             e.printStackTrace();
             throw new DbException(e);

@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import main.MainApp;
+import model.BeanUser;
 
 import java.io.IOException;
 
@@ -50,5 +51,11 @@ public class UserMenuController {
 
     public void eventInfo() throws IOException {
         new MainApp().showUserInfo();
+    }
+    public void eventExit() throws IOException{
+        Stage primaryStage = (Stage) text_name.getScene().getWindow();
+        BeanUser.currentLoginUser = null;
+        primaryStage.close();
+        new MainApp().showLogin();
     }
 }

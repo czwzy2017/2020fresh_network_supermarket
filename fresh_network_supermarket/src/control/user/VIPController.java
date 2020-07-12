@@ -11,6 +11,7 @@ public class VIPController {
 
     public void vip_1(){
         new UserManager().vip(1);
+
         initData();
     }
 

@@ -8,19 +8,19 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="768.0" prefWidth="1024.0" stylesheets="@button.css" xmlns="http://javafx.com/javafx/8"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.user.UserMenuController">
+<AnchorPane prefHeight="768.0" prefWidth="1024.0" stylesheets="@button.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.user.UserMenuController">
     <children>
-        <Text fx:id="text_name" layoutX="470.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="欢迎您，陈哲炜"/>
+        <Text fx:id="text_name" layoutX="470.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="欢迎您，陈哲炜" />
         <VBox prefHeight="768.0" prefWidth="75.0">
             <children>
-                <Button fx:id="button_1" mnemonicParsing="false" onAction="#eventStore" prefWidth="75.0" text="商城"/>
-                <Button fx:id="button_2" mnemonicParsing="false" onAction="#eventShopping" prefWidth="75.0" text="购物车"/>
-                <Button fx:id="button_3" mnemonicParsing="false" onAction="#eventCoupon" prefWidth="75.0" text="优惠券"/>
-                <Button fx:id="button_4" mnemonicParsing="false" onAction="#eventOrders" prefWidth="75.0" text="订单"/>
-                <Button fx:id="button_5" mnemonicParsing="false" onAction="#eventAddress" prefWidth="75.0" text="管理地址"/>
-                <Button fx:id="button_6" mnemonicParsing="false" onAction="#eventVIP" prefWidth="75.0" text="VIP信息"/>
-                <Button fx:id="button_7" mnemonicParsing="false" onAction="#eventInfo" prefWidth="75.0" text="个人信息"/>
+                <Button mnemonicParsing="false" onAction="#eventStore" prefWidth="75.0" text="商城" />
+                <Button mnemonicParsing="false" onAction="#eventShopping" prefWidth="75.0" text="购物车" />
+                <Button mnemonicParsing="false" onAction="#eventCoupon" prefWidth="75.0" text="优惠券" />
+                <Button mnemonicParsing="false" onAction="#eventOrders" prefWidth="75.0" text="订单" />
+                <Button mnemonicParsing="false" onAction="#eventAddress" prefWidth="75.0" text="管理地址" />
+                <Button mnemonicParsing="false" onAction="#eventVIP" prefWidth="75.0" text="VIP信息" />
+                <Button mnemonicParsing="false" onAction="#eventInfo" prefWidth="75.0" text="个人信息" />
+            <Button mnemonicParsing="false" onAction="#eventExit" prefWidth="75.0" text="安全退出" />
             </children>
         </VBox>
     </children>

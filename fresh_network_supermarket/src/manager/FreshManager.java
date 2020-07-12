@@ -43,6 +43,32 @@ public class FreshManager {
         return result;
     }
 
+    public ObservableList<String> loadCategoryName() {
+        ObservableList<String> result = FXCollections.observableArrayList();
+        Connection conn = null;
+        try {
+            conn = DBUtil.getConnection();
+            String sql = "select category_name from fresh_category";
+            java.sql.Statement st = conn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                result.add(rs.getString(1));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new DbException(e);
+        } finally {
+            if (conn != null)
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+        }
+        return result;
+    }
+
     public BeanFreshCategory selectCategory(int id) {
         Connection conn = null;
         BeanFreshCategory r = new BeanFreshCategory();
