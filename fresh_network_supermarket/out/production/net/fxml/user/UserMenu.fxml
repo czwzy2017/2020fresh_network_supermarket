@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1024.0" stylesheets="@button.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.user.UserMenuController">
+    <children>
+        <Text fx:id="text_name" layoutX="470.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="欢迎您，陈哲炜" />
+      <VBox prefHeight="768.0" prefWidth="75.0">
+         <children>
+            <Button fx:id="button_1" mnemonicParsing="false" onAction="#eventStore" prefWidth="75.0" text="商城" />
+            <Button fx:id="button_2" mnemonicParsing="false" onAction="#eventShopping" prefWidth="75.0" text="购物车" />
+            <Button fx:id="button_3" mnemonicParsing="false" onAction="#eventCoupon" prefWidth="75.0" text="优惠券" />
+            <Button fx:id="button_4" mnemonicParsing="false" onAction="#eventOrders" prefWidth="75.0" text="订单" />
+            <Button fx:id="button_5" mnemonicParsing="false" onAction="#eventAddress" prefWidth="75.0" stylesheets="@button.css" text="管理地址" />
+            <Button fx:id="button_6" mnemonicParsing="false" onAction="#eventInfo" prefWidth="75.0" text="个人信息" />
+         </children>
+      </VBox>
+    </children>
+</AnchorPane>

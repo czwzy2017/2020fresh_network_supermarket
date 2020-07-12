@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.admin.PromotionController">
+    <children>
+        <fx:include fx:id="menu" source="AdminMenu.fxml" />
+        <TableView fx:id="view_promotion" editable="true" layoutY="25.0" prefHeight="600.0" prefWidth="1024.0">
+            <columns>
+                <TableColumn fx:id="col_promotion_id" prefWidth="146.0" text="促销编号" />
+                <TableColumn fx:id="col_goods_id" prefWidth="146.0" text="商品编号" />
+                <TableColumn fx:id="col_goods_name" prefWidth="146.0" text="商品名称" />
+                <TableColumn fx:id="col_price" prefWidth="146.0" text="促销金额" />
+            <TableColumn fx:id="col_count" prefWidth="146.0" text="促销数量" />
+                <TableColumn fx:id="col_begin_time" prefWidth="146.0" text="起始日期" />
+                <TableColumn fx:id="col_end_time" prefWidth="146.0" text="结束日期" />
+            </columns>
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+            </columnResizePolicy>
+        </TableView>
+        <Button layoutX="970.0" layoutY="1.0" mnemonicParsing="false" onAction="#delete" text="删除" />
+      <SplitPane dividerPositions="0.65" layoutY="625.0" prefHeight="143.0" prefWidth="1024.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="141.0" prefWidth="399.0" SplitPane.resizableWithParent="false">
+               <children>
+                    <Button layoutX="511.0" layoutY="75.0" mnemonicParsing="false" onAction="#add" text="添加" />
+                    <TextField fx:id="text_add_id" layoutX="50.0" layoutY="25.0" promptText="商品编号" />
+                    <TextField fx:id="text_price" layoutX="250.0" layoutY="25.0" promptText="促销金额" />
+                    <TextField fx:id="text_count" layoutX="450.0" layoutY="25.0" promptText="促销数量" />
+                    <DatePicker fx:id="date_begin" layoutX="50.0" layoutY="75.0" promptText="起始日期" />
+                    <DatePicker fx:id="date_end" layoutX="250.0" layoutY="75.0" promptText="结束日期" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="141.0" prefWidth="493.0" SplitPane.resizableWithParent="false">
+               <children>
+                  <TextField fx:id="text_select_id" layoutX="50.0" layoutY="59.0" promptText="商品编号" />
+                  <Button layoutX="250.0" layoutY="59.0" mnemonicParsing="false" onAction="#select" text="查询" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+    </children>
+</AnchorPane>

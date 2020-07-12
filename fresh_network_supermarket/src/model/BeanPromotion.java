@@ -5,8 +5,9 @@ import java.util.Date;
 public class BeanPromotion {
     private int promotion_id;
     private int goods_id;
+    private String goods_name;
     private double promotion_price;
-    private double promotion_count;
+    private int promotion_count;
     private Date promotion_begin_date;
     private Date promotion_end_date;
 
@@ -26,6 +27,14 @@ public class BeanPromotion {
         this.goods_id = goods_id;
     }
 
+    public String getGoods_name() {
+        return goods_name;
+    }
+
+    public void setGoods_name(String goods_name) {
+        this.goods_name = goods_name;
+    }
+
     public double getPromotion_price() {
         return promotion_price;
     }
@@ -34,11 +43,11 @@ public class BeanPromotion {
         this.promotion_price = promotion_price;
     }
 
-    public double getPromotion_count() {
+    public int getPromotion_count() {
         return promotion_count;
     }
 
-    public void setPromotion_count(double promotion_count) {
+    public void setPromotion_count(int promotion_count) {
         this.promotion_count = promotion_count;
     }
 

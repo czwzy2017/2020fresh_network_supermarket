@@ -12,14 +12,14 @@
 <AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.admin.CookbookController">
     <children>
         <fx:include fx:id="menu" source="AdminMenu.fxml" />
-        <TableView fx:id="view_cookbook" editable="true" layoutX="12.0" layoutY="70.0" prefHeight="524.0" prefWidth="250.0">
+        <TableView fx:id="view_cookbook" editable="true" layoutX="12.0" layoutY="70.0" prefHeight="524.0" prefWidth="252.0">
             <columns>
                 <TableColumn fx:id="col_cookbook_id" prefWidth="125.0" text="菜谱编号" />
                 <TableColumn fx:id="col_cookbook_name" prefWidth="125.0" text="菜谱名称" />
             </columns>
         </TableView>
         <Button layoutX="223.0" layoutY="37.0" mnemonicParsing="false" onAction="#deleteCookbook" text="删除" />
-        <TableView fx:id="view_goods" editable="true" layoutX="355.0" layoutY="70.0" prefHeight="280.0" prefWidth="550.0">
+        <TableView fx:id="view_goods" editable="true" layoutX="355.0" layoutY="70.0" prefHeight="280.0" prefWidth="552.0">
             <columns>
                 <TableColumn fx:id="col_goods_id" prefWidth="75.0" text="商品编号" />
                 <TableColumn fx:id="col_goods_name" prefWidth="75.0" text="商品名称" />

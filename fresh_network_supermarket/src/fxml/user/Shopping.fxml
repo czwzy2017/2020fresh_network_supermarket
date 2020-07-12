@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="control.user.ShoppingController"
+            prefHeight="1024.0" prefWidth="768.0">
+    <children>
+        <fx:include fx:id="menu" source="UserMenu.fxml" />
+        <Button layoutX="234.0" mnemonicParsing="false" text="Button" />
+        <TableView layoutX="75.0" layoutY="23.0" prefHeight="745.0" prefWidth="949.0">
+            <columns>
+                <TableColumn prefWidth="75.0" text="商品名称" />
+                <TableColumn prefWidth="75.0" text="价格" />
+                <TableColumn prefWidth="75.0" text="vip价" />
+                <TableColumn prefWidth="75.0" text="库存" />
+            </columns>
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+            </columnResizePolicy>
+        </TableView>
+        <ChoiceBox layoutX="75.0" prefWidth="150.0" />
+    </children>
+</AnchorPane>

@@ -15,8 +15,6 @@ import model.BeanAdmin;
 
 import java.io.IOException;
 
-import static javafx.application.Platform.exit;
-
 public class AdminMenuController {
     @FXML
     public MenuBar menubar;
@@ -33,20 +31,32 @@ public class AdminMenuController {
         primaryStage.setScene(new Scene(root));
     }
 
-    public void eventFresh()throws IOException{
+    public void eventFresh() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../../fxml/admin/Fresh.fxml"));
         Stage primaryStage = (Stage) menubar.getScene().getWindow();
         primaryStage.setScene(new Scene(root));
     }
 
-    public void eventCookbook()throws IOException{
+    public void eventCookbook() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../../fxml/admin/Cookbook.fxml"));
         Stage primaryStage = (Stage) menubar.getScene().getWindow();
         primaryStage.setScene(new Scene(root));
     }
 
-    public void eventCoupon()throws IOException{
+    public void eventCoupon() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../../fxml/admin/Coupon.fxml"));
+        Stage primaryStage = (Stage) menubar.getScene().getWindow();
+        primaryStage.setScene(new Scene(root));
+    }
+
+    public void eventDiscount() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../../fxml/admin/Discount.fxml"));
+        Stage primaryStage = (Stage) menubar.getScene().getWindow();
+        primaryStage.setScene(new Scene(root));
+    }
+
+    public void eventPromotion() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../../fxml/admin/Promotion.fxml"));
         Stage primaryStage = (Stage) menubar.getScene().getWindow();
         primaryStage.setScene(new Scene(root));
     }
@@ -56,11 +66,11 @@ public class AdminMenuController {
         mainApp.showAdminPwd();
     }
 
-    public void eventExit(){
+    public void eventExit() throws IOException{
         Stage primaryStage = (Stage) menubar.getScene().getWindow();
-        BeanAdmin.currentLoginAdmin=null;
+        BeanAdmin.currentLoginAdmin = null;
         primaryStage.close();
-        exit();
+        new MainApp().showLogin();
     }
 
 

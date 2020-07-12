@@ -8,38 +8,38 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.admin.FreshController">
-    <children>
+  <children>
     <fx:include fx:id="menu" source="AdminMenu.fxml" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="170.0" layoutX="5.0" layoutY="547.0" stroke="BLACK" strokeType="INSIDE" width="290.0" />
-      <TableView fx:id="view_category" editable="true" layoutY="70.0" prefHeight="400.0" prefWidth="300.0" AnchorPane.bottomAnchor="298.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="724.0" AnchorPane.topAnchor="70.0">
-        <columns>
-          <TableColumn fx:id="col_category_id" prefWidth="75.0" text="类别编号" />
-          <TableColumn fx:id="col_category_name" prefWidth="75.0" text="类别名称" />
-            <TableColumn fx:id="col_category_detail" prefWidth="500.0" text="类别描述                                                                                                                  " />
-        </columns>
-      </TableView>
-      <Label layoutX="39.0" layoutY="575.0" text="类别名称" />
-      <TextField fx:id="text_name" layoutX="101.0" layoutY="571.0" />
-      <Button layoutX="260.0" layoutY="37.0" mnemonicParsing="false" onAction="#deleteCategory" text="删除" />
-      <Button layoutX="130.0" layoutY="663.0" mnemonicParsing="false" onAction="#addCategory" text="添加" />
-      <TableView fx:id="view_goods" editable="true" layoutX="400.0" layoutY="70.0" prefHeight="565.0" prefWidth="600.0">
-        <columns>
-          <TableColumn fx:id="col_goods_id" prefWidth="75.0" text="商品编号" />
-          <TableColumn fx:id="col_goods_name" prefWidth="75.0" text="商品名称" />
-            <TableColumn fx:id="col_goods_price" prefWidth="75.0" text="价格" />
-            <TableColumn fx:id="col_goods_vip" prefWidth="75.0" text="会员价" />
-            <TableColumn fx:id="col_goods_count" prefWidth="75.0" text="数量" />
-            <TableColumn fx:id="col_goods_size" prefWidth="75.0" text="规格" />
-            <TableColumn fx:id="col_goods_detail" prefWidth="400.0" text="详情                                                                                               " />
-        </columns>
-      </TableView>
-      <Button layoutX="883.0" layoutY="37.0" mnemonicParsing="false" onAction="#eventAdd" text="添加" />
-      <Button layoutX="945.0" layoutY="37.0" mnemonicParsing="false" onAction="#deleteGoods" text="删除" />
-      <Label layoutX="39.0" layoutY="616.0" text="类别描述" />
-      <TextField fx:id="text_detail" layoutX="101.0" layoutY="612.0" />
-      <TextField fx:id="text_id" layoutX="30.0" layoutY="498.0" promptText="请输入类别编号" />
-      <Button layoutX="228.0" layoutY="498.0" mnemonicParsing="false" onAction="#selectCategory" text="查询" />
-      <TextField fx:id="text_goods_id" layoutX="584.0" layoutY="675.0" promptText="请输入商品编号" />
-      <Button layoutX="776.0" layoutY="675.0" mnemonicParsing="false" onAction="#selectGoods" text="查询" />
-    </children>
+    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="170.0" layoutX="5.0" layoutY="547.0" stroke="BLACK" strokeType="INSIDE" width="290.0" />
+    <TableView fx:id="view_category" editable="true" layoutY="70.0" prefHeight="400.0" prefWidth="300.0" AnchorPane.bottomAnchor="298.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="724.0" AnchorPane.topAnchor="70.0">
+      <columns>
+        <TableColumn fx:id="col_category_id" prefWidth="75.0" text="类别编号" />
+        <TableColumn fx:id="col_category_name" prefWidth="75.0" text="类别名称" />
+        <TableColumn fx:id="col_category_detail" prefWidth="500.0" text="类别描述                                                                                                                  " />
+      </columns>
+    </TableView>
+    <Label layoutX="39.0" layoutY="575.0" text="类别名称" />
+    <TextField fx:id="text_name" layoutX="101.0" layoutY="571.0" />
+    <Button layoutX="260.0" layoutY="37.0" mnemonicParsing="false" onAction="#deleteCategory" text="删除" />
+    <Button layoutX="130.0" layoutY="663.0" mnemonicParsing="false" onAction="#addCategory" text="添加" />
+    <TableView fx:id="view_goods" editable="true" layoutX="400.0" layoutY="70.0" prefHeight="565.0" prefWidth="600.0">
+      <columns>
+        <TableColumn fx:id="col_goods_id" prefWidth="75.0" text="商品编号" />
+        <TableColumn fx:id="col_goods_name" prefWidth="75.0" text="商品名称" />
+        <TableColumn fx:id="col_goods_price" prefWidth="75.0" text="价格" />
+        <TableColumn fx:id="col_goods_vip" prefWidth="75.0" text="会员价" />
+        <TableColumn fx:id="col_goods_count" prefWidth="75.0" text="数量" />
+        <TableColumn fx:id="col_goods_size" prefWidth="75.0" text="规格" />
+        <TableColumn fx:id="col_goods_detail" prefWidth="400.0" text="详情                                                                                               " />
+      </columns>
+    </TableView>
+    <Button layoutX="883.0" layoutY="37.0" mnemonicParsing="false" onAction="#eventAdd" text="添加" />
+    <Button layoutX="945.0" layoutY="37.0" mnemonicParsing="false" onAction="#deleteGoods" text="删除" />
+    <Label layoutX="39.0" layoutY="616.0" text="类别描述" />
+    <TextField fx:id="text_detail" layoutX="101.0" layoutY="612.0" />
+    <TextField fx:id="text_id" layoutX="30.0" layoutY="498.0" promptText="请输入类别编号" />
+    <Button layoutX="228.0" layoutY="498.0" mnemonicParsing="false" onAction="#selectCategory" text="查询" />
+    <TextField fx:id="text_goods_id" layoutX="584.0" layoutY="675.0" promptText="请输入商品编号" />
+    <Button layoutX="776.0" layoutY="675.0" mnemonicParsing="false" onAction="#selectGoods" text="查询" />
+  </children>
 </AnchorPane>

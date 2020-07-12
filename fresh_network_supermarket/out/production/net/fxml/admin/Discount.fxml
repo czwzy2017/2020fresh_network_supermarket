@@ -1,15 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="control.admin.DiscountController"
-            prefHeight="768.0" prefWidth="1024.0">
-
-
+<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.admin.DiscountController">
+    <children>
+        <fx:include fx:id="menu" source="AdminMenu.fxml" />
+        <TableView fx:id="view_discount" editable="true" layoutY="24.0" prefHeight="565.0" prefWidth="682.0">
+            <columns>
+                <TableColumn fx:id="col_discount_id" prefWidth="110.0" text="满折编号" />
+                <TableColumn fx:id="col_discount_detail" prefWidth="130.0" text="内容" />
+                <TableColumn fx:id="col_discount_count" prefWidth="100.0" text="适用商品数量" />
+            <TableColumn fx:id="col_discount" prefWidth="100.0" text="折扣" />
+            <TableColumn fx:id="col_discount_begin" prefWidth="120.0" text="起始日期" />
+            <TableColumn fx:id="col_discount_end" prefWidth="120.0" text="结束日期" />
+            </columns>
+        </TableView>
+        <TextField fx:id="text_count" layoutX="69.0" layoutY="601.0" promptText="适用商品数量" />
+        <Button layoutX="560.0" mnemonicParsing="false" onAction="#deleteDiscount" text="删除" />
+        <Button layoutX="491.0" layoutY="645.0" mnemonicParsing="false" onAction="#addDiscount" text="添加" />
+        <TableView fx:id="view_goods" editable="true" layoutX="768.0" layoutY="24.0" prefHeight="565.0" prefWidth="202.0">
+            <columns>
+                <TableColumn fx:id="col_goods_id" prefWidth="100.0" text="商品编号" />
+                <TableColumn fx:id="col_goods_name" prefWidth="100.0" text="商品名称" />
+            </columns>
+        </TableView>
+        <Button layoutX="948.0" layoutY="601.0" mnemonicParsing="false" onAction="#addGoods" text="添加" />
+        <Button layoutX="928.0" mnemonicParsing="false" onAction="#deleteGoods" text="删除" />
+        <TextField fx:id="text_discount" layoutX="69.0" layoutY="633.0" promptText="折扣" />
+        <TextField fx:id="text_goods_id" layoutX="768.0" layoutY="601.0" promptText="请输入商品编号" />
+      <DatePicker fx:id="date_begin" layoutX="272.0" layoutY="601.0" promptText="起始日期" />
+      <DatePicker fx:id="date_end" layoutX="272.0" layoutY="633.0" promptText="结束日期" />
+      <TextArea fx:id="text_detail" layoutX="69.0" layoutY="667.0" prefHeight="78.0" prefWidth="388.0" promptText="内容" />
+      <Button layoutX="856.0" mnemonicParsing="false" onAction="#deleteAll" text="全部删除" />
+    </children>
 </AnchorPane>

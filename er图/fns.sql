@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2020/7/8 13:31:46                            */
+/* Created on:     2020/7/12 11:11:21                           */
 /*==============================================================*/
 
 
@@ -41,7 +41,7 @@ drop table if exists user_infor;
 /*==============================================================*/
 create table admin
 (
-   admin_id             char(20) not null,
+   admin_id             int not null auto_increment,
    admin_name           char(20) not null,
    admin_pwd            char(20) not null,
    primary key (admin_id)
@@ -67,7 +67,7 @@ create table cookbook
    cookbook_name        varchar(20) not null,
    cookbook_ingredient  varchar(100),
    cookbook_step        varchar(100),
-   cookbook_image       longblob,
+   cookbook_image       varchar(100),
    primary key (cookbook_id)
 );
 
@@ -90,7 +90,7 @@ create table coupon
 /*==============================================================*/
 create table deliver_address
 (
-   delivery_id          int not null,
+   delivery_id          int not null auto_increment,
    user_id              int,
    delivery_province    varchar(20) not null,
    delivery_city        varchar(20) not null,
@@ -151,6 +151,7 @@ create table goods
    goods_count          int not null,
    goods_size           varchar(20),
    goods_details        varchar(100),
+   goods_image          varchar(100),
    primary key (goods_id)
 );
 
@@ -164,7 +165,7 @@ create table goods_comment
    comment_detail       varchar(100),
    comment_date         timestamp not null,
    comment_level        int not null,
-   comment_image        longblob,
+   comment_image        varchar(100),
    primary key (goods_id, user_id)
 );
 
@@ -176,9 +177,9 @@ create table goods_orders
    orders_id            int not null auto_increment,
    coupon_id            int,
    user_id              int,
-   delivery_id          int,
    orders_original_price double not null,
    orders_final_price   double not null,
+   orders_address       varchar(100) not null,
    orders_time          timestamp not null,
    orders_status        char(4) not null,
    primary key (orders_id)
@@ -190,7 +191,7 @@ create table goods_orders
 create table goods_procurement
 (
    procurement_id       int not null auto_increment,
-   admin_id             char(20),
+   admin_id             int not null,
    goods_id             int,
    procurement_count    int not null,
    procurement_status   char(4) not null,
@@ -280,9 +281,6 @@ alter table goods_comment add constraint FK_goods_comment2 foreign key (user_id)
 
 alter table goods_orders add constraint FK_coupon_orders foreign key (coupon_id)
       references coupon (coupon_id) on delete restrict on update restrict;
-
-alter table goods_orders add constraint FK_delivery_orders foreign key (delivery_id)
-      references deliver_address (delivery_id) on delete restrict on update restrict;
 
 alter table goods_orders add constraint FK_user_orders foreign key (user_id)
       references user_infor (user_id) on delete restrict on update restrict;

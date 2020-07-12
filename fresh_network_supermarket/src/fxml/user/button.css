@@ -1,0 +1,84 @@
+
+#button_1{
+    -fx-background-color: transparency;
+}
+ 
+#button_1:hover{
+    -fx-border-color:coral;
+}
+ 
+#button_1:pressed{
+    -fx-border-color:cornflowerblue;
+}
+
+#button_2{
+    -fx-background-color: transparency;
+}
+ 
+#button_2:hover{
+    -fx-border-color:coral;
+}
+ 
+#button_2:pressed{
+    -fx-border-color:cornflowerblue;
+}
+
+#button_3{
+    -fx-background-color: transparency;
+}
+ 
+#button_3:hover{
+    -fx-border-color:coral;
+}
+ 
+#button_3:pressed{
+    -fx-border-color:cornflowerblue;
+}
+
+#button_4{
+    -fx-background-color: transparency;
+}
+ 
+#button_4:hover{
+    -fx-border-color:coral;
+}
+ 
+#button_4:pressed{
+    -fx-border-color:cornflowerblue;
+}
+
+#button_5{
+    -fx-background-color: transparency;
+}
+ 
+#button_5:hover{
+    -fx-border-color:coral;
+}
+ 
+#button_5:pressed{
+    -fx-border-color:cornflowerblue;
+}
+
+#button_6{
+    -fx-background-color: transparency;
+}
+ 
+#button_6:hover{
+    -fx-border-color:coral;
+}
+ 
+#button_6:pressed{
+    -fx-border-color:cornflowerblue;
+}
+
+#button_7{
+    -fx-background-color: transparency;
+}
+
+#button_7:hover{
+    -fx-border-color:coral;
+}
+
+#button_7:pressed{
+    -fx-border-color:cornflowerblue;
+}

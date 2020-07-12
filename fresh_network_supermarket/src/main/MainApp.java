@@ -24,6 +24,14 @@ public class MainApp extends Application {
         primaryStage.show();
     }
 
+    public void showLogin() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("../fxml/login/UserLogin.fxml"));
+        Stage stage = new Stage();
+        stage.setTitle("生鲜网超");
+        stage.setScene(new Scene(root, 640, 480));
+        stage.show();
+    }
+
     public void showUserRegister() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../fxml/login/UserRegister.fxml"));
         Stage stage = new Stage();
@@ -119,6 +127,15 @@ public class MainApp extends Application {
         stage.setTitle("修改密码");
         stage.setScene(new Scene(root, 320, 240));
         stage.show();
+    }
+
+    public void showUserInfo() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("../fxml/user/UserInfo.fxml"));
+        Stage stage = new Stage();
+        stage.setTitle("个人信息");
+        stage.setScene(new Scene(root, 640, 480));
+        stage.show();
+
     }
 
     public void showSuper() throws IOException {

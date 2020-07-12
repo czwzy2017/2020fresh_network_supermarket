@@ -86,7 +86,7 @@ public class CookbookManager {
             pst.setString(2, r.getCookbook_ingredient());
             pst.setString(3, r.getCookbook_step());
             pst.setInt(4,r.getCookbook_id());
-//            pst.setString(4,r.getCookbook_image());
+//          pst.setString(4,r.getCookbook_image());
             pst.execute();
             pst.close();
         } catch (SQLException e) {

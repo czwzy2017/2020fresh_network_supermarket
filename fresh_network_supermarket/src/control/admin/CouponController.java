@@ -25,13 +25,13 @@ public class CouponController {
     private TableColumn<BeanCoupon, Integer> col_id;
 
     @FXML
-    private TableColumn<BeanCoupon, Integer> col_detail;
+    private TableColumn<BeanCoupon, String> col_detail;
 
     @FXML
-    private TableColumn<BeanCoupon, Integer> col_minimum_price;
+    private TableColumn<BeanCoupon, Double> col_minimum_price;
 
     @FXML
-    private TableColumn<BeanCoupon, String> col_credit_price;
+    private TableColumn<BeanCoupon, Double> col_credit_price;
 
     @FXML
     private TableColumn<BeanCoupon, Date> col_begin_time;
@@ -70,18 +70,18 @@ public class CouponController {
         view_coupon.getItems().setAll(coupons);
     }
 
-    public void add() throws IOException {
-        BeanCoupon r=new BeanCoupon();
+    public void add() {
+        BeanCoupon r = new BeanCoupon();
         r.setCoupon_detail(text_detail.getText());
         if ("".equals(text_minimum_price.getText().trim())) throw new BusinessException("适用金额不能为空");
         if ("".equals(text_credit_price.getText().trim())) throw new BusinessException("减免金额不能为空");
-        if (date_begin.getValue()==null) throw new BusinessException("起始日期不能为空");
-        if (date_end.getValue()==null) throw new BusinessException("结束日期不能为空");
-        double minimum,credit;
+        if (date_begin.getValue() == null) throw new BusinessException("起始日期不能为空");
+        if (date_end.getValue() == null) throw new BusinessException("结束日期不能为空");
+        double minimum, credit;
         try {
-            minimum=Double.valueOf(text_minimum_price.getText().trim());
-            credit=Double.valueOf(text_credit_price.getText().trim());
-        }catch (NumberFormatException e){
+            minimum = Double.valueOf(text_minimum_price.getText().trim());
+            credit = Double.valueOf(text_credit_price.getText().trim());
+        } catch (NumberFormatException e) {
             throw new BusinessException("金额必须为实数");
         }
         r.setCoupon_minimum_price(minimum);
@@ -116,7 +116,7 @@ public class CouponController {
         menuController.text_name.setText("欢迎您，" + BeanAdmin.currentLoginAdmin.getAdmin_name() + "     您的员工号为：" + BeanAdmin.currentLoginAdmin.getAdmin_id());
     }
 
-    public Date dateConversion(LocalDate localDate){
+    private Date dateConversion(LocalDate localDate) {
         ZoneId zoneId = ZoneId.systemDefault();
         ZonedDateTime zdt = localDate.atStartOfDay(zoneId);
         Date date = Date.from(zdt.toInstant());
