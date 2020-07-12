@@ -2,8 +2,8 @@ package model;
 
 import java.util.Date;
 
-public class BeanUserInfo {
-    public static BeanUserInfo currentLoginUser=null;
+public class BeanUser {
+    public static BeanUser currentLoginUser = null;
     private int user_id;
     private String user_name;
     private String user_sex;
@@ -14,14 +14,6 @@ public class BeanUserInfo {
     private Date user_creat_time;
     private boolean user_vip;
     private Date user_vip_deadline;
-
-    public static BeanUserInfo getCurrentLoginUser() {
-        return currentLoginUser;
-    }
-
-    public static void setCurrentLoginUser(BeanUserInfo currentLoginUser) {
-        BeanUserInfo.currentLoginUser = currentLoginUser;
-    }
 
     public int getUser_id() {
         return user_id;

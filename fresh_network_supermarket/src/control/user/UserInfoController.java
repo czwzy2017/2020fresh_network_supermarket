@@ -5,7 +5,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import manager.UserManager;
-import model.BeanUserInfo;
+import model.BeanUser;
 
 public class UserInfoController {
     @FXML
@@ -28,7 +28,8 @@ public class UserInfoController {
 
     @FXML
     private TextField text_email;
-    public void modify(){
+
+    public void modify() {
         String name = text_name.getText();
         String sex = text_sex.getText();
         String pwd1 = text_pwd1.getText();
@@ -45,15 +46,16 @@ public class UserInfoController {
         Stage primaryStage = (Stage) text_name.getScene().getWindow();
         primaryStage.close();
     }
+
     @FXML
     public void initialize() {
-        text_pwd1.setText( BeanUserInfo.getCurrentLoginUser().getUser_pwd());
-        text_pwd2.setText( BeanUserInfo.getCurrentLoginUser().getUser_pwd());
-        text_sex.setText( BeanUserInfo.getCurrentLoginUser().getUser_sex());
-        text_name.setText( BeanUserInfo.getCurrentLoginUser().getUser_name());
-        text_tel.setText( BeanUserInfo.getCurrentLoginUser().getUser_tel());
-        text_city.setText( BeanUserInfo.getCurrentLoginUser().getUser_city());
-        text_email.setText( BeanUserInfo.getCurrentLoginUser().getUser_email());
+        text_pwd1.setText(BeanUser.currentLoginUser.getUser_pwd());
+        text_pwd2.setText(BeanUser.currentLoginUser.getUser_pwd());
+        text_sex.setText(BeanUser.currentLoginUser.getUser_sex());
+        text_name.setText(BeanUser.currentLoginUser.getUser_name());
+        text_tel.setText(BeanUser.currentLoginUser.getUser_tel());
+        text_city.setText(BeanUser.currentLoginUser.getUser_city());
+        text_email.setText(BeanUser.currentLoginUser.getUser_email());
     }
 
 }

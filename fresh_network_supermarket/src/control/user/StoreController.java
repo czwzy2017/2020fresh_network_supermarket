@@ -1,14 +1,14 @@
 package control.user;
 
-import control.admin.AdminMenuController;
 import javafx.fxml.FXML;
-import model.BeanUserInfo;
+import model.BeanUser;
 
 public class StoreController {
     @FXML
-    private AdminMenuController menuController;
+    private UserMenuController menuController;
+
     @FXML
     public void initialize() {
-        menuController.text_name.setText("欢迎您，" + BeanUserInfo.getCurrentLoginUser().getUser_name());
+        menuController.text_name.setText("欢迎您，" + BeanUser.currentLoginUser.getUser_name());
     }
 }

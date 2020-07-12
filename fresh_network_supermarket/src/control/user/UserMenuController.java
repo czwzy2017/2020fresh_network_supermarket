@@ -14,36 +14,37 @@ public class UserMenuController {
     @FXML
     public Text text_name;
     public void eventStore() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../../fxml/admin/Procurement.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../../fxml/user/Store.fxml"));
         Stage primaryStage = (Stage)text_name.getScene().getWindow();
         primaryStage.setScene(new Scene(root));
     }
 
     public void eventShopping() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../../fxml/admin/Procurement.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../../fxml/user/Shopping.fxml"));
         Stage primaryStage = (Stage)text_name.getScene().getWindow();
         primaryStage.setScene(new Scene(root));
     }
 
     public void eventCoupon() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../../fxml/admin/Procurement.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../../fxml/user/Coupon.fxml"));
         Stage primaryStage = (Stage)text_name.getScene().getWindow();
         primaryStage.setScene(new Scene(root));
     }
 
     public void eventOrders() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../../fxml/admin/Procurement.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../../fxml/user/Orders.fxml"));
         Stage primaryStage = (Stage)text_name.getScene().getWindow();
         primaryStage.setScene(new Scene(root));
     }
 
     public void eventAddress() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../../fxml/admin/Procurement.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../../fxml/user/Address.fxml"));
         Stage primaryStage = (Stage)text_name.getScene().getWindow();
         primaryStage.setScene(new Scene(root));
     }
 
     public void eventVIP() throws IOException{
+        new MainApp().showVIP();
 
     }
 

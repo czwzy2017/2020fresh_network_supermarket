@@ -181,6 +181,7 @@ create table goods_orders
    orders_final_price   double not null,
    orders_address       varchar(100) not null,
    orders_time          timestamp not null,
+   orders_real_time          timestamp,
    orders_status        char(4) not null,
    primary key (orders_id)
 );

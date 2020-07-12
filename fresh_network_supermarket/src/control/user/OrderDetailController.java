@@ -2,7 +2,7 @@ package control.user;
 
 import javafx.fxml.FXML;
 
-public class ShoppingController {
+public class OrderDetailController {
     @FXML
     private UserMenuController menuController;
 }

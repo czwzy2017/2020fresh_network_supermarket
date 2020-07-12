@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="240.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.user.VIPController">
+   <children>
+      <SplitPane dividerPositions="0.33, 0.66" prefHeight="175.0" prefWidth="320.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <Label layoutX="24.0" layoutY="30.0" text="一个月vip" />
+                  <Button layoutX="31.0" layoutY="125.0" mnemonicParsing="false" onAction="#vip_1" text="开通" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <Label layoutX="23.0" layoutY="30.0" text="三个月vip" />
+                  <Button layoutX="30.0" layoutY="125.0" mnemonicParsing="false" onAction="#vip_3" text="开通" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="37.0" layoutY="30.0" text="一年vip" />
+                  <Button layoutX="33.0" layoutY="125.0" mnemonicParsing="false" onAction="#vip_12" text="开通" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+      <Label layoutX="52.0" layoutY="203.0" text="当前会员有效期至：" />
+      <Text fx:id="text_time" layoutX="160.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2020-10-06" />
+   </children>
+</AnchorPane>

@@ -1,18 +1,20 @@
 package manager;
 
-import model.BeanUserInfo;
+import model.BeanUser;
 import util.BaseException;
 import util.BusinessException;
 import util.DBUtil;
 import util.DbException;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.Date;
 
 public class UserManager {
-    public BeanUserInfo login(String tel, String pwd) {
-        BeanUserInfo r = new BeanUserInfo();
+    public BeanUser login(String tel, String pwd) {
+        BeanUser r = new BeanUser();
         Connection conn = null;
         try {
             conn = DBUtil.getConnection();
@@ -31,9 +33,20 @@ public class UserManager {
             r.setUser_email(rs.getString(6));
             r.setUser_city(rs.getString(7));
             r.setUser_creat_time(rs.getTimestamp(8));
-            r.setUser_vip(rs.getBoolean(9));
-            System.out.println(r.isUser_vip());
             r.setUser_vip_deadline(rs.getTimestamp(10));
+            if (r.getUser_vip_deadline().before(new Timestamp(System.currentTimeMillis()))){
+                sql = "update user_infor set user_vip=0 where user_id=?";
+                pst = conn.prepareStatement(sql);
+                pst.setInt(1,r.getUser_id());
+                pst.execute();
+                r.setUser_vip(false);
+            }else{
+                sql = "update user_infor set user_vip=1 where user_id=?";
+                pst = conn.prepareStatement(sql);
+                pst.setInt(1,r.getUser_id());
+                pst.execute();
+                r.setUser_vip(true);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
             throw new DbException(e);
@@ -67,7 +80,7 @@ public class UserManager {
             java.sql.ResultSet rs = pst.executeQuery();
             if (rs.next()) throw new BusinessException("手机号已被注册");
             pst.close();
-            sql = "insert into user_infor(user_name, user_sex, user_pwd, user_tel, user_email, user_city, user_creat_time, user_vip) values(?,?,?,?,?,?,?,0)";
+            sql = "insert into user_infor(user_name, user_sex, user_pwd, user_tel, user_email, user_city, user_creat_time, user_vip,user_vip_deadline) values(?,?,?,?,?,?,?,0,?)";
             pst = conn.prepareStatement(sql);
             pst.setString(1, name);
             pst.setString(2, sex);
@@ -76,6 +89,7 @@ public class UserManager {
             pst.setString(5, email);
             pst.setString(6, city);
             pst.setTimestamp(7, new java.sql.Timestamp(System.currentTimeMillis()));
+            pst.setTimestamp(8, new java.sql.Timestamp(System.currentTimeMillis()));
             pst.execute();
             pst.close();
             sql = "select user_id from user_infor where user_tel=?";
@@ -126,6 +140,48 @@ public class UserManager {
             pst.setString(4, tel);
             pst.setString(5, email);
             pst.setString(6, city);
+            pst.execute();
+            pst.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new DbException(e);
+        } finally {
+            if (conn != null)
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+        }
+    }
+
+    public void vip(int month){
+
+        Connection conn = null;
+        try {
+            conn = DBUtil.getConnection();
+            Calendar calendar=Calendar.getInstance();
+            String sql = "select user_vip,user_vip_deadline from user_infor where user_id=?";
+            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1, BeanUser.currentLoginUser.getUser_id());
+            java.sql.ResultSet rs = pst.executeQuery();
+            if (rs.next()){
+                if (rs.getInt(1)==1){
+                    calendar.setTime(rs.getTimestamp(2));
+                    calendar.add(Calendar.MONTH,month);
+                }else{
+                    calendar.setTime(new Date());
+                    calendar.add(Calendar.MONTH,month);
+                }
+            }
+            rs.close();
+            pst.close();
+            java.util.Date date=calendar.getTime();
+            sql = "update user_infor set user_vip=1,user_vip_deadline=? where user_id=?";
+            pst = conn.prepareStatement(sql);
+            pst.setTimestamp(1,new Timestamp(date.getTime()));
+            pst.setInt(2, BeanUser.currentLoginUser.getUser_id());
             pst.execute();
             pst.close();
         } catch (SQLException e) {

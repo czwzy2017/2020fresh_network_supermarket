@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 import main.MainApp;
 import model.BeanAdmin;
-import model.BeanUserInfo;
+import model.BeanUser;
 import manager.UserManager;
 import manager.AdminManager;
 
@@ -69,16 +69,17 @@ public class LoginController {
         mainApp.showUserRegister();
     }
 
-    public void eventUserLogin() {
+    public void eventUserLogin() throws IOException {
         String tel = text_tel.getText();
         String pwd = text_user_pwd.getText();
         UserManager m = new UserManager();
-        BeanUserInfo.currentLoginUser = m.login(tel, pwd);
+        BeanUser.currentLoginUser = m.login(tel, pwd);
         Stage primaryStage = (Stage) text_tel.getScene().getWindow();
         primaryStage.close();
+        new MainApp().showStore();
     }
 
-    public void eventAdminLogin() throws Exception {
+    public void eventAdminLogin() throws IOException {
         String id = text_id.getText();
         String pwd = text_admin_pwd.getText();
         AdminManager m = new AdminManager();

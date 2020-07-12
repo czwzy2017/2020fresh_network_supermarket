@@ -1,6 +1,6 @@
 
 #button_1{
-    -fx-background-color: transparency;
+    -fx-background-color: transparent;
 }
  
 #button_1:hover{
@@ -12,7 +12,7 @@
 }
 
 #button_2{
-    -fx-background-color: transparency;
+    -fx-background-color: transparent;
 }
  
 #button_2:hover{
@@ -24,7 +24,7 @@
 }
 
 #button_3{
-    -fx-background-color: transparency;
+    -fx-background-color: transparent;
 }
  
 #button_3:hover{
@@ -36,7 +36,7 @@
 }
 
 #button_4{
-    -fx-background-color: transparency;
+    -fx-background-color: transparent;
 }
  
 #button_4:hover{
@@ -48,7 +48,7 @@
 }
 
 #button_5{
-    -fx-background-color: transparency;
+    -fx-background-color: transparent;
 }
  
 #button_5:hover{
@@ -60,7 +60,7 @@
 }
 
 #button_6{
-    -fx-background-color: transparency;
+    -fx-background-color: transparent;
 }
  
 #button_6:hover{
@@ -68,5 +68,17 @@
 }
  
 #button_6:pressed{
+    -fx-border-color:cornflowerblue;
+}
+
+#button_7{
+    -fx-background-color: transparent;
+}
+
+#button_7:hover{
+    -fx-border-color:coral;
+}
+
+#button_7:pressed{
     -fx-border-color:cornflowerblue;
 }
