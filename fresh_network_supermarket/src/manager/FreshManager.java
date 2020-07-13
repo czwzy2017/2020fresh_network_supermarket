@@ -11,6 +11,7 @@ import util.DbException;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 public class FreshManager {
     public ObservableList<BeanFreshCategory> loadCategory() {
@@ -82,7 +83,7 @@ public class FreshManager {
                 r.setCategory_id(rs.getInt(1));
                 r.setCategory_name(rs.getString(2));
                 r.setCategory_description(rs.getString(3));
-            }else{
+            } else {
                 throw new BusinessException("生鲜类别不存在");
             }
         } catch (SQLException e) {
@@ -191,11 +192,67 @@ public class FreshManager {
                 r.setCategory_id(rs.getInt(2));
                 r.setGoods_name(rs.getString(3));
                 r.setGoods_price(rs.getDouble(4));
-                if ((rs.getDouble(5)==0)) r.setGoods_vip_price(null);
-                else r.setGoods_vip_price(String.valueOf(rs.getDouble(5)));
+                r.setGoods_vip_price(rs.getDouble(5));
                 r.setGoods_count(rs.getInt(6));
                 r.setGoods_size(rs.getString(7));
                 r.setGoods_detail(rs.getString(8));
+                r.setVip_price_string();
+                sql = "select promotion_price,promotion_count from promotion where goods_id=? and promotion_begin_date<=? and promotion_end_date>=?";
+                pst = conn.prepareStatement(sql);
+                pst.setInt(1, r.getGoods_id());
+                pst.setTimestamp(2, new Timestamp(System.currentTimeMillis()));
+                pst.setTimestamp(3, new Timestamp(System.currentTimeMillis()));
+                java.sql.ResultSet rst = pst.executeQuery();
+                if (rst.next()) {
+                    r.setGoods_promotion(String.valueOf(rst.getDouble(1)));
+                    r.setPromotion_count(rst.getInt(2));
+                }
+                result.add(r);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new DbException(e);
+        } finally {
+            if (conn != null)
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+        }
+        return result;
+    }
+
+    public ObservableList<BeanGoods> loadAllGoods() {
+        ObservableList<BeanGoods> result = FXCollections.observableArrayList();
+        Connection conn = null;
+        try {
+            conn = DBUtil.getConnection();
+            String sql = "select * from goods";
+            java.sql.Statement st = conn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                BeanGoods r = new BeanGoods();
+                r.setGoods_id(rs.getInt(1));
+                r.setCategory_id(rs.getInt(2));
+                r.setGoods_name(rs.getString(3));
+                r.setGoods_price(rs.getDouble(4));
+                r.setGoods_vip_price(rs.getDouble(5));
+                r.setGoods_count(rs.getInt(6));
+                r.setGoods_size(rs.getString(7));
+                r.setGoods_detail(rs.getString(8));
+                r.setVip_price_string();
+                sql = "select promotion_price,promotion_count from promotion where goods_id=? and promotion_begin_date<=? and promotion_end_date>=?";
+                java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+                pst.setInt(1, r.getGoods_id());
+                pst.setTimestamp(2, new Timestamp(System.currentTimeMillis()));
+                pst.setTimestamp(3, new Timestamp(System.currentTimeMillis()));
+                java.sql.ResultSet rst = pst.executeQuery();
+                if (rst.next()) {
+                    r.setGoods_promotion(String.valueOf(rst.getDouble(1)));
+                    r.setPromotion_count(rst.getInt(2));
+                }
                 result.add(r);
             }
         } catch (SQLException e) {
@@ -227,11 +284,12 @@ public class FreshManager {
                 r.setCategory_id(rs.getInt(2));
                 r.setGoods_name(rs.getString(3));
                 r.setGoods_price(rs.getDouble(4));
-                r.setGoods_vip_price(String.valueOf(rs.getDouble(5)));
+                r.setGoods_vip_price(rs.getDouble(5));
                 r.setGoods_count(rs.getInt(6));
                 r.setGoods_size(rs.getString(7));
                 r.setGoods_detail(rs.getString(8));
-            }else{
+                r.setVip_price_string();
+            } else {
                 throw new BusinessException("商品不存在");
             }
             pst.close();
@@ -258,10 +316,10 @@ public class FreshManager {
     public void modifyGoods(BeanGoods r) {
         Connection conn = null;
         double vip = 0;
-        if ("".equals(r.getGoods_vip_price())) vip = -1;
+        if ("".equals(r.getVip_price_string())) vip = -1;
         else {
             try {
-                vip = Double.valueOf(r.getGoods_vip_price().trim());
+                vip = Double.valueOf(r.getVip_price_string().trim());
             } catch (Exception e) {
                 throw new BusinessException("会员价必须为实数");
             }
@@ -310,7 +368,7 @@ public class FreshManager {
                 throw new BusinessException("会员价必须为实数");
             }
             if (vip <= 0) throw new BusinessException("商品价格必须大于0");
-            if (price< vip) throw new BusinessException("会员价不得高于非会员价");
+            if (price < vip) throw new BusinessException("会员价不得高于非会员价");
         }
         if ("".equals(name)) throw new BusinessException("商品名称不能为空");
         if (price <= 0) throw new BusinessException("商品价格必须大于0");

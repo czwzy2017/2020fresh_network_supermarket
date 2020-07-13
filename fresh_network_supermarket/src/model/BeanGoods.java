@@ -6,7 +6,10 @@ public class BeanGoods {
     private String category_name;
     private String goods_name;
     private double goods_price;
-    private String goods_vip_price;
+    private String goods_promotion;
+    private int promotion_count;
+    private Double goods_vip_price;
+    private String vip_price_string;
     private int goods_count;
     private String goods_size;
     private String goods_detail;
@@ -52,11 +55,27 @@ public class BeanGoods {
         this.goods_price = goods_price;
     }
 
-    public String getGoods_vip_price() {
+    public String getGoods_promotion() {
+        return goods_promotion;
+    }
+
+    public void setGoods_promotion(String goods_promotion) {
+        this.goods_promotion = goods_promotion;
+    }
+
+    public int getPromotion_count() {
+        return promotion_count;
+    }
+
+    public void setPromotion_count(int promotion_count) {
+        this.promotion_count = promotion_count;
+    }
+
+    public Double getGoods_vip_price() {
         return goods_vip_price;
     }
 
-    public void setGoods_vip_price(String goods_vip_price) {
+    public void setGoods_vip_price(Double goods_vip_price) {
         this.goods_vip_price = goods_vip_price;
     }
 
@@ -82,5 +101,17 @@ public class BeanGoods {
 
     public void setGoods_detail(String goods_detail) {
         this.goods_detail = goods_detail;
+    }
+
+    public String getVip_price_string() {
+        return vip_price_string;
+    }
+
+    public void setVip_price_string() {
+        if (goods_vip_price!=0) this.vip_price_string =String.valueOf(goods_vip_price);
+    }
+
+    public void setVip_price_string(String vip_price_string){
+        this.vip_price_string=vip_price_string;
     }
 }

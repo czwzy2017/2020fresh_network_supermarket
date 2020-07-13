@@ -16,6 +16,7 @@
                 <TableColumn prefWidth="75.0" text="商品名称" />
                 <TableColumn prefWidth="75.0" text="价格" />
                 <TableColumn prefWidth="75.0" text="数量" />
+            <TableColumn prefWidth="75.0" text="参与促销数量" />
                 <TableColumn prefWidth="75.0" text="满折编号" />
             <TableColumn prefWidth="75.0" text="折扣" />
             </columns>

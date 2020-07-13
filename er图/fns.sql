@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2020/7/12 20:21:21                           */
+/* Created on:     2020/7/13 13:45:29                           */
 /*==============================================================*/
 
 
@@ -180,7 +180,7 @@ create table goods_orders
    orders_original_price double not null,
    orders_final_price   double not null,
    orders_address       varchar(100) not null,
-   orders_time          timestamp not null,
+   orders_time          timestamp,
    orders_real_time     timestamp,
    orders_status        char(4) not null,
    primary key (orders_id)
@@ -205,12 +205,12 @@ create table goods_procurement
 create table orders_detail
 (
    orders_id            int not null,
-   discount_id          int not null,
+   discount_id          int,
    goods_id             int not null,
    detail_count         int not null,
    goods_price          double not null,
-   discount             double not null,
-   primary key (orders_id, discount_id, goods_id)
+   discount             double,
+   primary key (orders_id, goods_id)
 );
 
 /*==============================================================*/

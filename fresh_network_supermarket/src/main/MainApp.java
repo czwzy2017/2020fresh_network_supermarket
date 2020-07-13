@@ -1,10 +1,13 @@
 package main;
 
 import control.admin.CommentController;
+import control.user.GoodsController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -98,7 +101,7 @@ public class MainApp extends Application {
     public void showComment(int id) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/admin/GoodsComment.fxml"));
         Stage stage = new Stage(StageStyle.DECORATED);
-        stage.setScene(new Scene((Pane) loader.load()));
+        stage.setScene(new Scene((AnchorPane) loader.load()));
         stage.setResizable(false);
         CommentController controller = loader.<CommentController>getController();
         controller.initData(id);

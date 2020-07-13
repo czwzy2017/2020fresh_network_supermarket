@@ -104,7 +104,7 @@ public class UserManager {
         if (!pwd.equals(pwd2)) throw new BusinessException("两次密码不一致");
         if ("".equals(tel)) throw new BusinessException("电话不能为空");
         String telRegex = "[1][3578]\\d{9}";
-        if (tel.matches(telRegex)) throw new BusinessException("请输入正确的手机号");
+        if (!tel.matches(telRegex)) throw new BusinessException("请输入正确的手机号");
         if ("".equals(city)) throw new BusinessException("城市不能为空");
         Connection conn = null;
         int id=0;

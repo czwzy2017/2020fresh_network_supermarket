@@ -99,7 +99,7 @@ public class PromotionManager {
                 throw new BusinessException("商品不存在");
             }
             pst.close();
-            sql="select * from promotion where (discount_begin_date<? and discount_end_date>=? or discount_end_date>? and discount_begin_date<=?) and goods_id=?";
+            sql="select * from promotion where (promotion_begin_date<? and promotion_end_date>=? or promotion_end_date>? and promotion_begin_date<=?) and goods_id=?";
             pst = conn.prepareStatement(sql);
             pst.setTimestamp(1,new Timestamp(r.getPromotion_end_date().getTime()));
             pst.setTimestamp(2,new Timestamp(r.getPromotion_end_date().getTime()));

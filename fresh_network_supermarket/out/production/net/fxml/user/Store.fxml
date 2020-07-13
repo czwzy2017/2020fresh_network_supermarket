@@ -13,6 +13,8 @@
         <columns>
           <TableColumn fx:id="col_name" prefWidth="75.0" text="商品名称" />
           <TableColumn fx:id="col_price" prefWidth="75.0" text="价格" />
+            <TableColumn fx:id="col_promotion" prefWidth="75.0" text="促销价" />
+            <TableColumn fx:id="col_promotion_count" prefWidth="75.0" text="促销数量" />
             <TableColumn fx:id="col_vip" prefWidth="75.0" text="vip价" />
             <TableColumn fx:id="col_count" prefWidth="75.0" text="库存" />
         </columns>
