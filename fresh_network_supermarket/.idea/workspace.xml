@@ -2,19 +2,34 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/manager/AddressManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/manager/OrderManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/net/control/user/AddressController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net/control/user/AddressController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/net/control/user/GoodsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net/control/user/GoodsController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/net/control/user/StoreController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net/control/user/StoreController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/net/fxml/user/Address.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net/fxml/user/Address.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/net/fxml/user/Goods.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net/fxml/user/Goods.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/net/fxml/user/Shopping.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net/fxml/user/Shopping.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/net/model/BeanDeliverAddress.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net/model/BeanDeliverAddress.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/control/user/AddressController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/control/user/AddressController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fxml/user/Address.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/fxml/user/Address.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/manager/CookbookManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/CookbookManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/net/fxml/user/Store.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net/fxml/user/Store.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/net/main/MainApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net/main/MainApp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/net/manager/FreshManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net/manager/FreshManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/net/manager/PromotionManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net/manager/PromotionManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/net/manager/UserManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net/manager/UserManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/net/model/BeanGoods.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/net/model/BeanGoods.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/control/admin/FreshController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/control/admin/FreshController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/control/user/GoodsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/control/user/GoodsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/control/user/StoreController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/control/user/StoreController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fxml/user/Goods.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/fxml/user/Goods.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fxml/user/Shopping.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/fxml/user/Shopping.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fxml/user/Store.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/fxml/user/Store.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MainApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/manager/FreshManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/FreshManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/manager/PromotionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/PromotionManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/manager/UserManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/manager/UserManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/DefaultExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/DefaultExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/BeanFullDiscount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/BeanFullDiscount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/BeanGoods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/BeanGoods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/BeanGoodsOrders.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/BeanGoodsOrders.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/OrderDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/OrderDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../大作业需求汇总表（生鲜网超）.xls" beforeDir="false" afterPath="$PROJECT_DIR$/../大作业需求汇总表（生鲜网超）.xls" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +71,14 @@
         <item name="MySQL - fns@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="fns: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="deliver_address: table" type="285a2a93:MysqlImplModel$Table" />
+        <item name="goods_orders: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="MySQL - fns@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="fns: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="orders_detail: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -312,6 +334,7 @@
       <workItem from="1594545988702" duration="9000" />
       <workItem from="1594546046757" duration="13999000" />
       <workItem from="1594567685482" duration="3829000" />
+      <workItem from="1594599333602" duration="17600000" />
     </task>
     <servers />
   </component>
@@ -345,20 +368,20 @@
     </state>
     <state x="364" y="171" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594081720395" />
     <state x="414" y="195" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1080/1920.-620.1080.1880@0.0.1920.1080" timestamp="1594040487194" />
-    <state x="765" y="211" key="#com.intellij.ide.util.MemberChooser" timestamp="1594560727678">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="765" y="203" key="#com.intellij.ide.util.MemberChooser" timestamp="1594624416045">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="203" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1594447893325" />
+    <state x="765" y="203" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1594624416045" />
     <state x="765" y="211" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080/1920.-620.1080.1880@0.0.1920.1080" timestamp="1594560727678" />
     <state x="2350" y="-253" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080/1920.-620.1080.1880@1920.-620.1080.1880" timestamp="1594294657511" />
     <state x="689" y="323" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1594031873418">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="689" y="323" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1080/1920.-620.1080.1880@0.0.1920.1080" timestamp="1594031873418" />
-    <state x="806" y="424" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1594546317438">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state x="806" y="408" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1594599341392">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="806" y="408" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594532384466" />
+    <state x="806" y="408" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594599341392" />
     <state x="806" y="424" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1080/1920.-620.1080.1880@0.0.1920.1080" timestamp="1594546317438" />
     <state x="739" y="404" width="441" height="242" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1594256580936">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -373,31 +396,35 @@
     </state>
     <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1594261739646" />
     <state x="690" y="276" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1080/1920.-620.1080.1880@0.0.1920.1080" timestamp="1594387002836" />
-    <state x="770" y="188" key="FileChooserDialogImpl" timestamp="1594533049178">
+    <state x="703" y="379" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1594623255658">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="770" y="188" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1594533049178" />
+    <state x="703" y="379" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1040@0.0.1920.1040" timestamp="1594623255658" />
+    <state x="770" y="188" key="FileChooserDialogImpl" timestamp="1594600995777">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="770" y="188" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1594600995777" />
     <state x="740" y="294" key="FileChooserDialogImpl/0.0.1920.1080/1920.-620.1080.1880@0.0.1920.1080" timestamp="1594039193857" />
     <state x="2336" y="-108" key="FileChooserDialogImpl/0.0.1920.1080/1920.-620.1080.1880@1920.-620.1080.1880" timestamp="1594530514998" />
-    <state width="1921" height="149" key="GridCell.Tab.0.bottom" timestamp="1594571517676">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1877" height="426" key="GridCell.Tab.0.bottom" timestamp="1594624630381">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="426" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1594541136478" />
+    <state width="1877" height="426" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1594624630381" />
     <state width="1921" height="149" key="GridCell.Tab.0.bottom/0.0.1920.1080/1920.-620.1080.1880@0.0.1920.1080" timestamp="1594571517676" />
-    <state width="1921" height="149" key="GridCell.Tab.0.center" timestamp="1594571517676">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1877" height="426" key="GridCell.Tab.0.center" timestamp="1594624630380">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="426" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1594541136478" />
+    <state width="1877" height="426" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1594624630380" />
     <state width="1921" height="149" key="GridCell.Tab.0.center/0.0.1920.1080/1920.-620.1080.1880@0.0.1920.1080" timestamp="1594571517676" />
-    <state width="1921" height="149" key="GridCell.Tab.0.left" timestamp="1594571517676">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1877" height="426" key="GridCell.Tab.0.left" timestamp="1594624630379">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="426" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1594541136477" />
+    <state width="1877" height="426" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1594624630379" />
     <state width="1921" height="149" key="GridCell.Tab.0.left/0.0.1920.1080/1920.-620.1080.1880@0.0.1920.1080" timestamp="1594571517676" />
-    <state width="1921" height="149" key="GridCell.Tab.0.right" timestamp="1594571517676">
-      <screen x="0" y="0" width="1920" height="1080" />
+    <state width="1877" height="426" key="GridCell.Tab.0.right" timestamp="1594624630381">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="426" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1594541136478" />
+    <state width="1877" height="426" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1594624630381" />
     <state width="1921" height="149" key="GridCell.Tab.0.right/0.0.1920.1080/1920.-620.1080.1880@0.0.1920.1080" timestamp="1594571517676" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1594450445614">
       <screen x="0" y="0" width="1920" height="1040" />

@@ -3,10 +3,11 @@ package model;
 import java.util.Date;
 
 public class BeanGoodsOrders {
+    public static BeanGoodsOrders currentOrders=null;
     private int orders_id;
     private int coupon_id;
     private int user_id;
-    private int delivery_id;
+    private String order_address;
     private double order_original_price;
     private double oder_final_price;
     private Date order_time;
@@ -36,14 +37,6 @@ public class BeanGoodsOrders {
         this.user_id = user_id;
     }
 
-    public int getDelivery_id() {
-        return delivery_id;
-    }
-
-    public void setDelivery_id(int delivery_id) {
-        this.delivery_id = delivery_id;
-    }
-
     public double getOrder_original_price() {
         return order_original_price;
     }
@@ -58,6 +51,14 @@ public class BeanGoodsOrders {
 
     public void setOder_final_price(double oder_final_price) {
         this.oder_final_price = oder_final_price;
+    }
+
+    public String getOrder_address() {
+        return order_address;
+    }
+
+    public void setOrder_address(String order_address) {
+        this.order_address = order_address;
     }
 
     public Date getOrder_time() {

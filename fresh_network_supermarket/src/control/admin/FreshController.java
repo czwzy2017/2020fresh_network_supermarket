@@ -135,7 +135,7 @@ public class FreshController {
             col_goods_name.setCellFactory(TextFieldTableCell.forTableColumn());
             col_goods_price.setCellValueFactory(new PropertyValueFactory<>("goods_price"));
             col_goods_price.setCellFactory(TextFieldTableCell.forTableColumn(new DoubleStringConverter()));
-            col_goods_vip.setCellValueFactory(new PropertyValueFactory<>("goods_vip_price"));
+            col_goods_vip.setCellValueFactory(new PropertyValueFactory<>("vip_price_string"));
             col_goods_vip.setCellFactory(TextFieldTableCell.forTableColumn());
             col_goods_count.setCellValueFactory(new PropertyValueFactory<>("goods_count"));
             col_goods_count.setCellFactory(TextFieldTableCell.forTableColumn(new IntegerStringConverter()));
@@ -161,7 +161,7 @@ public class FreshController {
         alert.setTitle("商品信息");
         alert.setHeaderText(null);
         alert.setContentText("商品编号：" + r.getGoods_id() + "\n类别名称：" + r.getCategory_name() + "\n商品名称：" + r.getGoods_name()
-                + "\n商品价格：" + r.getGoods_price()+"\n会员价："+r.getGoods_vip_price()+"\n商品数量："+r.getGoods_count()+"\n商品规格："+r.getGoods_size()+"\n商品详情："+r.getGoods_detail());
+                + "\n商品价格：" + r.getGoods_price()+"\n会员价："+r.getVip_price_string()+"\n商品数量："+r.getGoods_count()+"\n商品规格："+r.getGoods_size()+"\n商品详情："+r.getGoods_detail());
         alert.showAndWait();
     }
 
@@ -237,7 +237,7 @@ public class FreshController {
         });
 
         col_goods_vip.setOnEditCommit(goodsColEdit -> {
-            goodsColEdit.getTableView().getItems().get(goodsColEdit.getTablePosition().getRow()).setGoods_vip_price(goodsColEdit.getNewValue().trim());
+            goodsColEdit.getTableView().getItems().get(goodsColEdit.getTablePosition().getRow()).setVip_price_string(goodsColEdit.getNewValue().trim());
             try {
                 new FreshManager().modifyGoods(goodsColEdit.getRowValue());
             } catch (BaseException e) {

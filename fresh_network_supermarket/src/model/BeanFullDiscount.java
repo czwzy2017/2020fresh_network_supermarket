@@ -57,4 +57,8 @@ public class BeanFullDiscount {
     public void setDiscount_end_date(Date discount_end_date) {
         this.discount_end_date = discount_end_date;
     }
+
+    public String toString(){
+        return "满"+discount_goods_count+"件打"+discount*10+"折";
+    }
 }
