@@ -5,6 +5,7 @@ public class OrderDetail {
     private int discount_id;
     private String discount_id_string;
     private int goods_id;
+    private String goods_name;
     private int detail_count;
     private int promotion_count;
     private double goods_price;
@@ -34,6 +35,14 @@ public class OrderDetail {
 
     public void setGoods_id(int goods_id) {
         this.goods_id = goods_id;
+    }
+
+    public String getGoods_name() {
+        return goods_name;
+    }
+
+    public void setGoods_name(String goods_name) {
+        this.goods_name = goods_name;
     }
 
     public int getDetail_count() {
@@ -76,8 +85,15 @@ public class OrderDetail {
         this.discount_goods_count = discount_goods_count;
     }
 
+    public String getDiscount_detail() {
+        return discount_detail;
+    }
     public void setDiscount_detail(){
         if (discount_id!=0) this.discount_detail= "满"+discount_goods_count+"件打"+discount*10+"折";
+    }
+
+    public String getDiscount_id_string() {
+        return discount_id_string;
     }
 
     public void setDiscount_id_string(){

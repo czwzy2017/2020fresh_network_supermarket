@@ -12,11 +12,10 @@
         <Button layoutX="906.0" layoutY="673.0" mnemonicParsing="false" onAction="#add" text="添加地址" />
         <TableView fx:id="view" editable="true" layoutX="75.0" layoutY="23.0" prefHeight="600.0" prefWidth="949.0">
             <columns>
-            <TableColumn fx:id="col_id" prefWidth="75.0" text="地址编号" />
                 <TableColumn fx:id="col_province" prefWidth="100.0" text="省" />
                 <TableColumn fx:id="col_city" prefWidth="100.0" text="市" />
                 <TableColumn fx:id="col_district" prefWidth="100.0" text="区" />
-                <TableColumn fx:id="col_address" prefWidth="325.0" text="地址" />
+                <TableColumn fx:id="col_address" prefWidth="400.0" text="地址" />
                 <TableColumn fx:id="col_contact" prefWidth="100.0" text="联系人" />
                 <TableColumn fx:id="col_tel" prefWidth="149.0" text="电话" />
             </columns>

@@ -197,17 +197,53 @@ public class FreshManager {
                 r.setGoods_size(rs.getString(7));
                 r.setGoods_detail(rs.getString(8));
                 r.setVip_price_string();
-                sql = "select promotion_price,promotion_count from promotion where goods_id=? and promotion_begin_date<=? and promotion_end_date>=?";
+                result.add(r);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new DbException(e);
+        } finally {
+            if (conn != null)
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+        }
+        return result;
+    }
+
+    public ObservableList<BeanGoods> loadStoreGoods(int id) {
+        ObservableList<BeanGoods> result = FXCollections.observableArrayList();
+        Connection conn = null;
+        try {
+            conn = DBUtil.getConnection();
+            String sql = "select * from goods where category_id=?";
+            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1, id);
+            java.sql.ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                BeanGoods r = new BeanGoods();
+                r.setGoods_id(rs.getInt(1));
+                r.setCategory_id(rs.getInt(2));
+                r.setGoods_name(rs.getString(3));
+                r.setGoods_price(rs.getDouble(4));
+                r.setGoods_vip_price(rs.getDouble(5));
+                r.setGoods_count(rs.getInt(6));
+                r.setGoods_size(rs.getString(7));
+                r.setGoods_detail(rs.getString(8));
+                r.setVip_price_string();
+                sql = "select promotion_price,promotion_count from promotion where goods_id=? and (? between promotion_begin_date and promotion_end_date)";
                 pst = conn.prepareStatement(sql);
                 pst.setInt(1, r.getGoods_id());
                 pst.setTimestamp(2, new Timestamp(System.currentTimeMillis()));
-                pst.setTimestamp(3, new Timestamp(System.currentTimeMillis()));
                 java.sql.ResultSet rst = pst.executeQuery();
                 if (rst.next()) {
                     r.setGoods_promotion(String.valueOf(rst.getDouble(1)));
                     r.setPromotion_count(rst.getInt(2));
                 }
-                result.add(r);
+                if (r.getGoods_count()>0) result.add(r);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -243,17 +279,16 @@ public class FreshManager {
                 r.setGoods_size(rs.getString(7));
                 r.setGoods_detail(rs.getString(8));
                 r.setVip_price_string();
-                sql = "select promotion_price,promotion_count from promotion where goods_id=? and promotion_begin_date<=? and promotion_end_date>=?";
+                sql = "select promotion_price,promotion_count from promotion where goods_id=? and (? between promotion_begin_date and promotion_end_date)";
                 java.sql.PreparedStatement pst = conn.prepareStatement(sql);
                 pst.setInt(1, r.getGoods_id());
                 pst.setTimestamp(2, new Timestamp(System.currentTimeMillis()));
-                pst.setTimestamp(3, new Timestamp(System.currentTimeMillis()));
                 java.sql.ResultSet rst = pst.executeQuery();
                 if (rst.next()) {
                     r.setGoods_promotion(String.valueOf(rst.getDouble(1)));
                     r.setPromotion_count(rst.getInt(2));
                 }
-                result.add(r);
+                if (r.getGoods_count()>0) result.add(r);
             }
         } catch (SQLException e) {
             e.printStackTrace();

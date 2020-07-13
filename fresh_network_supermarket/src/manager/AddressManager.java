@@ -46,6 +46,40 @@ public class AddressManager {
         return result;
     }
 
+    public ObservableList<String> loadAddressName() {
+        ObservableList<String> result = FXCollections.observableArrayList();
+        Connection conn = null;
+        try {
+            conn = DBUtil.getConnection();
+            String sql = "select * from deliver_address";
+            java.sql.Statement st = conn.createStatement();
+            java.sql.ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+                BeanDeliverAddress r=new BeanDeliverAddress();
+                r.setDelivery_id(rs.getInt(1));
+                r.setDelivery_province(rs.getString(3));
+                r.setDelivery_city(rs.getString(4));
+                r.setDelivery_district(rs.getString(5));
+                r.setDelivery_address(rs.getString(6));
+                r.setDelivery_contact(rs.getString(7));
+                r.setDelivery_tel(rs.getString(8));
+                result.add(r.toString());
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new DbException(e);
+        } finally {
+            if (conn != null)
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+        }
+        return result;
+    }
+
     public void add(BeanDeliverAddress r) {
         Connection conn = null;
         try {

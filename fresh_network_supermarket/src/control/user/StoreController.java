@@ -5,7 +5,6 @@ import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
@@ -13,10 +12,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-import main.MainApp;
 import manager.FreshManager;
 import model.BeanFreshCategory;
 import model.BeanGoods;
@@ -56,7 +53,7 @@ public class StoreController {
 
     public void showGoods(BeanFreshCategory category){
         if (category != null) {
-            goods = new FreshManager().loadGoods(category.getCategory_id());
+            goods = new FreshManager().loadStoreGoods(category.getCategory_id());
         } else {
             goods = new FreshManager().loadAllGoods();
         }

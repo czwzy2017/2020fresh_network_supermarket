@@ -22,9 +22,6 @@ public class AddressController {
     private TableView<BeanDeliverAddress> view;
 
     @FXML
-    private TableColumn<BeanDeliverAddress,Integer> col_id;
-
-    @FXML
     private TableColumn<BeanDeliverAddress, String> col_province;
 
     @FXML
@@ -64,7 +61,6 @@ public class AddressController {
 
     public void loadAddress() {
         addresses = new AddressManager().loadAddress();
-        col_id.setCellValueFactory(new PropertyValueFactory<>("delivery_id"));
         col_province.setCellValueFactory(new PropertyValueFactory<>("delivery_province"));
         col_province.setCellFactory(TextFieldTableCell.forTableColumn());
         col_city.setCellValueFactory(new PropertyValueFactory<>("delivery_city"));

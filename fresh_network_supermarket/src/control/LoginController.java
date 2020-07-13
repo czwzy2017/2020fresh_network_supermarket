@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import main.MainApp;
+import manager.OrderManager;
 import model.BeanAdmin;
 import model.BeanUser;
 import manager.UserManager;
@@ -74,6 +75,7 @@ public class LoginController {
         String pwd = text_user_pwd.getText();
         UserManager m = new UserManager();
         BeanUser.currentLoginUser = m.login(tel, pwd);
+        new OrderManager().setCurrentOrder();
         Stage primaryStage = (Stage) text_tel.getScene().getWindow();
         primaryStage.close();
         new MainApp().showStore();

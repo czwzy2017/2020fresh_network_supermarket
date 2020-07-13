@@ -7,7 +7,9 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.text.Text;
 import manager.FreshManager;
+import manager.OrderManager;
 import model.BeanGoods;
+import model.BeanGoodsOrders;
 import model.BeanUser;
 import model.GoodsComment;
 import util.BusinessException;
@@ -59,7 +61,15 @@ public class GoodsController {
     }
 
     public void shopping() {
-
+        if (BeanGoodsOrders.currentOrders == null) {
+            int orderId = new OrderManager().makeOrder();
+            BeanGoodsOrders r = new BeanGoodsOrders();
+            r.setOrders_id(orderId);
+            r.setUser_id(BeanUser.currentLoginUser.getUser_id());
+            r.setOrder_status("未下单");
+            BeanGoodsOrders.currentOrders = r;
+        }
+        new OrderManager().addGoods(goods.getGoods_id());
     }
 
     public void comment() {
