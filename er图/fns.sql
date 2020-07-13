@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2020/7/13 13:45:29                           */
+/* Created on:     2020/7/13 22:19:51                           */
 /*==============================================================*/
 
 
@@ -208,6 +208,7 @@ create table orders_detail
    discount_id          int,
    goods_id             int not null,
    detail_count         int not null,
+   promotion_count      int not null,
    goods_price          double not null,
    discount             double,
    primary key (orders_id, goods_id)
