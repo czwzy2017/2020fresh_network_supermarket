@@ -46,6 +46,39 @@ public class DiscountManager {
         return result;
     }
 
+    public ObservableList<BeanFullDiscount> loadCurrentDiscount() {
+        ObservableList<BeanFullDiscount> result = FXCollections.observableArrayList();
+        Connection conn = null;
+        try {
+            conn = DBUtil.getConnection();
+            String sql = "select * from full_discount where ? between discount_begin_date and discount_end_date ";
+            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setTimestamp(1,new Timestamp(System.currentTimeMillis()));
+            java.sql.ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                BeanFullDiscount r = new BeanFullDiscount();
+                r.setDiscount_id(rs.getInt(1));
+                r.setDiscount_detail(rs.getString(2));
+                r.setDiscount_goods_count(rs.getInt(3));
+                r.setDiscount(rs.getDouble(4));
+                r.setDiscount_begin_date(rs.getTimestamp(5));
+                r.setDiscount_end_date(rs.getTimestamp(6));
+                result.add(r);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new DbException(e);
+        } finally {
+            if (conn != null)
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+        }
+        return result;
+    }
 
     public void addDiscount(BeanFullDiscount r) {
         Connection conn = null;

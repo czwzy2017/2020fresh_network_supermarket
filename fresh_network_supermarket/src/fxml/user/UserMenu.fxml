@@ -13,8 +13,11 @@
         <Text fx:id="text_name" layoutX="470.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="欢迎您，陈哲炜" />
         <VBox prefHeight="768.0" prefWidth="75.0">
             <children>
+            <Button mnemonicParsing="false" onAction="#eventCommend" prefWidth="75.0" text="推荐商品" />
                 <Button mnemonicParsing="false" onAction="#eventStore" prefWidth="75.0" text="商城" />
+            <Button mnemonicParsing="false" onAction="#eventCookbook" prefWidth="75.0" text="菜谱" />
                 <Button mnemonicParsing="false" onAction="#eventShopping" prefWidth="75.0" text="购物车" />
+            <Button mnemonicParsing="false" onAction="#eventDiscount" prefWidth="75.0" text="当前满折" />
                 <Button mnemonicParsing="false" onAction="#eventCoupon" prefWidth="75.0" text="优惠券" />
                 <Button mnemonicParsing="false" onAction="#eventOrders" prefWidth="75.0" text="订单" />
                 <Button mnemonicParsing="false" onAction="#eventAddress" prefWidth="75.0" text="管理地址" />

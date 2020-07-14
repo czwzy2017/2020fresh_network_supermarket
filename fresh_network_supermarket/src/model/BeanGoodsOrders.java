@@ -14,7 +14,7 @@ public class BeanGoodsOrders {
     private Date order_time;
     private Date order_real_time;
     private String order_status;
-    private String discount;
+    private String discount="";
 
     public int getOrders_id() {
         return orders_id;
@@ -41,7 +41,7 @@ public class BeanGoodsOrders {
     }
 
     public double getOrder_original_price() {
-        return order_original_price;
+        return  ((int)(order_original_price*100+0.5)/100.0);
     }
 
     public void setOrder_original_price(double order_original_price) {
@@ -49,7 +49,7 @@ public class BeanGoodsOrders {
     }
 
     public double getOrder_final_price() {
-        return order_final_price;
+        return ((int)(order_final_price*100+0.5)/100.0);
     }
 
     public void setOrder_final_price(double order_final_price) {

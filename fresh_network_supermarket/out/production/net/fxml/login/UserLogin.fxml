@@ -12,8 +12,8 @@
     <children>
         <Label layoutX="171.0" layoutY="203.0" text="手机号" />
         <Label layoutX="171.0" layoutY="252.0" text="密码" />
-        <TextField fx:id="text_tel" layoutX="288.0" layoutY="199.0" text="13736177779" />
-        <PasswordField fx:id="text_user_pwd" layoutX="288.0" layoutY="248.0" text="123456" />
+        <TextField fx:id="text_tel" layoutX="288.0" layoutY="199.0" />
+        <PasswordField fx:id="text_user_pwd" layoutX="288.0" layoutY="248.0" />
         <Button fx:id="button_admin" layoutX="302.0" layoutY="124.0" mnemonicParsing="false" onAction="#eventAdmin" text="员工" />
         <Button fx:id="button_user" layoutX="176.0" layoutY="124.0" mnemonicParsing="false" onAction="#eventUser" text="用户" />
         <Button fx:id="button_super" layoutX="394.0" layoutY="124.0" mnemonicParsing="false" onAction="#eventSuper" text="超级管理员" />

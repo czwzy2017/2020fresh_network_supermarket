@@ -8,7 +8,7 @@ public class BeanGoods {
     private double goods_price;
     private String goods_promotion;
     private int promotion_count;
-    private Double goods_vip_price;
+    private double goods_vip_price;
     private String vip_price_string;
     private int goods_count;
     private String goods_size;
@@ -48,7 +48,7 @@ public class BeanGoods {
     }
 
     public double getGoods_price() {
-        return goods_price;
+        return  ((int)(goods_price*100+0.5)/100.0);
     }
 
     public void setGoods_price(double goods_price) {
@@ -71,11 +71,11 @@ public class BeanGoods {
         this.promotion_count = promotion_count;
     }
 
-    public Double getGoods_vip_price() {
-        return goods_vip_price;
+    public double getGoods_vip_price() {
+        return  ((int)(goods_vip_price*100+0.5)/100.0);
     }
 
-    public void setGoods_vip_price(Double goods_vip_price) {
+    public void setGoods_vip_price(double goods_vip_price) {
         this.goods_vip_price = goods_vip_price;
     }
 

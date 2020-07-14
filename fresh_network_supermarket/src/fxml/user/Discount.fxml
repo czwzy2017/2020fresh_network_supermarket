@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.user.DiscountController">
+    <children>
+        <fx:include fx:id="menu" source="UserMenu.fxml" />
+        <TableView fx:id="view_discount" editable="true" layoutX="75.0" layoutY="23.0" prefHeight="700.0" prefWidth="682.0">
+            <columns>
+                <TableColumn fx:id="col_discount_id" prefWidth="110.0" text="满折编号" />
+                <TableColumn fx:id="col_discount_detail" prefWidth="130.0" text="内容" />
+                <TableColumn fx:id="col_discount_count" prefWidth="100.0" text="适用商品数量" />
+                <TableColumn fx:id="col_discount" prefWidth="100.0" text="折扣" />
+                <TableColumn fx:id="col_discount_begin" prefWidth="120.0" text="起始日期" />
+                <TableColumn fx:id="col_discount_end" prefWidth="120.0" text="结束日期" />
+            </columns>
+        </TableView>
+        <TableView fx:id="view_goods" editable="true" layoutX="768.0" layoutY="23.0" prefHeight="700.0" prefWidth="202.0">
+            <columns>
+                <TableColumn fx:id="col_goods_id" prefWidth="100.0" text="商品编号" />
+                <TableColumn fx:id="col_goods_name" prefWidth="100.0" text="商品名称" />
+            </columns>
+        </TableView>
+    </children>
+
+</AnchorPane>

@@ -133,6 +133,81 @@ public class OrderManager {
         return result;
     }
 
+    public int countOrder(){
+        Connection conn = null;
+        int count=0;
+        try {
+            conn = DBUtil.getConnection();
+            String sql = "select count(*) from goods_orders where user_id = ?";
+            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1, BeanUser.currentLoginUser.getUser_id());
+            java.sql.ResultSet rs = pst.executeQuery();
+            if (rs.next()) count=rs.getInt(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new DbException(e);
+        } finally {
+            if (conn != null)
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+        }
+        return count;
+    }
+
+    public double sumPrice(){
+        Connection conn = null;
+       double price=0;
+        try {
+            conn = DBUtil.getConnection();
+            String sql = "select sum(orders_original_price) from goods_orders where user_id = ?";
+            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1, BeanUser.currentLoginUser.getUser_id());
+            java.sql.ResultSet rs = pst.executeQuery();
+            if (rs.next()) price=rs.getDouble(1);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new DbException(e);
+        } finally {
+            if (conn != null)
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+        }
+        return ((int)(price*100+0.5))/100.0;
+    }
+
+    public double sumSale(){
+        Connection conn = null;
+        double price=0;
+        try {
+            conn = DBUtil.getConnection();
+            String sql = "select sum(orders_original_price),sum(orders_final_price) from goods_orders where user_id = ?";
+            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setInt(1, BeanUser.currentLoginUser.getUser_id());
+            java.sql.ResultSet rs = pst.executeQuery();
+            if (rs.next()) price=rs.getDouble(1)-rs.getDouble(2);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new DbException(e);
+        } finally {
+            if (conn != null)
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+        }
+        return ((int)(price*100+0.5))/100.0;
+    }
+
     public int makeOrder() {
         Connection conn = null;
         int id = 0;
@@ -400,7 +475,8 @@ public class OrderManager {
             conn = DBUtil.getConnection();
             String sql = "update goods_orders set coupon_id=?,orders_original_price=?,orders_final_price=?,orders_address=?,orders_time=?,orders_status='配送中' where orders_id=?";
             java.sql.PreparedStatement pst = conn.prepareStatement(sql);
-            pst.setInt(1, r.getCoupon_id());
+            if (r.getCoupon_id() != 0) pst.setInt(1, r.getCoupon_id());
+            else pst.setString(1, null);
             pst.setDouble(2, r.getOrder_original_price());
             pst.setDouble(3, r.getOrder_final_price());
             pst.setString(4, r.getOrder_address());
@@ -408,12 +484,14 @@ public class OrderManager {
             pst.setInt(6, r.getOrders_id());
             pst.execute();
             pst.close();
-            sql = "update user_coupon set user_coupon_count=user_coupon_count-1 where user_id=? and coupon_id=?";
-            pst = conn.prepareStatement(sql);
-            pst.setInt(1, r.getUser_id());
-            pst.setInt(2, r.getCoupon_id());
-            pst.execute();
-            pst.close();
+            if (r.getCoupon_id() != 0) {
+                sql = "update user_coupon set user_coupon_count=user_coupon_count-1 where user_id=? and coupon_id=?";
+                pst = conn.prepareStatement(sql);
+                pst.setInt(1, r.getUser_id());
+                pst.setInt(2, r.getCoupon_id());
+                pst.execute();
+                pst.close();
+            }
             sql = "select * from orders_detail where orders_id=?";
             pst = conn.prepareStatement(sql);
             pst.setInt(1, r.getOrders_id());
@@ -455,11 +533,12 @@ public class OrderManager {
             java.sql.PreparedStatement pst = conn.prepareStatement(sql);
             pst.setInt(1, BeanGoodsOrders.currentOrders.getOrders_id());
             java.sql.ResultSet rs = pst.executeQuery();
+            r.setDiscount("");
             while (rs.next()) {
                 originalPrice += rs.getInt(1) * rs.getDouble(2);
                 if (rs.getInt(3) != 0) {
                     int count = 0;
-                    sql = "select count(detail_count) from orders_detail where orders_id=? and discount_id=?";
+                    sql = "select sum(detail_count) from orders_detail where orders_id=? and discount_id=?";
                     pst = conn.prepareStatement(sql);
                     pst.setInt(1, r.getOrders_id());
                     pst.setInt(2, rs.getInt(3));
@@ -471,12 +550,12 @@ public class OrderManager {
                     rst = pst.executeQuery();
                     if (rst.next()) {
                         if (count >= rst.getInt(1)) {
-                            finalPrice += rs.getInt(1) * rs.getDouble(2) * rs.getDouble(3);
+                            finalPrice += rs.getInt(1) * rs.getDouble(2) * rs.getDouble(4);
                             sql = "select goods_name from goods where goods_id=?";
                             pst = conn.prepareStatement(sql);
                             pst.setInt(1, rs.getInt(5));
                             java.sql.ResultSet resultSet = pst.executeQuery();
-                            if (resultSet.next()) r.setDiscount(r.getDiscount() + resultSet.getString(1) + "，");
+                            if (resultSet.next()) r.setDiscount(r.getDiscount() + resultSet.getString(1) + " ");
                         } else {
                             finalPrice += rs.getInt(1) * rs.getDouble(2);
                         }
@@ -487,9 +566,10 @@ public class OrderManager {
             }
             r.setOrder_original_price(originalPrice);
             r.setOrder_final_price(finalPrice);
-            sql = "select max(coupon_credit_price),coupon_minimum_price,coupon.coupon_id from coupon,user_coupon where coupon.coupon_id=user_coupon.coupon_id and ?>coupon_minimum_price";
+            sql = "select coupon_credit_price,coupon_minimum_price,coupon.coupon_id from coupon,user_coupon where coupon.coupon_id=user_coupon.coupon_id and coupon_credit_price in ( select max(coupon_credit_price) from coupon,user_coupon where coupon.coupon_id=user_coupon.coupon_id and ?>coupon_minimum_price and (? between coupon_begin_date and coupon_end_date))";
             pst = conn.prepareStatement(sql);
             pst.setDouble(1, r.getOrder_original_price());
+            pst.setTimestamp(2,new Timestamp(System.currentTimeMillis()));
             rs = pst.executeQuery();
             if (rs.next()) {
                 r.setOrder_final_price(r.getOrder_final_price() - rs.getDouble(1));
@@ -512,13 +592,13 @@ public class OrderManager {
     }
 
     public void receipt(int id) {
-        Connection conn =null;
+        Connection conn = null;
         try {
             conn = DBUtil.getConnection();
             String sql = "update goods_orders set orders_real_time=?,orders_status='已完成' where orders_id=?";
             java.sql.PreparedStatement pst = conn.prepareStatement(sql);
             pst.setTimestamp(1, new Timestamp(System.currentTimeMillis()));
-            pst.setInt(2,id);
+            pst.setInt(2, id);
             pst.execute();
             pst.close();
         } catch (SQLException e) {
@@ -535,13 +615,13 @@ public class OrderManager {
         }
     }
 
-    public void refund(BeanGoodsOrders r){
-        Connection conn =null;
+    public void refund(BeanGoodsOrders r) {
+        Connection conn = null;
         try {
             conn = DBUtil.getConnection();
             String sql = "update goods_orders set orders_status='退货' where orders_id=?";
             java.sql.PreparedStatement pst = conn.prepareStatement(sql);
-            pst.setInt(1,r.getOrders_id());
+            pst.setInt(1, r.getOrders_id());
             pst.execute();
             pst.close();
             sql = "update user_coupon set user_coupon_count=user_coupon_count+1 where coupon_id=? and user_id=?";
@@ -551,19 +631,19 @@ public class OrderManager {
             pst.execute();
             sql = "select goods_id,detail_count,promotion_count from orders_detail where orders_id=?";
             pst = conn.prepareStatement(sql);
-            pst.setInt(1,r.getOrders_id());
-            java.sql.ResultSet rs =pst.executeQuery();
-            while (rs.next()){
-                sql="update goods set goods_count=goods_count+? where goods_id=?";
+            pst.setInt(1, r.getOrders_id());
+            java.sql.ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                sql = "update goods set goods_count=goods_count+? where goods_id=?";
                 pst = conn.prepareStatement(sql);
-                pst.setInt(1,rs.getInt(2));
-                pst.setInt(2,rs.getInt(1));
+                pst.setInt(1, rs.getInt(2));
+                pst.setInt(2, rs.getInt(1));
                 pst.execute();
                 pst.close();
-                sql="update promotion set promotion_count=promotion_count+? where goods_id=?";
+                sql = "update promotion set promotion_count=promotion_count+? where goods_id=?";
                 pst = conn.prepareStatement(sql);
-                pst.setInt(1,rs.getInt(3));
-                pst.setInt(2,rs.getInt(1));
+                pst.setInt(1, rs.getInt(3));
+                pst.setInt(2, rs.getInt(1));
                 pst.execute();
                 pst.close();
             }

@@ -84,7 +84,7 @@ public class AddressController {
         if ("".equals(text_address.getText().trim())) throw new BusinessException("地址不能为空");
         if ("".equals(text_contact.getText().trim())) throw new BusinessException("联系人不能为空");
         if ("".equals(text_tel.getText().trim())) throw new BusinessException("手机号不能为空");
-        String telRegex = "[1][3578]\\d{9}";
+        String telRegex = "[1][35789]\\d{9}";
         if (!text_tel.getText().trim().matches(telRegex)) throw new BusinessException("请输入正确的手机号");
         address.setDelivery_province(text_province.getText().trim());
         address.setDelivery_city(text_city.getText().trim());

@@ -23,5 +23,7 @@
          </columnResizePolicy>
       </TableView>
       <ComboBox fx:id="box" layoutX="75.0" prefWidth="150.0" promptText="商品分类" />
+      <TextField fx:id="text_name" layoutX="778.0" promptText="请输入商品名称" />
+      <Button layoutX="955.0" mnemonicParsing="false" onAction="#select" text="查找" />
     </children>
 </AnchorPane>

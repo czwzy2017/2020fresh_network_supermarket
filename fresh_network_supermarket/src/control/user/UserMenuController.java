@@ -14,14 +14,33 @@ import java.io.IOException;
 public class UserMenuController {
     @FXML
     public Text text_name;
+
+    public void eventCommend() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("../../fxml/user/Commend.fxml"));
+        Stage primaryStage = (Stage)text_name.getScene().getWindow();
+        primaryStage.setScene(new Scene(root));
+    }
+
     public void eventStore() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../../fxml/user/Store.fxml"));
         Stage primaryStage = (Stage)text_name.getScene().getWindow();
         primaryStage.setScene(new Scene(root));
     }
 
+    public void eventCookbook() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("../../fxml/user/Cookbook.fxml"));
+        Stage primaryStage = (Stage)text_name.getScene().getWindow();
+        primaryStage.setScene(new Scene(root));
+    }
+
     public void eventShopping() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../../fxml/user/Shopping.fxml"));
+        Stage primaryStage = (Stage)text_name.getScene().getWindow();
+        primaryStage.setScene(new Scene(root));
+    }
+
+    public void eventDiscount() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("../../fxml/user/Discount.fxml"));
         Stage primaryStage = (Stage)text_name.getScene().getWindow();
         primaryStage.setScene(new Scene(root));
     }

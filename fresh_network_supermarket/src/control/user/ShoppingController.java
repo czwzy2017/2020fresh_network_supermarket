@@ -79,6 +79,7 @@ public class ShoppingController {
     }
 
     public void buy(){
+        if ("".equals(BeanGoodsOrders.currentOrders.getOrder_address().trim())) throw new BusinessException("请选择配送地址");
         new OrderManager().buy();
         BeanGoodsOrders.currentOrders=null;
         view.getItems().clear();

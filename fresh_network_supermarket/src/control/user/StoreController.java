@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -44,6 +45,9 @@ public class StoreController {
     private TableColumn<BeanGoods,Integer> col_count;
 
     @FXML
+    TextField text_name;
+
+    @FXML
     private UserMenuController menuController;
 
     @FXML
@@ -57,6 +61,17 @@ public class StoreController {
         } else {
             goods = new FreshManager().loadAllGoods();
         }
+        col_name.setCellValueFactory(new PropertyValueFactory<>("goods_name"));
+        col_price.setCellValueFactory(new PropertyValueFactory<>("goods_price"));
+        col_promotion.setCellValueFactory(new PropertyValueFactory<>("goods_promotion"));
+        col_promotion_count.setCellValueFactory(new PropertyValueFactory<>("promotion_count"));
+        col_vip.setCellValueFactory(new PropertyValueFactory<>("goods_vip_price"));
+        col_count.setCellValueFactory(new PropertyValueFactory<>("goods_count"));
+        view.getItems().setAll(goods);
+    }
+
+    public void select(){
+        goods = new FreshManager().selectGoods(text_name.getText().trim());
         col_name.setCellValueFactory(new PropertyValueFactory<>("goods_name"));
         col_price.setCellValueFactory(new PropertyValueFactory<>("goods_price"));
         col_promotion.setCellValueFactory(new PropertyValueFactory<>("goods_promotion"));

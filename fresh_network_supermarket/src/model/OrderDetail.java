@@ -62,7 +62,7 @@ public class OrderDetail {
     }
 
     public double getGoods_price() {
-        return goods_price;
+        return ((int)(goods_price*100+0.5)/100.0);
     }
 
     public void setGoods_price(double goods_price) {
@@ -70,7 +70,7 @@ public class OrderDetail {
     }
 
     public double getDiscount() {
-        return discount;
+        return ((int)(discount*100+0.5)/100.0);
     }
 
     public void setDiscount(double discount) {

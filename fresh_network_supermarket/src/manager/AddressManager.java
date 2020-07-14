@@ -140,7 +140,7 @@ public class AddressManager {
         if ("".equals(r.getDelivery_address().trim())) throw new BusinessException("地址不能为空");
         if ("".equals(r.getDelivery_contact().trim())) throw new BusinessException("联系人不能为空");
         if ("".equals(r.getDelivery_tel().trim())) throw new BusinessException("手机号不能为空");
-        String telRegex = "[1][3578]\\d{9}";
+        String telRegex = "[1][35789]\\d{9}";
         if (!r.getDelivery_tel().trim().matches(telRegex)) throw new BusinessException("请输入正确的手机号");
         try {
             conn = DBUtil.getConnection();

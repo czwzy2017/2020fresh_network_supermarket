@@ -23,5 +23,6 @@
         </TableView>
         <Button layoutX="871.0" mnemonicParsing="false" onAction="#receipt" text="确认送达" />
         <Button layoutX="955.0" mnemonicParsing="false" onAction="#refund" text="退货" />
+      <Text fx:id="text" layoutX="75.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="订单总数：0  消费金额：0  优惠金额：0" />
     </children>
 </AnchorPane>

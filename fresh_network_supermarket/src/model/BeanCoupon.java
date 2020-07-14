@@ -27,7 +27,7 @@ public class BeanCoupon {
     }
 
     public double getCoupon_minimum_price() {
-        return coupon_minimum_price;
+        return ((int)(coupon_minimum_price*100+0.5)/100.0);
     }
 
     public void setCoupon_minimum_price(double coupon_minimum_price) {
@@ -35,7 +35,7 @@ public class BeanCoupon {
     }
 
     public double getCoupon_credit_price() {
-        return coupon_credit_price;
+        return ((int)(coupon_credit_price*100+0.5)/100.0);
     }
 
     public void setCoupon_credit_price(double coupon_credit_price) {

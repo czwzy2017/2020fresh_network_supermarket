@@ -1,8 +1,7 @@
 package control.user;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.text.Text;
@@ -75,11 +74,16 @@ public class GoodsController {
     public void comment() {
         GoodsComment goodsComment = new GoodsComment();
         goodsComment.setUser_id(BeanUser.currentLoginUser.getUser_id());
-        goodsComment.setUser_id(goods.getGoods_id());
+        goodsComment.setGoods_id(goods.getGoods_id());
         goodsComment.setComment_level((int) slider_level.getValue());
         goodsComment.setComment_detail(text_comment.getText());
         goodsComment.setComment_date(new Date(System.currentTimeMillis()));
         addComment(goodsComment);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("成功");
+        alert.setHeaderText(null);
+        alert.setContentText("评价成功");
+        alert.showAndWait();
     }
 
     @FXML
@@ -91,9 +95,10 @@ public class GoodsController {
         Connection conn = null;
         try {
             conn = DBUtil.getConnection();
-            String sql = "select * from goods_orders,orders_detail where goods_id=? and goods_orders.orders_id=orders_detail.orders_id and orders_status='已完成'";
+            String sql = "select * from goods_orders,orders_detail where goods_id=? and goods_orders.orders_id=orders_detail.orders_id and orders_status='已完成' and user_id=?";
             java.sql.PreparedStatement pst = conn.prepareStatement(sql);
             pst.setInt(1, r.getGoods_id());
+            pst.setInt(2,r.getUser_id());
             java.sql.ResultSet rs = pst.executeQuery();
             if (!rs.next()) throw new BusinessException("您还未购买过此商品或还未确认收货，不可评价");
             pst.close();

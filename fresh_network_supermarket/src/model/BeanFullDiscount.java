@@ -35,7 +35,7 @@ public class BeanFullDiscount {
     }
 
     public double getDiscount() {
-        return discount;
+        return  ((int)(discount*100+0.5)/100.0);
     }
 
     public void setDiscount(double discount) {

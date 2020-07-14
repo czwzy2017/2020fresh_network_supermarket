@@ -13,6 +13,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import manager.OrderManager;
 import model.BeanGoodsOrders;
@@ -50,6 +51,9 @@ public class OrdersController {
     @FXML
     private TableColumn<BeanGoodsOrders,String> col_status;
 
+    @FXML
+    private Text text;
+
     public ObservableList<BeanGoodsOrders> orders = FXCollections.observableArrayList();
 
     private void loadOrders(){
@@ -62,6 +66,10 @@ public class OrdersController {
         col_address.setCellValueFactory(new PropertyValueFactory<>("order_address"));
         col_status.setCellValueFactory(new PropertyValueFactory<>("order_status"));
         view.getItems().setAll(orders);
+    }
+
+    private void setText(){
+        text.setText("订单总数："+new OrderManager().countOrder()+"  消费金额"+new OrderManager().sumPrice()+"  优惠金额"+new OrderManager().sumSale());
     }
 
     public void receipt(){
@@ -93,6 +101,7 @@ public class OrdersController {
     @FXML
     public void initialize() {
         loadOrders();
+        setText();
         menuController.text_name.setText("欢迎您，" + BeanUser.currentLoginUser.getUser_name());
         view.setOnMouseClicked(new EventHandler<MouseEvent>(){
             @Override

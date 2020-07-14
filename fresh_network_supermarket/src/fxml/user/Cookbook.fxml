@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.image.ImageView?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.user.CookbookController">
+    <children>
+        <fx:include fx:id="menu" source="UserMenu.fxml" />
+        <TableView fx:id="view_cookbook" editable="true" layoutX="75.0" layoutY="23.0" prefHeight="700.0" prefWidth="252.0">
+            <columns>
+                <TableColumn fx:id="col_cookbook_id" prefWidth="125.0" text="菜谱编号" />
+                <TableColumn fx:id="col_cookbook_name" prefWidth="125.0" text="菜谱名称" />
+            </columns>
+        </TableView>
+        <TableView fx:id="view_goods" editable="true" layoutX="355.0" layoutY="23.0" prefHeight="280.0" prefWidth="552.0">
+            <columns>
+                <TableColumn fx:id="col_goods_id" prefWidth="75.0" text="商品编号" />
+                <TableColumn fx:id="col_goods_name" prefWidth="75.0" text="商品名称" />
+                <TableColumn fx:id="col_commend_description" prefWidth="400.0" text="描述" />
+            </columns>
+        </TableView>
+        <AnchorPane layoutX="355.0" layoutY="342.0" prefHeight="387.0" prefWidth="653.0" style="-fx-border-color: black;">
+            <children>
+                <Label layoutX="50.0" layoutY="15.0" text="菜谱详情" textFill="#6309eb">
+                    <font>
+                        <Font size="28.0" />
+                    </font>
+                </Label>
+                <Label layoutX="50.0" layoutY="75.0" text="菜谱编号">
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </Label>
+                <Label layoutX="50.0" layoutY="115.0" text="菜谱名称">
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </Label>
+                <Label layoutX="50.0" layoutY="155.0" text="菜谱用料">
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </Label>
+                <Label layoutX="72.0" layoutY="216.0" text="步骤">
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </Label>
+                <Text fx:id="text_id" layoutX="150.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Text>
+                <ImageView fx:id="image" fitHeight="140.0" fitWidth="188.0" layoutX="499.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../image/Cookbook.png" />
+               </image></ImageView>
+            <Text fx:id="text_name" layoutX="150.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Text>
+            <Text fx:id="text_ingredient" layoutX="150.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="492.4404296875">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Text>
+            <Text fx:id="text_step" layoutX="150.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="492.4404296875">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Text>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

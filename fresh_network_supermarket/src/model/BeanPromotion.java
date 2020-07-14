@@ -36,7 +36,7 @@ public class BeanPromotion {
     }
 
     public double getPromotion_price() {
-        return promotion_price;
+        return ((int)(promotion_price*100+0.5)/100.0);
     }
 
     public void setPromotion_price(double promotion_price) {
